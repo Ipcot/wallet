@@ -1,0 +1,24 @@
+{
+  "name": "wallet",
+  "version": "1.0.0",
+  "description": "Fullstack final team project",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start:frontend": "npm run start -w @wallet/frontend",
+    "start:backend": "npm run start:dev -w @wallet/backend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ipcot/wallet.git"
+  },
+  "keywords": [],
+  "author": "demetrx <demetrxx@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ipcot/wallet/issues"
+  },
+  "homepage": "https://github.com/Ipcot/wallet#readme"
+}

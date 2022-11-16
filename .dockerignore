@@ -1,0 +1,15 @@
+**/*.iml
+**/*.md
+**/.cache
+**/build
+**/dist
+**/node_modules
+.editorconfig
+.do
+.git
+.github
+docs
+helmfile.*
+packages/cloud
+*-tests.yaml
+docker-compose.yml

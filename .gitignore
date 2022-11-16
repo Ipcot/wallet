@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# Dependency management
+node_modules
+.npm
+.yarn/build-state.yml
+.yarn/install-state.gz
+.yarn/cache
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# Build
+tsconfig.tsbuildinfo
+
+# Environmnet
+.env
