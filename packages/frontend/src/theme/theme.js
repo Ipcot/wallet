@@ -1,28 +1,22 @@
 const theme = {
   colors: {
-    black: '#000',
-    white: '#fff',
-    text: '#2a2a2a',
-    bg: '#081229',
-    primary: '#0e101c',
-    secondary: '#ec5990',
-    border: '#516391',
-    accent: '#bf1650',
-    muted: '#ccc',
-    button: '#191d3a',
+    text: '#000000', // black text
+    white: '#ffffff', // white
+    accent: '#24CCA7', // green 
+    textSecondary: '#A6A6A6', // grey
+    secondary: '#4A56E2', // blue
+    alternate: "#FF6596", // pink
+    bg: '#E7EAF2', // light violet
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: 'system-ui, sans-serif',
-    monospace: 'Menlo, monospace',
+    body: 'Circe, sans-serif',
+    heading: 'Poppins, sans-serif',
   },
   fontSizes: {
-    xs: '12px',
-    s: '14px',
-    m: '20px',
+    s: '16px',
+    m: '18px',
     l: '28px',
-    xl: '64px',
   },
   fontWeights: {
     normal: 400,
@@ -32,17 +26,17 @@ const theme = {
   },
   lineHeights: {
     body: 1.5,
-    heading: 1.125,
+    heading: 1.5,
   },
   borders: {
-    none: 'none',
-    normal: '2px solid',
+    normal: '1px solid',
     thick: '3px solid',
   },
   radii: {
-    input: '4px',
-    normal: '8px',
-    large: '25px',
+    small: '6px',
+    normal: '10px',
+    button: '20px',
+    large: '30px',
     round: '50%',
   },
   breakpoints: ['20em', '48em', '75em'],
