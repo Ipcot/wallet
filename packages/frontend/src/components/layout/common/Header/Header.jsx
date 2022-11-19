@@ -1,4 +1,5 @@
 // import { NavLink } from 'react-router-dom';
+import Media from 'react-media';
 import {
   HeaderBar,
   UserControlWrapper,
@@ -8,6 +9,8 @@ import {
   LogoWrapper,
   LogoutImg,
   LogoutButton,
+  Separator,
+  UserExit,
 } from './Header.styled';
 import logoutIco from '../../../../img/header/LogoutButton.svg';
 import walletIco from '../../../../img/header/WalletIco.svg';
@@ -22,8 +25,10 @@ const Header = () => {
 
       <UserControlWrapper>
         <UserName>Name</UserName>
+        <Media query="(min-width: 767px)" render={() => <Separator></Separator>} />
         <LogoutButton>
           <LogoutImg src={logoutIco} />
+          <Media query="(min-width: 767px)" render={() => <UserExit>Exit</UserExit>} />
         </LogoutButton>
       </UserControlWrapper>
       {/* I'm header

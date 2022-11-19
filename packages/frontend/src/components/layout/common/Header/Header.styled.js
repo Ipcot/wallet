@@ -33,9 +33,30 @@ export const AppTitle = styled.p`
 `;
 
 export const UserName = styled.p`
+  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  line-height: ${p => p.theme.lineHeights.heading};
   font-family: ${p => p.theme.fonts.body};
-  color: ${p => p.theme.colors.textSecondary};
+  color: ${p => p.theme.colors.headerSecondary};
   margin-right: ${p => p.theme.space[3]}px;
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    margin-right: 12px;
+  }
+`;
+
+export const Separator = styled.div`
+  border: 1px solid ${p => p.theme.colors.headerSecondary};
+  height: 30px;
+  margin-right: 12px;
+`;
+
+export const UserExit = styled.p`
+  font-size: ${p => p.theme.fontSizes.m};
+  font-family: ${p => p.theme.fonts.body};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  line-height: ${p => p.theme.lineHeights.heading};
+  color: ${p => p.theme.colors.headerSecondary};
+  margin-left: ${p => p.theme.space[3]}px;
 `;
 
 export const UserControlWrapper = styled.div`
@@ -67,4 +88,6 @@ export const LogoutImg = styled.img`
 
 export const LogoutButton = styled.button`
   border: none;
+  display: flex;
+  align-items: center;
 `;

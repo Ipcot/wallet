@@ -7,6 +7,7 @@ const theme = {
     secondary: '#4A56E2', // blue
     alternate: '#FF6596', // pink
     bg: '#E7EAF2', // light violet
+    headerSecondary: '#BDBDBD', // light grey
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
