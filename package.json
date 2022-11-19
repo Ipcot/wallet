@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Ipcot/wallet/issues"
   },
-  "homepage": "https://github.com/Ipcot/wallet#readme"
+  "homepage": "https://github.com/Ipcot/wallet#readme",
+  "dependencies": {
+    "react-media": "^1.10.0"
+  }
 }
