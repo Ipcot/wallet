@@ -39,7 +39,7 @@ const theme = {
     large: '30px',
     round: '50%',
   },
-  breakpoints: ['20em', '48em', '75em'],
+  breakpoints: ['20rem', '48rem', '80rem'],
   transition: '300ms ease',
 };
 

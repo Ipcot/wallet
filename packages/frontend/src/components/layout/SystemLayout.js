@@ -4,22 +4,31 @@ import { NavLink } from 'react-router-dom'
 
 import Header from "./Header"
 import Loader from './Loader'
+import { Container, Sider, MainContainer } from './SystemLayout.styled'
+import TestMUIComponents from 'components/test'
 
 const SystemLayout = () => {
   return <div>
-    <Header />
-    <main style={{ display: "flex" }}>
-      <div style={{ display: "flex", flexDirection: "column", width: "50%", background: "green" }}>
-        <NavLink to={'home'}>Home</NavLink>
-        <NavLink to={'statistics'}>Statistics</NavLink>
+    <Container>
+      <Header />
+    </Container>
 
-        <div style={{ background: "yellow", marginTop: 100 }}>Balance component: 24 000.00</div>
-        <div style={{ background: "lightblue" }}>Currencies course: USD EUR UAH</div>
-      </div>
+    <main>
+      <MainContainer>
+        <Sider>
+          <NavLink to={'home'}>Home</NavLink>
+          <NavLink to={'statistics'}>Statistics</NavLink>
 
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+          <TestMUIComponents />
+
+          <div style={{ background: "yellow", marginTop: 100 }}>Balance component: 24 000.00</div>
+          <div style={{ background: "lightblue" }}>Currencies course: USD EUR UAH</div>
+        </Sider>
+
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </MainContainer>
     </main>
   </div>
 }
