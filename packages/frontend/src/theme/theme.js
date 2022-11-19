@@ -2,10 +2,10 @@ const theme = {
   colors: {
     text: '#000000', // black text
     white: '#ffffff', // white
-    accent: '#24CCA7', // green 
+    accent: '#24CCA7', // green
     textSecondary: '#A6A6A6', // grey
     secondary: '#4A56E2', // blue
-    alternate: "#FF6596", // pink
+    alternate: '#FF6596', // pink
     bg: '#E7EAF2', // light violet
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
@@ -45,7 +45,7 @@ const theme = {
     large: '30px',
     round: '50%',
   },
-  breakpoints: ['20em', '48em', '75em'],
+  breakpoints: ['20em', '48em', '80em'],
   transition: '300ms ease',
 };
 
