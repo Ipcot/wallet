@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { Suspense } from "react";
+import { Outlet } from "react-router";
+import { NavLink } from "react-router-dom";
 
 import Header from "./Header"
 import Loader from './Loader'
