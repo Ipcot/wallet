@@ -2,39 +2,35 @@ import { Suspense } from "react";
 import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
 
-import Header from "./Header";
-import Loader from "./loader/Loader";
+import Header from "./Header"
+import Loader from './Loader'
+import { Container, Sider, MainContainer } from './SystemLayout.styled'
+import TestMUIComponents from 'components/test'
 
 const SystemLayout = () => {
-  return (
-    <div>
+  return <div>
+    <Container>
       <Header />
-      <main style={{ display: "flex" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "40%",
-            background: "green",
-          }}
-        >
-          <NavLink to={"home"}>Home</NavLink>
-          <NavLink to={"statistics"}>Statistics</NavLink>
+    </Container>
 
-          <div style={{ background: "yellow", marginTop: 100 }}>
-            Balance component: 24 000.00
-          </div>
-          <div style={{ background: "lightblue" }}>
-            Currencies course: USD EUR UAH
-          </div>
-        </div>
+    <main>
+      <MainContainer>
+        <Sider>
+          <NavLink to={'home'}>Home</NavLink>
+          <NavLink to={'statistics'}>Statistics</NavLink>
+
+          <TestMUIComponents />
+
+          <div style={{ background: "yellow", marginTop: 100 }}>Balance component: 24 000.00</div>
+          <div style={{ background: "lightblue" }}>Currencies course: USD EUR UAH</div>
+        </Sider>
 
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
-      </main>
-    </div>
-  );
-};
+      </MainContainer>
+    </main>
+  </div>
+}
 
 export default SystemLayout;
