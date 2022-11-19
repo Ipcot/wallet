@@ -20,8 +20,5 @@
   "bugs": {
     "url": "https://github.com/Ipcot/wallet/issues"
   },
-  "homepage": "https://github.com/Ipcot/wallet#readme",
-  "dependencies": {
-    "react-helmet-async": "^1.3.0"
-  }
+  "homepage": "https://github.com/Ipcot/wallet#readme"
 }
