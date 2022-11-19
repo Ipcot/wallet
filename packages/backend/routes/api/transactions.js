@@ -10,22 +10,24 @@ const express = require('express');
 
 const router = express.Router();
 
-router.post('/transactions', authenticate, ctrlWrapper(ctrl.getAll));
+router.post('/transactions', );
 
-router.get('/transactions', authenticate, ctrlWrapper(ctrl.getContactById));
+//router.post('/transactions', authenticate, ctrlWrapper(ctrl.getAll));
 
-router.get(
-  '/transactions/categories',
-  authenticate,
-  validateBody(schemas.addSchema),
-  ctrlWrapper(ctrl.addContact)
-);
+// router.get('/transactions', authenticate, ctrlWrapper(ctrl.getContactById));
 
-router.get(
-  '/transactions/state/:year/:month',
-  authenticate,
-  validateBody(schemas.addSchema),
-  ctrlWrapper(ctrl.updateContact)
-);
+// router.get(
+//   '/transactions/categories',
+//   authenticate,
+//   validateBody(schemas.addSchema),
+//   ctrlWrapper(ctrl.addContact)
+// );
+
+// router.get(
+//   '/transactions/state/:year/:month',
+//   authenticate,
+//   validateBody(schemas.addSchema),
+//   ctrlWrapper(ctrl.updateContact)
+// );
 
 module.exports = router;
