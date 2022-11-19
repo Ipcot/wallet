@@ -25,6 +25,11 @@ export const AppTitle = styled.p`
   font-size: 20px;
   line-height: 0.85;
   letter-spacing: 1.2px;
+  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+    font-weight: ${p => p.theme.fontWeights.bold};
+    line-height: ${p => p.theme.lineHeights.heading};
+    font-size: ${p => p.theme.fontSizes.xl};
+  }
 `;
 
 export const UserName = styled.p`

@@ -23,6 +23,7 @@ const theme = {
     s: '16px',
     m: '18px',
     l: '28px',
+    xl: '30px',
   },
   fontWeights: {
     normal: 400,
