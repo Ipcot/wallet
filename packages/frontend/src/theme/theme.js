@@ -10,8 +10,14 @@ const theme = {
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    body: 'Circe, sans-serif',
-    heading: 'Poppins, sans-serif',
+    body: 'CirceRegular, sans-serif',
+    h1: 'PoppinsRegular, sans-serif',
+    h2: 'CirceBold, sans-serif',
+    navLink: 'PoppinsRegular, sans-serif',
+    currentNavLink: 'PoppinsBold, sans-serif',
+    logo: 'PoppinsBold, sans-serif',
+    mainBalanceNumbers: 'PoppinsBold, sans-serif',
+    inCircleBalanceNumbers: 'CirceBold, sans-serif',
   },
   fontSizes: {
     s: '16px',
