@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "name": "Main"
+  },
+  {
+    "id": "2",
+    "name": "Food"
+  },
+  {
+    "id": "3",
+    "name": "Auto"
+  },
+  {
+    "id": "4",
+    "name": "Development"
+  },
+  {
+    "id": "5",
+    "name": "Children"
+  },
+  {
+    "id": "6",
+    "name": "House"
+  },
+  {
+    "id": "7",
+    "name": "Education"
+  },
+  {
+    "id": "8",
+    "name": "Reset"
+  }
+]
