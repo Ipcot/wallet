@@ -8,6 +8,8 @@ html {
   box-sizing: inherit;
 }
 
+@import "./stylesheet/fonts.css";
+
 body {
   margin: 0;
   padding: 0;
