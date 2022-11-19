@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Basic expenses",
+    "money": 8700,
+    "color": "#FED057"
+  },
+  {
+    "id": 2,
+    "name": "Products",
+    "money": 3800,
+    "color": "#FFD8D0"
+  },
+  {
+    "id": 3,
+    "name": "Car",
+    "money": 1500,
+    "color": "#FD9498"
+  },
+  {
+    "id": 4,
+    "name": "get",
+    "money": 1500,
+    "color": "#FD9498"
+  }
+]

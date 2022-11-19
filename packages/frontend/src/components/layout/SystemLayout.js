@@ -1,30 +1,30 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { Suspense } from "react";
+import { Outlet } from "react-router";
+import { NavLink } from "react-router-dom";
 
-import Header from './Header';
-import Loader from './loader/Loader';
+import Header from "./Header";
+import Loader from "./loader/Loader";
 
 const SystemLayout = () => {
   return (
     <div>
       <Header />
-      <main style={{ display: 'flex' }}>
+      <main style={{ display: "flex" }}>
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '50%',
-            background: 'green',
+            display: "flex",
+            flexDirection: "column",
+            width: "40%",
+            background: "green",
           }}
         >
-          <NavLink to={'home'}>Home</NavLink>
-          <NavLink to={'statistics'}>Statistics</NavLink>
+          <NavLink to={"home"}>Home</NavLink>
+          <NavLink to={"statistics"}>Statistics</NavLink>
 
-          <div style={{ background: 'yellow', marginTop: 100 }}>
+          <div style={{ background: "yellow", marginTop: 100 }}>
             Balance component: 24 000.00
           </div>
-          <div style={{ background: 'lightblue' }}>
+          <div style={{ background: "lightblue" }}>
             Currencies course: USD EUR UAH
           </div>
         </div>
