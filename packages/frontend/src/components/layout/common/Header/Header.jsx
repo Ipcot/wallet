@@ -12,28 +12,24 @@ import {
   Separator,
   UserExit,
 } from './Header.styled';
-import logoutIco from '../../../../img/header/LogoutButton.svg';
-import walletIco from '../../../../img/header/WalletIco.svg';
-import ModalLogout from './ModalLogout';
+
+import ModalLogout from '../../ModalLogout';
 
 const Header = () => {
   return (
     <HeaderBar>
       <LogoWrapper>
-        <AppLogo src={walletIco} />
+        <AppLogo />
         <AppTitle>Wallet</AppTitle>
       </LogoWrapper>
       <div>
-        <NavLink
-          style={{ display: 'inline-block', marginLeft: 600, padding: 20 }}
-          to={'home'}
-        >
+        <NavLink style={{ display: 'inline-block' }} to={'home'}>
           Home
         </NavLink>
-        <NavLink to={'auth/login'} style={{ padding: 20 }}>
+        <NavLink to={'auth/login'} style={{ padding: 5 }}>
           Login
         </NavLink>
-        <NavLink to={'auth/register'} style={{ padding: 20 }}>
+        <NavLink to={'auth/register'} style={{ padding: 5 }}>
           Register
         </NavLink>
       </div>
@@ -44,13 +40,13 @@ const Header = () => {
           render={() => <Separator></Separator>}
         />
         <LogoutButton type="button" variant="text" color="inherit">
-          <LogoutImg src={logoutIco} />
+          <LogoutImg />
           <Media
             query="(min-width: 767px)"
             render={() => <UserExit>Exit</UserExit>}
           />
-          <ModalLogout />
         </LogoutButton>
+        <ModalLogout></ModalLogout>
       </UserControlWrapper>
     </HeaderBar>
   );

@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router';
-import { NavLink } from 'react-router-dom';
 
 import Header from './common/Header/Header';
 import Loader from './Loader';
@@ -16,23 +15,12 @@ const SystemLayout = () => {
       <main>
         <MainContainer>
           <Sider>
-            <NavLink to={'home'}>Home</NavLink>
-            <NavLink to={'statistics'}>Statistics</NavLink>
-
-            <TestMUIComponents />
-
-            <div style={{ background: 'yellow', marginTop: 100 }}>
-              Balance component: 24 000.00
-            </div>
-            <div style={{ background: 'lightblue' }}>
-              Currencies course: USD EUR UAH
-            </div>
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
           </Sider>
-
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
         </MainContainer>
+        <TestMUIComponents />
       </main>
     </div>
   );

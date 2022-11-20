@@ -17,12 +17,12 @@ const HomeButtons = () => {
         render={() => (
           <ButtonsList>
             <ButtonsListItem>
-              <ButtonItem>
+              <ButtonItem to={'/home'}>
                 <HomeIcon />
               </ButtonItem>
             </ButtonsListItem>
             <ButtonsListItem>
-              <ButtonItem>
+              <ButtonItem to={'/statistics'}>
                 <DiagramIcon />
               </ButtonItem>
             </ButtonsListItem>
@@ -39,13 +39,13 @@ const HomeButtons = () => {
         render={() => (
           <ButtonsList>
             <ButtonsListItem>
-              <ButtonItem>
+              <ButtonItem to={'/home'}>
                 <HomeIcon />
                 Home
               </ButtonItem>
             </ButtonsListItem>
             <ButtonsListItem>
-              <ButtonItem>
+              <ButtonItem to={'/statistics'}>
                 <DiagramIcon />
                 Statistics
               </ButtonItem>

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { ReactComponent as WalletIco } from '../../../../img/header/WalletIco.svg';
+import { ReactComponent as LogoutIco } from '../../../../img/header/LogoutButton.svg';
 
 export const HeaderBar = styled.header`
   display: flex;
@@ -69,7 +71,7 @@ export const LogoWrapper = styled.div`
   align-items: center;
 `;
 
-export const AppLogo = styled.img`
+export const AppLogo = styled(WalletIco)`
   width: 30px;
   height: 30px;
   margin-right: ${p => p.theme.space[4]}px;
@@ -81,7 +83,7 @@ export const AppLogo = styled.img`
   }
 `;
 
-export const LogoutImg = styled.img`
+export const LogoutImg = styled(LogoutIco)`
   width: 18px;
   height: 18px;
 `;

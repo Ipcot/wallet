@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as HomeActive } from '../../img/home-aside/home-active.svg';
 import { ReactComponent as DiagramActive } from '../../img/home-aside/diagram-active.svg';
 import { ReactComponent as DollarActive } from '../../img/home-aside/dollar-active.svg';
+import { NavLink } from 'react-router-dom';
 
 export const ButtonsList = styled.ul`
   display: flex;
@@ -31,7 +32,7 @@ export const ButtonsListItem = styled.li`
   }
 `;
 
-export const ButtonItem = styled.button`
+export const ButtonItem = styled(NavLink)`
   display: flex;
   align-items: center;
   border: none;
