@@ -1,11 +1,11 @@
-import { lazy, memo } from 'react'
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
-import { SystemLayout } from 'components/layout'
+import { lazy, memo } from 'react';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { SystemLayout } from 'components/layout';
 
-const Login = lazy(() => import('./login'))
-const Register = lazy(() => import('./register'))
-const Statistics = lazy(() => import('./statistics'))
-const Home = lazy(() => import('./home'))
+const Login = lazy(() => import('./login'));
+const Register = lazy(() => import('./register'));
+const Statistics = lazy(() => import('./statistics'));
+const Home = lazy(() => import('../components/HomeAside'));
 
 const routes = [
   {
@@ -31,21 +31,21 @@ const routes = [
       },
       {
         element: <Home />,
-        index: "true",
+        index: 'true',
         path: 'home',
       },
       {
         element: <Statistics />,
         path: 'statistics',
-      }
+      },
     ],
   },
   {
     element: <Navigate to={'/home'} replace />,
     path: '*',
   },
-]
+];
 
-const Router = () => <RouterProvider router={createBrowserRouter(routes)} />
+const Router = () => <RouterProvider router={createBrowserRouter(routes)} />;
 
-export default memo(Router)
+export default memo(Router);

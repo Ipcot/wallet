@@ -5,6 +5,7 @@ const theme = {
     accent: '#24CCA7', // green
     textSecondary: '#A6A6A6', // grey
     secondary: '#4A56E2', // blue
+    notActive: '#6E78E8', // light blue
     alternate: '#FF6596', // pink
     bg: '#E7EAF2', // light violet
     headerSecondary: '#BDBDBD', // light grey

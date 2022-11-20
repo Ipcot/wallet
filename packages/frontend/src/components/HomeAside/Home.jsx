@@ -1,11 +1,11 @@
-import Container from 'components/layout/common/Container/Container';
 import HomeButtons from '../../components/HomeButtons';
+import { AsideWrapper } from './Home.styled';
 
 const Home = () => {
   return (
-    <Container>
+    <AsideWrapper>
       <HomeButtons></HomeButtons>
-    </Container>
+    </AsideWrapper>
   );
 };
 export default Home;

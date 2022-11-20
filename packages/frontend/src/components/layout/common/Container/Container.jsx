@@ -14,3 +14,5 @@ const Container = styled.div`
 `;
 
 export default Container;
+
+export const ContainerMain = styled(Container)``;

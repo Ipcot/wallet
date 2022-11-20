@@ -1,8 +1,16 @@
 import Media from 'react-media';
-import HomeIco from '../../img/home-page/HomeIco.svg';
-import Diagram from '../../img/home-page/DiagramIco.svg';
-import ExchangeRate from '../../img/home-page/DollarIco.svg';
-import { ButtonsList, ButtonItem, ButtonsWrapper, ButtonsListItem } from './HomeButtons.styled';
+import { ReactComponent as HomeActive } from '../../img/home-aside/home-active.svg';
+import { ReactComponent as DiagramActive } from '../../img/home-aside/diagram-active.svg';
+import { ReactComponent as DollarActive } from '../../img/home-aside/dollar-active.svg';
+import {
+  ButtonsList,
+  ButtonItem,
+  ButtonsWrapper,
+  ButtonsListItem,
+  HomeIcon,
+  DiagramIcon,
+  DollarIcon,
+} from './HomeButtons.styled';
 
 const HomeButtons = () => {
   return (
@@ -13,17 +21,17 @@ const HomeButtons = () => {
           <ButtonsList>
             <ButtonsListItem>
               <ButtonItem>
-                <img src={HomeIco} alt={'home'}></img>
+                <HomeIcon />
               </ButtonItem>
             </ButtonsListItem>
             <ButtonsListItem>
               <ButtonItem>
-                <img src={Diagram} alt={'diagram'}></img>
+                <DiagramIcon />
               </ButtonItem>
             </ButtonsListItem>
             <ButtonsListItem>
               <ButtonItem>
-                <img src={ExchangeRate} alt={'ExchangeRate'}></img>
+                <DollarIcon />
               </ButtonItem>
             </ButtonsListItem>
           </ButtonsList>
@@ -35,13 +43,13 @@ const HomeButtons = () => {
           <ButtonsList>
             <ButtonsListItem>
               <ButtonItem>
-                <img src={HomeIco} alt={'home'}></img>
+                <HomeIcon />
                 Home
               </ButtonItem>
             </ButtonsListItem>
             <ButtonsListItem>
               <ButtonItem>
-                <img src={Diagram} alt={'diagram'}></img>
+                <DiagramIcon />
                 Statistics
               </ButtonItem>
             </ButtonsListItem>

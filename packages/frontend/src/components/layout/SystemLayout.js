@@ -2,17 +2,21 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router';
 
 import Header from './common/Header/Header';
-import Container from './common/Container/Container';
+import Container, { ContainerMain } from './common/Container/Container';
 import Loader from './loader/Loader';
 
 const SystemLayout = () => {
   return (
-    <Container>
-      <Suspense fallback={<Loader />}>
+    <div>
+      <Container>
         <Header />
-        <Outlet />
-      </Suspense>
-    </Container>
+      </Container>
+      <ContainerMain>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </ContainerMain>
+    </div>
   );
 };
 
