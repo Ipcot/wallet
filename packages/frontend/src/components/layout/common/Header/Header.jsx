@@ -1,4 +1,4 @@
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
 import {
   HeaderBar,
@@ -22,13 +22,32 @@ const Header = () => {
         <AppLogo src={walletIco} />
         <AppTitle>Wallet</AppTitle>
       </LogoWrapper>
-
+      <div>
+        <NavLink
+          style={{ display: 'inline-block', marginLeft: 600, padding: 20 }}
+          to={'home'}
+        >
+          Home
+        </NavLink>
+        <NavLink to={'auth/login'} style={{ padding: 20 }}>
+          Login
+        </NavLink>
+        <NavLink to={'auth/register'} style={{ padding: 20 }}>
+          Register
+        </NavLink>
+      </div>
       <UserControlWrapper>
         <UserName>Name</UserName>
-        <Media query="(min-width: 767px)" render={() => <Separator></Separator>} />
+        <Media
+          query="(min-width: 767px)"
+          render={() => <Separator></Separator>}
+        />
         <LogoutButton>
           <LogoutImg src={logoutIco} />
-          <Media query="(min-width: 767px)" render={() => <UserExit>Exit</UserExit>} />
+          <Media
+            query="(min-width: 767px)"
+            render={() => <UserExit>Exit</UserExit>}
+          />
         </LogoutButton>
       </UserControlWrapper>
       {/* I'm header

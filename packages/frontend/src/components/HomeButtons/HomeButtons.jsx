@@ -1,7 +1,4 @@
 import Media from 'react-media';
-import { ReactComponent as HomeActive } from '../../img/home-aside/home-active.svg';
-import { ReactComponent as DiagramActive } from '../../img/home-aside/diagram-active.svg';
-import { ReactComponent as DollarActive } from '../../img/home-aside/dollar-active.svg';
 import {
   ButtonsList,
   ButtonItem,

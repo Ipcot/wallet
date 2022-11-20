@@ -1,48 +1,52 @@
-import { lazy, memo } from 'react';
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import { SystemLayout } from 'components/layout';
+import { lazy, memo } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
+import { SystemLayout } from "components/layout";
 
-const Login = lazy(() => import('./login'));
-const Register = lazy(() => import('./register'));
-const Statistics = lazy(() => import('./statistics'));
+const Login = lazy(() => import("./login"));
+const Register = lazy(() => import("./register"));
+const Statistics = lazy(() => import("./statistics/Statistics"));
 const Home = lazy(() => import('../components/HomeAside'));
 
 const routes = [
   {
-    path: 'auth',
+    path: "auth",
     children: [
       {
         element: <Login />,
-        path: 'login',
+        path: "login",
       },
       {
         element: <Register />,
-        path: 'register',
+        path: "register",
       },
     ],
   },
   {
-    path: '',
+    path: "",
     element: <SystemLayout />,
     children: [
       {
-        element: <Navigate to={'/home'} replace />,
-        path: '',
+        element: <Navigate to={"/home"} replace />,
+        path: "",
       },
       {
         element: <Home />,
-        index: 'true',
-        path: 'home',
+        index: "true",
+        path: "home",
       },
       {
         element: <Statistics />,
-        path: 'statistics',
+        path: "statistics",
       },
     ],
   },
   {
-    element: <Navigate to={'/home'} replace />,
-    path: '*',
+    element: <Navigate to={"/home"} replace />,
+    path: "*",
   },
 ];
 

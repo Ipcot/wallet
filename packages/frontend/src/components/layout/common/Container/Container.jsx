@@ -15,4 +15,6 @@ const Container = styled.div`
 
 export default Container;
 
-export const ContainerMain = styled(Container)``;
+export const ContainerMain = styled(Container)`
+  background-color: ${p => p.theme.colors.bg};
+`;
