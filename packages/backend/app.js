@@ -2,11 +2,29 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
 require('dotenv').config();
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 
 const usersRouter = require('./routes/api/users')
 const transactionsRouter = require('./routes/api/transactions')
 
+const options = {
+	definition: {
+		openapi: "3.0.0",
+		info: {
+			title: "Wallet API",
+			version: "1.0.0",
+			description: "An Express Wallet API",
+		},
+	},
+	apis: ["./routes/api/*.js"],
+};
+
+const specs = swaggerJsDoc(options);
+
 const app = express()
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 
