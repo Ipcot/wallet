@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/poppins": "^4.5.10",
     "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.14",
     "@reduxjs/toolkit": "^1.9.0",
@@ -14,7 +15,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.4",
-    "react-media": "^1.10.0",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",

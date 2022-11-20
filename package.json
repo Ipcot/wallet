@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/Ipcot/wallet#readme",
   "dependencies": {
-    "@fontsource/poppins": "^4.5.10",
     "@wallet/frontend": "^0.1.0"
   }
 }
