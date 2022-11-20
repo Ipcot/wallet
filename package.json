@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/Ipcot/wallet/issues"
   },
-  "homepage": "https://github.com/Ipcot/wallet#readme"
+  "homepage": "https://github.com/Ipcot/wallet#readme",
+  "dependencies": {
+    "@fontsource/poppins": "^4.5.10",
+    "@wallet/frontend": "^0.1.0"
+  }
 }
