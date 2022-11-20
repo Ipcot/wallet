@@ -14,6 +14,7 @@ import {
 } from './Header.styled';
 import logoutIco from '../../../../img/header/LogoutButton.svg';
 import walletIco from '../../../../img/header/WalletIco.svg';
+import ModalLogout from './ModalLogout';
 
 const Header = () => {
   return (
@@ -42,24 +43,15 @@ const Header = () => {
           query="(min-width: 767px)"
           render={() => <Separator></Separator>}
         />
-        <LogoutButton>
+        <LogoutButton type="button" variant="text" color="inherit">
           <LogoutImg src={logoutIco} />
           <Media
             query="(min-width: 767px)"
             render={() => <UserExit>Exit</UserExit>}
           />
+          <ModalLogout />
         </LogoutButton>
       </UserControlWrapper>
-      {/* I'm header
-      <NavLink style={{ display: 'inline-block', marginLeft: 600, padding: 20 }} to={'home'}>
-        Home
-      </NavLink>
-      <NavLink to={'auth/login'} style={{ padding: 20 }}>
-        Login
-      </NavLink>
-      <NavLink to={'auth/register'} style={{ padding: 20 }}>
-        Register
-      </NavLink> */}
     </HeaderBar>
   );
 };

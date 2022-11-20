@@ -7,3 +7,9 @@
   - backend: "npm run start:frontend"
   
 3) Happy hacking!)
+
+frontend:
+https://wallet-goit.netlify.app/home
+
+backend:
+https://wallet-goit.onrender.com/ 
