@@ -7,12 +7,8 @@ import {
   UserName,
   AppLogo,
   LogoWrapper,
-  LogoutImg,
-  LogoutButton,
   Separator,
-  UserExit,
 } from './Header.styled';
-
 import ModalLogout from '../../ModalLogout';
 
 const Header = () => {
@@ -39,13 +35,6 @@ const Header = () => {
           query="(min-width: 767px)"
           render={() => <Separator></Separator>}
         />
-        <LogoutButton type="button" variant="text" color="inherit">
-          <LogoutImg />
-          <Media
-            query="(min-width: 767px)"
-            render={() => <UserExit>Exit</UserExit>}
-          />
-        </LogoutButton>
         <ModalLogout></ModalLogout>
       </UserControlWrapper>
     </HeaderBar>

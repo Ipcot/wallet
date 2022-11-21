@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { ReactComponent as WalletIco } from '../../../../img/header/WalletIco.svg';
-import { ReactComponent as LogoutIco } from '../../../../img/header/LogoutButton.svg';
 
 export const HeaderBar = styled.header`
   display: flex;
@@ -52,15 +51,6 @@ export const Separator = styled.div`
   margin-right: 12px;
 `;
 
-export const UserExit = styled.p`
-  font-size: ${p => p.theme.fontSizes.m};
-  font-family: ${p => p.theme.fonts.body};
-  font-weight: ${p => p.theme.fontWeights.normal};
-  line-height: ${p => p.theme.lineHeights.heading};
-  color: ${p => p.theme.colors.headerSecondary};
-  margin-left: ${p => p.theme.space[3]}px;
-`;
-
 export const UserControlWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -81,15 +71,4 @@ export const AppLogo = styled(WalletIco)`
     height: 40px;
     margin-right: 20px;
   }
-`;
-
-export const LogoutImg = styled(LogoutIco)`
-  width: 18px;
-  height: 18px;
-`;
-
-export const LogoutButton = styled.button`
-  border: none;
-  display: flex;
-  align-items: center;
 `;
