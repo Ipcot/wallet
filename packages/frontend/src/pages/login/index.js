@@ -5,6 +5,7 @@ import {
   BoxStyled,
   ContainerStyled,
   LoginImage,
+  LoginTitle,
 } from './index.styled';
 /* import { Container } from 'components/ui/Container'; */
 import Container from 'components/layout/common/Container/Container';
@@ -14,7 +15,7 @@ const Register = () => {
       <BoxStyled>
         <ContainerStyled>
           <LoginImage alt="logo" src={`${LoginImg}`} />
-          <h1>Finance App</h1>
+          <LoginTitle>Finance App</LoginTitle>
         </ContainerStyled>
         <BoxForm>
           <LoginForm />
