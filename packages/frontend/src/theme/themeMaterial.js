@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
-import plusIcon from 'components/test/img/plus.svg'
-import minusIcon from 'components/test/img/minus.svg'
+import plusIcon from 'components/test/img/plus.svg';
+import minusIcon from 'components/test/img/minus.svg';
 
 const themeMaterial = createTheme({
   breakpoints: {
@@ -12,17 +12,20 @@ const themeMaterial = createTheme({
   },
   palette: {
     primary: {
-      main: "#24CCA7",
-      contrastText: "#fff",
+      main: '#24CCA7',
+      contrastText: '#fff',
+      formText: '#BDBDBD',
+      inputBorder: '#e0e0e0',
+      loginMain: '#E5E5E5',
     },
     secondary: {
-      main: "#4A56E2",
-      contrastText: "#fff",
+      main: '#4A56E2',
+      contrastText: '#fff',
     },
     info: {
-      main: "#FF6596",
-      contrastText: "#fff",
-    }
+      main: '#FF6596',
+      contrastText: '#fff',
+    },
   },
   shape: {
     borderRadius: 20,
@@ -49,9 +52,7 @@ const themeMaterial = createTheme({
     },
     MuiSwitch: {
       styleOverrides: {
-        root: {
-        }
-
+        root: {},
       },
       defaultProps: {
         color: 'info',
@@ -62,7 +63,7 @@ const themeMaterial = createTheme({
   images: {
     plus: plusIcon,
     minus: minusIcon,
-  }
+  },
 });
 
-export default themeMaterial
+export default themeMaterial;
