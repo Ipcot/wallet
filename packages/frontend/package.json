@@ -23,7 +23,8 @@
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
     "styled-normalize": "^8.0.7",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "jsonwebtoken": "^8.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
