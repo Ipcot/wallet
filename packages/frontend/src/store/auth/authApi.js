@@ -1,17 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { BASE_URL } from 'constants';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: fetchBaseQuery({ baseUrl: '' }),
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   tagTypes: ['Auth'],
   endpoints: builder => ({
-    getUserById: builder.query({
-      query: id => `/auth/${id}`,
-      providesTags: ['Auth'],
-    }),
     login: builder.mutation({
       query: body => ({
-        url: '/auth/login',
+        url: '/users/login',
         method: 'POST',
         body,
       }),
@@ -19,7 +16,23 @@ export const authApi = createApi({
     }),
     register: builder.mutation({
       query: body => ({
-        url: '/auth/register',
+        url: '/users/register',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Auth'],
+    }),
+    logout: builder.query({
+      query: () => '/users/logout',
+      providesTags: ['Auth'],
+    }),
+    current: builder.query({
+      query: () => '/users/current',
+      providesTags: ['Auth'],
+    }),
+    refresh: builder.mutation({
+      query: body => ({
+        url: '/users/refresh',
         method: 'POST',
         body,
       }),
@@ -30,5 +43,10 @@ export const authApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetUserByIdQuery, useLoginMutation, useRegisterMutation } =
-  authApi;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useCurrentQuery,
+  useLogoutQuery,
+  useRefreshMutation,
+} = authApi;
