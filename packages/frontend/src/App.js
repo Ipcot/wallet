@@ -1,14 +1,21 @@
 import { Suspense } from 'react';
-import Pages from './pages'
-import Loader from 'components/layout/Loader';
+import Pages from './pages';
+import Loader from 'components/layout/loader/Loader';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
-    <div className="App">
-      <Suspense fallback={<Loader/>}>
-        <Pages />
-      </Suspense>
-    </div>
+    <HelmetProvider>
+      <div className="App">
+        <Helmet>
+          <title>Wallet</title>
+          <meta name="description" content="Wallet application" />
+        </Helmet>
+        <Suspense fallback={<Loader />}>
+          <Pages />
+        </Suspense>
+      </div>
+    </HelmetProvider>
   );
 }
 

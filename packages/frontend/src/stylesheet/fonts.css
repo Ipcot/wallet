@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'CircleRegular';
+  src: local('CirceRegular'),
+    url('../assets/fonts/Circe/Circe-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CircleBold';
+  src: local('CirceBold'),
+    url('../assets/fonts/Circe/Circe-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PoppinsRegular';
+  src: local('PoppinsRegular'),
+    url('../assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PoppinsBold';
+  src: local('PoppinsBold'),
+    url('../assets/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PoppinsBold';
+  src: local('PoppinsBold'),
+    url('../assets/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+}
