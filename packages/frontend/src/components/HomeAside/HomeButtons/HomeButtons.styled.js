@@ -36,6 +36,14 @@ export const ButtonItem = styled(NavLink)`
   display: flex;
   align-items: center;
   border: none;
+  font-family: ${p => p.theme.fonts.navLink};
+  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  &:hover,
+  &:focus,
+  &:active {
+    font-weight: ${p => p.theme.fontWeights.bold};
+  }
 `;
 
 export const ButtonsWrapper = styled.div`
