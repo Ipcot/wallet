@@ -4,7 +4,7 @@ import { Outlet } from 'react-router';
 import Header from './common/Header/Header';
 import Loader from './Loader';
 import { Container, Sider, MainContainer } from './SystemLayout.styled';
-import TestMUIComponents from 'components/test';
+// import TestMUIComponents from 'components/test';
 
 const SystemLayout = () => {
   return (
@@ -20,7 +20,7 @@ const SystemLayout = () => {
             </Suspense>
           </Sider>
         </MainContainer>
-        <TestMUIComponents />
+        {/* <TestMUIComponents /> */}
       </main>
     </div>
   );
