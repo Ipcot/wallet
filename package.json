@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/Ipcot/wallet#readme",
   "dependencies": {
-    "react-media": "^1.10.0",
     "jsonwebtoken": "^8.5.1"
   }
 }
