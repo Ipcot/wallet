@@ -21,7 +21,5 @@
     "url": "https://github.com/Ipcot/wallet/issues"
   },
   "homepage": "https://github.com/Ipcot/wallet#readme",
-  "dependencies": {
-    "jsonwebtoken": "^8.5.1"
-  }
+  "dependencies": {}
 }
