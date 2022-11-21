@@ -18,8 +18,8 @@ export const Input = styled.input`
   font-size: 18px;
   line-height: 27px;
   &:focus {
-    color: teal;
     border-bottom-color: teal;
+    color: teal;
   }
   @media screen and (min-width: 768px) {
     width: 409.5px;
@@ -52,6 +52,13 @@ export const EnvelopeImage = styled.img`
   top: 13%;
 `;
 export const LockImage = styled.img`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 10px;
+  top: 13%;
+`;
+export const PersonImage = styled.img`
   width: 24px;
   height: 24px;
   position: absolute;

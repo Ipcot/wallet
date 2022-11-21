@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Modal, Box, Button, Typography, Stack } from '@mui/material';
 import { contentStyles } from './ModalLogout.styled';
 import { ReactComponent as CloseSymbol } from '.././test/img/close.svg';
+import { LogoutImg, LogoutButton, UserExit } from './ModalLogout.styled';
+import Media from 'react-media';
 
 const ModalLogout = () => {
   const [open, setOpen] = useState(false);
@@ -10,9 +12,13 @@ const ModalLogout = () => {
 
   return (
     <div>
-      <Button variant="text" color="inherit" onClick={handleOpen}>
-        Logout
-      </Button>
+      <LogoutButton onClick={handleOpen}>
+        <LogoutImg />
+        <Media
+          query="(min-width: 767px)"
+          render={() => <UserExit>Exit</UserExit>}
+        />
+      </LogoutButton>
       <Modal
         open={open}
         onClose={handleClose}

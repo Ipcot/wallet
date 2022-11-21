@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import EnvelopeImg from 'assets/icons/envelope.svg';
 import LockImg from 'assets/icons/lock.svg';
 import LogoImg from 'assets/icons/logo.svg';
+import PersonImg from 'assets/icons/person.svg';
 
 import {
   Input,
@@ -12,9 +13,10 @@ import {
   LogoImage,
   LogoTitle,
   BoxLogo,
-} from './LoginForm.styled';
+  PersonImage,
+} from './RegisterForm.styled';
 
-const LoginForm = () => {
+const RegisterForm = () => {
   return (
     <Form>
       <BoxLogo>
@@ -24,13 +26,22 @@ const LoginForm = () => {
 
       <InputContainer>
         <EnvelopeImage alt="envelope" src={`${EnvelopeImg}`} />
-
         <Input placeholder="E-mail" />
       </InputContainer>
 
       <InputContainer>
         <LockImage alt="lock" src={`${LockImg}`} />
         <Input placeholder="Password" />
+      </InputContainer>
+
+      <InputContainer>
+        <LockImage alt="lock" src={`${LockImg}`} />
+        <Input placeholder="Confirm password" />
+      </InputContainer>
+
+      <InputContainer>
+        <PersonImage alt="lock" src={`${PersonImg}`} />
+        <Input placeholder="First name" />
       </InputContainer>
 
       <Button
@@ -47,4 +58,4 @@ const LoginForm = () => {
     </Form>
   );
 };
-export default LoginForm;
+export default RegisterForm;
