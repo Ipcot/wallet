@@ -1,9 +1,15 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router';
+<<<<<<< HEAD
 import { NavLink } from 'react-router-dom';
 
 import Header from './Header';
 import Loader from './loader/Loader';
+=======
+
+import Header from './common/Header/Header';
+import Loader from './Loader';
+>>>>>>> main
 import { Container, Sider, MainContainer } from './SystemLayout.styled';
 import TestMUIComponents from 'components/test';
 
@@ -13,6 +19,7 @@ const SystemLayout = () => {
       <Container>
         <Header />
       </Container>
+<<<<<<< HEAD
 
       <main>
         <MainContainer>
@@ -34,6 +41,17 @@ const SystemLayout = () => {
             <Outlet />
           </Suspense>
         </MainContainer>
+=======
+      <main>
+        <MainContainer>
+          <Sider>
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
+          </Sider>
+        </MainContainer>
+        <TestMUIComponents />
+>>>>>>> main
       </main>
     </div>
   );

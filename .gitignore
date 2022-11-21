@@ -24,3 +24,5 @@ tsconfig.tsbuildinfo
 
 # Environmnet
 .env
+
+package-lock.json

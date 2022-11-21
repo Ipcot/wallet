@@ -2,11 +2,13 @@ const theme = {
   colors: {
     text: '#000000', // black text
     white: '#ffffff', // white
-    accent: '#24CCA7', // green 
+    accent: '#24CCA7', // green
     textSecondary: '#A6A6A6', // grey
     secondary: '#4A56E2', // blue
-    alternate: "#FF6596", // pink
+    notActive: '#6E78E8', // light blue
+    alternate: '#FF6596', // pink
     bg: '#E7EAF2', // light violet
+    headerSecondary: '#BDBDBD', // light grey
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
@@ -23,6 +25,7 @@ const theme = {
     s: '16px',
     m: '18px',
     l: '28px',
+    xl: '30px',
   },
   fontWeights: {
     normal: 400,
@@ -45,7 +48,9 @@ const theme = {
     large: '30px',
     round: '50%',
   },
+
   breakpoints: ['20rem', '48rem', '80rem'],
+
   transition: '300ms ease',
 };
 
