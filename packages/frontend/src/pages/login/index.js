@@ -1,13 +1,13 @@
 import LoginForm from 'components/LoginForm';
-import LoginImg from 'assets/icons/login-tablet.png';
+import LoginImg from 'assets/icons/login.png';
 import {
   BoxForm,
   BoxStyled,
   ContainerStyled,
   LoginImage,
 } from './index.styled';
-import { Container } from 'components/ui/Container';
-
+/* import { Container } from 'components/ui/Container'; */
+import Container from 'components/layout/common/Container/Container';
 const Register = () => {
   return (
     <Container>

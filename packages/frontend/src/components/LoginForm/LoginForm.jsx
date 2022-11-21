@@ -35,7 +35,7 @@ const LoginForm = () => {
 
       <Button
         sx={{
-          marginBottom: 2,
+          marginBottom: 3,
         }}
         variant="contained"
       >

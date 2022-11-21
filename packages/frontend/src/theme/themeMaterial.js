@@ -17,7 +17,6 @@ const themeMaterial = createTheme({
       formText: '#BDBDBD',
       inputBorder: '#e0e0e0',
       loginMain: '#E5E5E5',
-      loginForm: 'rgba(255, 255, 255, 0.4)',
     },
     secondary: {
       main: '#4A56E2',

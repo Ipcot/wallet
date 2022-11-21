@@ -1,10 +1,12 @@
-//import { ButtonButton } from "@mui/material";
 import styled from '@emotion/styled';
 
 export const InputContainer = styled.div`
   margin-bottom: 40px;
-  /* margin-top: 115.04px; */
   position: relative;
+  &:hover,
+  &:focus {
+    color: teal;
+  }
 `;
 
 export const Input = styled.input`
@@ -14,12 +16,19 @@ export const Input = styled.input`
   border: none;
   margin-right: 22px;
   border-bottom: 1px solid ${props => props.theme.palette.primary.inputBorder};
+  font-family: 'Circe', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+
   @media screen and (min-width: 768px) {
     @media screen and (min-width: 768px) {
       width: 409.5px;
     }
   }
 `;
+
 export const Form = styled.form`
   margin: 0 auto;
   width: 320px;
@@ -30,6 +39,7 @@ export const Form = styled.form`
   position: relative;
   align-items: center;
   background-color: ${props => props.theme.palette.primary.contrastText};
+
   @media screen and (min-width: 768px) {
     width: 533px;
     background-color: ${props => props.theme.palette.primary.contrastText};
