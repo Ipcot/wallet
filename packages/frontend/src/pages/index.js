@@ -9,7 +9,7 @@ import { SystemLayout } from "components/layout";
 const Login = lazy(() => import("./login"));
 const Register = lazy(() => import("./register"));
 const Statistics = lazy(() => import("./statistics/Statistics"));
-const Home = lazy(() => import("./home"));
+const Home = lazy(() => import('../components/HomeAside'));
 
 const routes = [
   {
