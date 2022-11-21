@@ -1,10 +1,14 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router';
-
+import Sider from '../HomeAside/Sider';
 import Header from './common/Header/Header';
 import Loader from './Loader';
-import { Container, Sider, MainContainer } from './SystemLayout.styled';
-import TestMUIComponents from 'components/test';
+import {
+  Container,
+  Sider as SiderComponent,
+  MainContainer,
+} from './SystemLayout.styled';
+// import TestMUIComponents from 'components/test';
 
 const SystemLayout = () => {
   return (
@@ -15,12 +19,13 @@ const SystemLayout = () => {
       <main>
         <MainContainer>
           <Sider>
-            <Suspense fallback={<Loader />}>
-              <Outlet />
-            </Suspense>
+            <SiderComponent />
           </Sider>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
         </MainContainer>
-        <TestMUIComponents />
+        {/* <TestMUIComponents /> */}
       </main>
     </div>
   );
