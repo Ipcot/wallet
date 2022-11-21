@@ -1,30 +1,27 @@
 const express = require('express');
 
-// const ctrl = require('../../controllers/contacts');
+const ctrl = require('../../controllers/transactions');
 
-// const { validateBody, authenticate } = require('../../middlewares');
+const validateBody = require('../../middlewares/validateBody');
 
-// const { schemas } = require('../../models/contact');
+const { schemas } = require('../../models/transactions');
 
-// const { ctrlWrapper } = require('../../helpers');
+const ctrlWrapper = require('../../helpers/ctrlWrapper');
 
 const router = express.Router();
 
-router.post('/transactions', );
+router.post(
+  '/',
+  validateBody(schemas.addSchema),
+  ctrlWrapper(ctrl.addTransaction)
+);
 
-//router.post('/transactions', authenticate, ctrlWrapper(ctrl.getAll));
+router.get('/', ctrlWrapper(ctrl.getAll));
 
-// router.get('/transactions', authenticate, ctrlWrapper(ctrl.getContactById));
-
-// router.get(
-//   '/transactions/categories',
-//   authenticate,
-//   validateBody(schemas.addSchema),
-//   ctrlWrapper(ctrl.addContact)
-// );
+router.get('/categories', ctrlWrapper(ctrl.getCategories));
 
 // router.get(
-//   '/transactions/state/:year/:month',
+//   '/transactions/stats/:year/:month',
 //   authenticate,
 //   validateBody(schemas.addSchema),
 //   ctrlWrapper(ctrl.updateContact)
