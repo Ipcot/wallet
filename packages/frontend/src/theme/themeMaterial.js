@@ -53,6 +53,7 @@ const themeMaterial = createTheme({
     inCircleBalanceNumbers: 'CirceBold, sans-serif',
   },
   fontSizes: {
+    xs: '12px',
     s: '16px',
     m: '18px',
     l: '28px',
