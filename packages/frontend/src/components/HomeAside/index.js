@@ -1,3 +1,3 @@
-import Home from './Home';
+import Sider from './Sider';
 
-export default Home;
+export default Sider;

@@ -13,7 +13,7 @@ export const ButtonsList = styled.ul`
 `;
 
 export const ButtonsListItem = styled.li`
-  /* padding-right: 35px; */
+  padding-right: 35px;
   &:last-child {
     padding-right: 0px;
   }
@@ -36,12 +36,20 @@ export const ButtonItem = styled(NavLink)`
   display: flex;
   align-items: center;
   border: none;
+  font-family: ${p => p.theme.fonts.navLink};
+  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  &:hover,
+  &:focus,
+  &:active {
+    font-weight: ${p => p.theme.fontWeights.bold};
+  }
 `;
 
 export const ButtonsWrapper = styled.div`
-  /* padding: 12px 0px; */
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     /* padding-top: 40px;
