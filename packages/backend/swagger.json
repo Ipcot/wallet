@@ -22,7 +22,7 @@
     }
   ],
   "paths": {
-    "/user/register": {
+    "/api/users/register": {
       "post": {
         "tags": ["User"],
         "summary": "User registration",
@@ -50,17 +50,29 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
+            "description": "Login validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestErrorResponse"
+                }
+              }
+            }
           },
           "409": {
-            "description": "Provided email already exists",
-            "content": {}
+            "description": "Conflict error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictErrorResponse"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/user/login": {
+    "/api/users/login": {
       "post": {
         "tags": ["User"],
         "summary": "User login",
@@ -72,29 +84,41 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationRequest"
+                "$ref": "#/components/schemas/LoginRequest"
               }
             }
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegistrationResponse"
+                  "$ref": "#/components/schemas/LoginResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
+            "description": "Login validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestErrorResponse"
+                }
+              }
+            }
           },
-          "409": {
-            "description": "Provided email already exists",
-            "content": {}
+          "401": {
+            "description": "Login auth error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -368,6 +392,27 @@
     "schemas": {
       "RegistrationRequest": {
         "type": "object",
+        "required": ["name", "email", "password"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "qwerty123"
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
         "required": ["email", "password"],
         "properties": {
           "email": {
@@ -383,26 +428,91 @@
         }
       },
       "RegistrationResponse": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "email": {
-              "type": "string",
-              "description": "User's email",
-              "format": "email"
-            },
-            "userId": {
-              "type": "number",
-              "description": "User's id",
-              "example": "32143232436545474"
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "userId": {
+            "type": "number",
+            "description": "User's id",
+            "example": "32143232436545474"
+          }
+        },
+        "example": { "email": "1@gmail.com", "userId": "1" }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Response status",
+            "example": "success"
+          },
+          "code": {
+            "type": "number",
+            "description": "Response code",
+            "example": "200"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "token": {
+                "type": "string",
+                "description": "token",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2QyMjZhODU4NzE1ZWZlZGRlOWVkNCIsImlhdCI6MTY2OTE0NTM3MiwiZXhwIjoxNjY5MjMxNzcyfQ._b_E2fDIuHuVwRCCSzLxoM8485th1l6mjdcQjTP-65s"
+              }
             }
           }
         },
-        "example": [
-          { "email": "1@gmail.com", "userId": "1" },
-          { "email": "2@gmail.com", "userId": "2" }
-        ]
+        "example": {
+          "status": "success",
+          "code": 200,
+          "data": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2QyMjZhODU4NzE1ZWZlZGRlOWVkNCIsImlhdCI6MTY2OTE0NTM3MiwiZXhwIjoxNjY5MjMxNzcyfQ._b_E2fDIuHuVwRCCSzLxoM8485th1l6mjdcQjTP-65s"
+          }
+        }
+      },
+      "BadRequestErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Login validation error. Error from Joi or other validation library",
+            "example": "\"email\" with value \"1@gmail.comm\" fails to match the required pattern: /^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$/"
+          }
+        },
+        "example": {
+          "message": "\"email\" with value \"1@gmail.comm\" fails to match the required pattern: /^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$/"
+        }
+      },
+      "ConflictErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Conflict Error",
+            "example": "Email in use"
+          }
+        },
+        "example": {
+          "message": "Email in use"
+        }
+      },
+      "UnauthorizedErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Login auth error",
+            "example": "Email or password is wrong"
+          }
+        },
+        "example": {
+          "message": "Email or password is wrong"
+        }
       },
       "TransactionRequest": {
         "type": "object",
