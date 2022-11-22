@@ -3,17 +3,16 @@ const Joi = require('joi');
 
 const handleSaveErrors = require('../helpers/handleSaveErrors');
 const data = require('../data/categories.json');
-// const categories = require('./categories.json');
 
 const types = data.map(item => item.name);
 
 const transactionsSchema = new Schema(
   {
-    // date: {
-    //   type: Date,
-    //   required: true,
-    // },
-    // dagi: {
+    date: {
+      type: Date,
+      required: true,
+    },
+    // day: {
     //   type: Date,
     //   required: true,
     // },// date: {
@@ -60,13 +59,8 @@ const addSchema = Joi.object({
   sum: Joi.number().required(),
 });
 
-// const updateFavoriteSchema = Joi.object({
-//   favorite: Joi.boolean().required(),
-// });
-
 const schemas = {
   addSchema,
-  // updateFavoriteSchema,
 };
 
 const Transaction = model('Transaction', transactionsSchema);
@@ -74,5 +68,4 @@ const Transaction = model('Transaction', transactionsSchema);
 module.exports = {
   Transaction,
   schemas,
-  // addSchema,
 };
