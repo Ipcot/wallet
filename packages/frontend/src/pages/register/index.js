@@ -9,7 +9,17 @@ import {
 } from './index.styled';
 /* import { Container } from 'components/ui/Container'; */
 import Container from 'components/layout/common/Container/Container';
+import { useRegisterMutation } from 'store/auth/authApi';
+
 const Register = () => {
+  const [register] = useRegisterMutation();
+  const user = {
+    email: 'nastya@mail.com',
+    password: 'password',
+    name: 'Nastya',
+  };
+  // console.log('register: ', register);
+  // register(user);
   return (
     <Container>
       <BoxStyled>
