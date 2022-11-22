@@ -1,8 +1,7 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const StatisticsTitle = styled.h2`
-  font-family: ${props => props.theme.fonts.h1};
-  font-weight: ${props => props.theme.fontWeights.normal};
+  font-weight: 400;
   font-size: 30px;
   line-height: 0.6;
   margin-top: 32px;

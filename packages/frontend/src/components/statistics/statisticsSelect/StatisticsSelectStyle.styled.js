@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import { Select, FormControl, MenuItem } from '@mui/material';
+import styled from 'styled-components';
 
-export const StatisticsSelectStyle = styled.select`
-  width: 160px;
-  height: 50px;
-  border-radius: 30px;
-  padding: 0px 20px 0px 20px;
-`;
+export const StatisticsSelectStyle = styled(Select)({
+  '& .MuiSelect-icon': {
+    display: 'none',
+  },
+});

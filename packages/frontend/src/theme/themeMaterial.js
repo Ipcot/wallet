@@ -109,6 +109,19 @@ const themeMaterial = createTheme({
         color: 'info',
       },
     },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          borderRadius: '30px',
+          color: '#000000',
+
+          MuiInputBase: {},
+        },
+      },
+      defaultProps: {
+        color: 'info',
+      },
+    },
   },
   // Картинки для background image в кастомных MUI компонентах
   images: {
