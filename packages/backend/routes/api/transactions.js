@@ -27,7 +27,7 @@ router.get('/categories', verifyerToken, ctrlWrapper(ctrl.getCategories));
 //   '/transactions/stats/:year/:month',
 //   verifyerToken,
 //   validateBody(schemas.addSchema),
-//   ctrlWrapper(ctrl.updateContact)
+//   ctrlWrapper(ctrl.getTransactionsStats)
 // );
 
 module.exports = router;

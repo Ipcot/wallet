@@ -12,17 +12,20 @@ const transactionsSchema = new Schema(
       type: Date,
       required: true,
     },
+
+    // вмесно дейт добавить 3 поля день год и месяц, все тип число, обязательные
     // day: {
-    //   type: Date,
-    //   required: true,
-    // },// date: {
-    //   type: Date,
-    //   required: true,
-    // },// date: {
-    //   type: Date,
+    //   type: Number,
     //   required: true,
     // },
-    // вмесно дейт добавить 3 поля день год и месяц, все тип число, обязательные
+    // month: {
+    //   type: Number,
+    //   required: true,
+    // },
+    // year: {
+    //   type: Number,
+    //   required: true,
+    // },
 
     isIncome: {
       type: Boolean,
@@ -53,6 +56,9 @@ transactionsSchema.post('save', handleSaveErrors);
 // это приходит с фронта
 const addSchema = Joi.object({
   date: Joi.date().required(),
+  // day: Joi.number().required(),
+  // month: Joi.number().required(),
+  // year: Joi.number().required(),
   isIncome: Joi.boolean(),
   category: Joi.string().required(),
   comment: Joi.string(),
