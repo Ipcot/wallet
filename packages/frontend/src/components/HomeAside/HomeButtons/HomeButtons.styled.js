@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ReactComponent as HomeActive } from '../../../img/home-aside/home-active.svg';
 import { ReactComponent as DiagramActive } from '../../../img/home-aside/diagram-active.svg';
 import { ReactComponent as DollarActive } from '../../../img/home-aside/dollar-active.svg';
@@ -64,11 +64,11 @@ export const ButtonsWrapper = styled.div`
 `;
 
 export const HomeIcon = styled(HomeActive)`
-  color: ${p => p.theme.colors.notActive};
+  color: ${p => p.theme.palette.colors.notActive};
   &:hover,
   &:focus,
   &:active {
-    color: ${p => p.theme.colors.secondary};
+    color: ${p => p.theme.palette.colors.secondary};
   }
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 18px;
@@ -78,11 +78,11 @@ export const HomeIcon = styled(HomeActive)`
 `;
 
 export const DiagramIcon = styled(DiagramActive)`
-  color: ${p => p.theme.colors.notActive};
+  color: ${p => p.theme.palette.colors.notActive};
   &:hover,
   &:focus,
   &:active {
-    color: ${p => p.theme.colors.secondary};
+    color: ${p => p.theme.palette.colors.secondary};
   }
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 18px;
@@ -92,11 +92,11 @@ export const DiagramIcon = styled(DiagramActive)`
 `;
 
 export const DollarIcon = styled(DollarActive)`
-  color: ${p => p.theme.colors.notActive};
+  color: ${p => p.theme.palette.colors.notActive};
   &:hover,
   &:focus,
   &:active {
-    color: ${p => p.theme.colors.secondary};
+    color: ${p => p.theme.palette.colors.secondary};
   }
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     width: 18px;

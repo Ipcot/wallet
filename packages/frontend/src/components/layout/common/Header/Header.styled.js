@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ReactComponent as WalletIco } from '../../../../img/header/WalletIco.svg';
 
 export const HeaderBar = styled.header`
@@ -6,7 +6,7 @@ export const HeaderBar = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: ${p => p.theme.colors.white};
+  background-color: ${p => p.theme.palette.colors.white};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     min-width: ${p => p.theme.breakpoints[1]};
@@ -38,7 +38,7 @@ export const UserName = styled.p`
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.heading};
   font-family: ${p => p.theme.fonts.body};
-  color: ${p => p.theme.colors.headerSecondary};
+  color: ${p => p.theme.palette.colors.headerSecondary};
   margin-right: ${p => p.theme.space[3]}px;
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     margin-right: 12px;
@@ -46,7 +46,7 @@ export const UserName = styled.p`
 `;
 
 export const Separator = styled.div`
-  border: 1px solid ${p => p.theme.colors.headerSecondary};
+  border: 1px solid ${p => p.theme.palette.colors.headerSecondary};
   height: 30px;
   margin-right: 12px;
 `;
