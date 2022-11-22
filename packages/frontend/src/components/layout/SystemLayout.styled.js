@@ -30,17 +30,10 @@ export const MainContainer = styled(Container)`
 `;
 
 export const Sider = styled.div`
-<<<<<<< HEAD
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  justify-content: start;
-=======
   width: 100%;
   display: flex;
   flex-direction: column;
   /* width: 50%; */
   /* justify-content: start; */
->>>>>>> main
   /* background: green; */
 `;
