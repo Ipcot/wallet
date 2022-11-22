@@ -115,6 +115,30 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "$ref": "#/components/schemas/WrongCredentialsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/logout": {
+      "get": {
+        "tags": ["User"],
+        "summary": "User logout",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "204": {
+            "description": "Successful operation",
+            "content": {}
+          },
+          "401": {
+            "description": "Logout unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
                   "$ref": "#/components/schemas/UnauthorizedErrorResponse"
                 }
               }
@@ -123,42 +147,14 @@
         }
       }
     },
-    "/user/logout": {
-      "get": {
-        "tags": ["User"],
-        "summary": "User logout",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "responses": {
-          "201": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RegistrationResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
-          },
-          "409": {
-            "description": "Provided email already exists",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/user/current": {
+    "/api/users/current": {
       "get": {
         "tags": ["User"],
         "summary": "User current",
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "responses": {
-          "201": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
@@ -168,21 +164,23 @@
               }
             }
           },
-          "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
-          },
-          "409": {
-            "description": "Provided email already exists",
-            "content": {}
+          "401": {
+            "description": "Logout unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/user/refresh": {
+    "/api/users/refresh": {
       "post": {
         "tags": ["User"],
-        "summary": "User refresh",
+        "summary": "User's token refresh",
         "parameters": [],
         "security": [],
         "requestBody": {
@@ -197,23 +195,25 @@
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegistrationResponse"
+                  "$ref": "#/components/schemas/LoginResponse"
                 }
               }
             }
           },
-          "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
-          },
-          "409": {
-            "description": "Provided email already exists",
-            "content": {}
+          "401": {
+            "description": "Logout unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -501,7 +501,7 @@
           "message": "Email in use"
         }
       },
-      "UnauthorizedErrorResponse": {
+      "WrongCredentialsErrorResponse": {
         "type": "object",
         "properties": {
           "message": {
@@ -512,6 +512,19 @@
         },
         "example": {
           "message": "Email or password is wrong"
+        }
+      },
+      "UnauthorizedErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Not authorized auth error",
+            "example": "Not authorized"
+          }
+        },
+        "example": {
+          "message": "Not authorized"
         }
       },
       "TransactionRequest": {
