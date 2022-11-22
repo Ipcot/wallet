@@ -7,12 +7,8 @@ import {
   UserName,
   AppLogo,
   LogoWrapper,
-  LogoutImg,
-  LogoutButton,
   Separator,
-  UserExit,
 } from './Header.styled';
-
 import ModalLogout from '../../ModalLogout';
 
 const Header = () => {
@@ -26,10 +22,10 @@ const Header = () => {
         <NavLink style={{ display: 'inline-block' }} to={'home'}>
           Home
         </NavLink>
-        <NavLink to={'auth/login'} style={{ padding: 5 }}>
+        <NavLink to={'auth/login'} style={{ padding: 2 }}>
           Login
         </NavLink>
-        <NavLink to={'auth/register'} style={{ padding: 5 }}>
+        <NavLink to={'auth/register'} style={{ padding: 2 }}>
           Register
         </NavLink>
       </div>
@@ -39,13 +35,6 @@ const Header = () => {
           query="(min-width: 767px)"
           render={() => <Separator></Separator>}
         />
-        <LogoutButton type="button" variant="text" color="inherit">
-          <LogoutImg />
-          <Media
-            query="(min-width: 767px)"
-            render={() => <UserExit>Exit</UserExit>}
-          />
-        </LogoutButton>
         <ModalLogout></ModalLogout>
       </UserControlWrapper>
     </HeaderBar>

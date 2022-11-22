@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ReactComponent as HomeActive } from '../../img/home-aside/home-active.svg';
-import { ReactComponent as DiagramActive } from '../../img/home-aside/diagram-active.svg';
-import { ReactComponent as DollarActive } from '../../img/home-aside/dollar-active.svg';
+import { ReactComponent as HomeActive } from '../../../img/home-aside/home-active.svg';
+import { ReactComponent as DiagramActive } from '../../../img/home-aside/diagram-active.svg';
+import { ReactComponent as DollarActive } from '../../../img/home-aside/dollar-active.svg';
 import { NavLink } from 'react-router-dom';
 
 export const ButtonsList = styled.ul`
@@ -36,21 +36,29 @@ export const ButtonItem = styled(NavLink)`
   display: flex;
   align-items: center;
   border: none;
+  font-family: ${p => p.theme.fonts.navLink};
+  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  &:hover,
+  &:focus,
+  &:active {
+    font-weight: ${p => p.theme.fontWeights.bold};
+  }
 `;
 
 export const ButtonsWrapper = styled.div`
-  padding: 12px 0px;
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    padding-top: 40px;
-    padding-left: 32px;
+    /* padding-top: 40px;
+    padding-left: 32px; */
     justify-content: flex-start;
   }
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    padding-top: 40px;
-    padding-left: 16px;
+    /* padding-top: 40px;
+    padding-left: 16px; */
     /* justify-content: flex-start; */
   }
 `;
