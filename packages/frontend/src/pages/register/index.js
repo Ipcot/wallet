@@ -10,15 +10,19 @@ import {
 /* import { Container } from 'components/ui/Container'; */
 import Container from 'components/layout/common/Container/Container';
 import { useRegisterMutation } from 'store/auth/authApi';
+// import { useGetAllCategoriesQuery } from 'store/transactions/transactionsApi';
 
 const Register = () => {
-  const [register] = useRegisterMutation();
+  // const { data, isLoading, isError } = useGetAllCategoriesQuery();
   const user = {
-    email: 'nastya@mail.com',
+    email: 'anastasiia@mail.com',
     password: 'password',
-    name: 'Nastya',
+    name: 'Anastasiia',
   };
-  // console.log('register: ', register);
+  const [updatePost, result] = useRegisterMutation();
+  // updatePost(user);
+  // console.log('result: ', result);
+
   // register(user);
   return (
     <Container>

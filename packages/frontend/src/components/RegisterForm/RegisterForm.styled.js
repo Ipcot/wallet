@@ -1,5 +1,19 @@
 import styled from '@emotion/styled';
 
+export const ProgressContainer = styled.div`
+  height: 10px;
+  width: 100%;
+  margin-top: -35px;
+  margin-bottom: 40px;
+`;
+
+export const ProgressBar = styled.div`
+  height: 10px;
+  border-radius: 50px;
+  /* background-color: teal;
+  width: 70%; */
+`;
+
 export const InputContainer = styled.div`
   margin-bottom: 40px;
   position: relative;
