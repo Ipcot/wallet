@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 export const ButtonsList = styled.ul`
   display: flex;
   justify-content: space-evenly;
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     flex-direction: column;
   }
 `;
@@ -18,14 +18,16 @@ export const ButtonsListItem = styled.li`
     padding-right: 0px;
   }
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    padding-bottom: 12px;
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
+    margin-bottom: 12px;
+    padding-right: 0px;
     &:last-child {
       padding-bottom: 0;
     }
   }
-  @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    padding-bottom: 12px;
+  @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
+    margin-bottom: 12px;
+    padding-right: 0px;
     &:last-child {
       padding-bottom: 0;
     }
@@ -51,15 +53,15 @@ export const ButtonsWrapper = styled.div`
   justify-content: center;
   margin-bottom: 15px;
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     /* padding-top: 40px;
     padding-left: 32px; */
     justify-content: flex-start;
   }
-  @media (min-width: ${p => p.theme.breakpoints[2]}) {
+  @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     /* padding-top: 40px;
     padding-left: 16px; */
-    /* justify-content: flex-start; */
+    justify-content: flex-start;
   }
 `;
 
@@ -70,7 +72,7 @@ export const HomeIcon = styled(HomeActive)`
   &:active {
     color: ${p => p.theme.palette.colors.secondary};
   }
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     width: 18px;
     height: 18px;
     margin-right: 25px;
@@ -84,7 +86,7 @@ export const DiagramIcon = styled(DiagramActive)`
   &:active {
     color: ${p => p.theme.palette.colors.secondary};
   }
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     width: 18px;
     height: 18px;
     margin-right: 25px;
@@ -98,7 +100,7 @@ export const DollarIcon = styled(DollarActive)`
   &:active {
     color: ${p => p.theme.palette.colors.secondary};
   }
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     width: 18px;
     height: 18px;
   }

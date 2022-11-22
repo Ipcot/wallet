@@ -1,10 +1,14 @@
-import { BalanceWrapper } from './CurrentBalance.styled';
+import {
+  BalanceWrapper,
+  BalanceTitle,
+  BalanceValue,
+} from './CurrentBalance.styled';
 
 const CurrentBalance = () => {
   return (
     <BalanceWrapper>
-      <p>Your balance</p>
-      <p>$24 000.00</p>
+      <BalanceTitle>Your balance</BalanceTitle>
+      <BalanceValue>$24 000.00</BalanceValue>
     </BalanceWrapper>
   );
 };
