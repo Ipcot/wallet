@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Container = styled.div`
   width: ${p => p.theme.breakpoints[0]};
@@ -19,9 +19,9 @@ export const MainContainer = styled(Container)`
 `;
 
 export const Sider = styled.div`
-  display: flex; 
-  flex-direction: column; 
-  width: 50%; 
+  display: flex;
+  flex-direction: column;
+  width: 50%;
   justify-content: start;
   /* background: green; */
 `;

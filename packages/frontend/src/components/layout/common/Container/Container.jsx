@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const Container = styled.div`
   margin-right: auto;
@@ -16,5 +16,5 @@ const Container = styled.div`
 export default Container;
 
 export const ContainerMain = styled(Container)`
-  background-color: ${p => p.theme.colors.bg};
+  background-color: ${p => p.theme.palette.colors.bg};
 `;

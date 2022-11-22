@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ReactComponent as LogoutPic } from '../../img/header/LogoutButton.svg';
 
 export const contentStyles = {
@@ -18,11 +18,11 @@ export const contentStyles = {
 export const LogoutImg = styled(LogoutPic)`
   width: 18px;
   height: 18px;
-  color: ${p => p.theme.colors.headerSecondary};
+  color: ${p => p.theme.palette.colors.headerSecondary};
   &:hover,
   &:focus,
   &:active {
-    color: ${p => p.theme.colors.notActive};
+    color: ${p => p.theme.palette.colors.notActive};
   }
 `;
 
@@ -37,11 +37,11 @@ export const UserExit = styled.p`
   font-family: ${p => p.theme.fonts.body};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.heading};
-  color: ${p => p.theme.colors.headerSecondary};
+  color: ${p => p.theme.palette.colors.headerSecondary};
   margin-left: ${p => p.theme.space[3]}px;
   &:hover,
   &:focus,
   &:active {
-    color: ${p => p.theme.colors.notActive};
+    color: ${p => p.theme.palette.colors.notActive};
   }
 `;
