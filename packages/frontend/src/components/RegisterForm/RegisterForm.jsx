@@ -26,19 +26,14 @@ const RegisterForm = () => {
     switch (result) {
       case 0:
         return 'red';
-        break;
       case 1:
         return 'yellow';
-        break;
       case 2:
         return 'lightgreen';
-        break;
       case 3 || 4:
         return 'teal';
-        break;
       default:
         return null;
-        break;
     }
   };
 
