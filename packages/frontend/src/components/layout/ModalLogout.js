@@ -20,8 +20,6 @@ const ModalLogout = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={[contentStyles]}>
           <Button sx={{
@@ -36,8 +34,7 @@ const ModalLogout = () => {
             mb={2}
             variant="h4"
             textAlign='center'
-            fontWeight='700'
-            fontFamily='CirceBold, sans-serif'
+            fontWeight={500}
           >
             Are you sure you want to logout?
           </Typography>

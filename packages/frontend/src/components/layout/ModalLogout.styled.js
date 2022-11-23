@@ -7,13 +7,14 @@ import { ReactComponent as CloseSymbol } from '../../img/header/close.svg';
 export const contentStyles = {
   [themeMaterial.breakpoints.down('md')]: {
     width: 380,
+    fontFamily: 'CirceBold, sans-serif',
   },
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 540,
-  fontFamily: 'Circe, sans-serif',
+  fontFamily: 'CirceBold, sans-serif',
   bgcolor: 'background.paper',
   border: 'none',
   boxShadow: 24,
