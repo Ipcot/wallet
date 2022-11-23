@@ -1,7 +1,13 @@
 import styled from '@emotion/styled';
+import  themeMaterial  from '../../theme/themeMaterial';
 import { ReactComponent as LogoutPic } from '../../img/header/LogoutButton.svg';
+import { ReactComponent as CloseSymbol } from '../../img/header/close.svg';
+
 
 export const contentStyles = {
+  [themeMaterial.breakpoints.down('md')]: {
+    width: 380,
+  },
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -24,6 +30,12 @@ export const LogoutImg = styled(LogoutPic)`
   &:active {
     color: ${p => p.theme.palette.colors.notActive};
   }
+`;
+
+export const CloseBtn = styled(CloseSymbol)`
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
 `;
 
 export const LogoutButton = styled.button`
