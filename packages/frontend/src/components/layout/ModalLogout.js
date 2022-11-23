@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Modal, Box, Button, Typography, Stack } from '@mui/material';
-
 import { LogoutImg, LogoutButton, UserExit, contentStyles, CloseBtn } from './ModalLogout.styled';
 import Media from 'react-media';
 
