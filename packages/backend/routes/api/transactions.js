@@ -23,11 +23,10 @@ router.get('/', verifyerToken, ctrlWrapper(ctrl.getAll));
 
 router.get('/categories', verifyerToken, ctrlWrapper(ctrl.getCategories));
 
-// router.get(
-//   '/transactions/stats/:year/:month',
-//   verifyerToken,
-//   validateBody(schemas.addSchema),
-//   ctrlWrapper(ctrl.getTransactionsStats)
-// );
+router.get(
+  '/stats/:month/:year',
+  verifyerToken,
+  ctrlWrapper(ctrl.getTransactionsStats)
+);
 
 module.exports = router;
