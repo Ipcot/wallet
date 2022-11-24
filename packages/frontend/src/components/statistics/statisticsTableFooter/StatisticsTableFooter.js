@@ -12,10 +12,10 @@ const StatisticaTableFooter = () => {
         <TableFooterTitle>Expenses:</TableFooterTitle>
         <TableFooterExpenses>22 549.24</TableFooterExpenses>
       </StatisticsTableFooterStyle>
-      <StatisticaTableFooterStyle>
+      <StatisticsTableFooterStyle>
         <TableFooterTitle>Income:</TableFooterTitle>
         <TableFooterIncome>27 350.00</TableFooterIncome>
-      </StatisticaTableFooterStyle>
+      </StatisticsTableFooterStyle>
     </div>
   );
 };
