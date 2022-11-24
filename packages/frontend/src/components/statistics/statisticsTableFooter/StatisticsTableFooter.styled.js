@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StatisticaTableFooterStyle = styled.div`
+export const StatisticsTableFooterStyle = styled.div`
   width: 280px;
   margin-top: 16px;
   display: flex;

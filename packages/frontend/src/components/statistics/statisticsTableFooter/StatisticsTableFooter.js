@@ -1,17 +1,17 @@
 import {
-  StatisticaTableFooterStyle,
+  StatisticsTableFooterStyle,
   TableFooterTitle,
   TableFooterExpenses,
   TableFooterIncome,
-} from './StatisticaTableFooter.styles';
+} from './StatisticsTableFooter.styled';
 
 const StatisticaTableFooter = () => {
   return (
     <div>
-      <StatisticaTableFooterStyle>
+      <StatisticsTableFooterStyle>
         <TableFooterTitle>Expenses:</TableFooterTitle>
         <TableFooterExpenses>22 549.24</TableFooterExpenses>
-      </StatisticaTableFooterStyle>
+      </StatisticsTableFooterStyle>
       <StatisticaTableFooterStyle>
         <TableFooterTitle>Income:</TableFooterTitle>
         <TableFooterIncome>27 350.00</TableFooterIncome>

@@ -4,7 +4,7 @@ import userOperation from './userOperation.json';
 import StatisticsDoughnut from '../../components/statistics/statisticsDoughnut/StatisticsDoughnut';
 import StatisticsSelect from '../../components/statistics/statisticsSelect/StatisticsSelect';
 import StatisticsTable from '../../components/statistics/statisticsTable/StatisticsTable';
-import StatisticaTableFooter from 'components/statistics/statisticsTableFooter/StatisticaTableFooter';
+import StatisticsTableFooter from '../../components/statistics/statisticsTableFooter/StatisticsTableFooter';
 
 const Statistics = () => {
   return (
@@ -15,7 +15,7 @@ const Statistics = () => {
         <div>
           <StatisticsSelect operation={userOperation} />
           <StatisticsTable />
-          <StatisticaTableFooter />
+          <StatisticsTableFooter />
         </div>
       </StatisticsContainer>
     </div>
