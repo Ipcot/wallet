@@ -1,8 +1,25 @@
 import styled from '@emotion/styled';
+import { Select } from '@mui/material';
+import themeMaterial from 'theme/themeMaterial';
 
-export const StatisticsSelectStyle = styled.select`
-  width: 160px;
-  height: 50px;
-  border-radius: 30px;
-  padding: 0px 20px 0px 20px;
-`;
+export const StatisticsSelectStyle = styled(Select)({
+  color: '#000000',
+  fontStyle: 'normal',
+  fontWeight: '400',
+  fontSize: '16px',
+  lineHeight: '24px',
+  '& .MuiSelect-icon': {
+    display: 'none',
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: '#000000',
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    '&:focus': {
+      borderColor: '#000000',
+    },
+    '& .Mui-focused': {
+      borderColor: 'red',
+    },
+  },
+});
