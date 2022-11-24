@@ -11,7 +11,7 @@ const getAll = async (req, res) => {
     skip,
     limit,
     sort: { _id: -1 },
-  }).populate('owner', 'name email');
+  }).populate('owner', 'name email balance');
 
   // const user = await User.findById(owner);
 

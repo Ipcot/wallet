@@ -19,7 +19,7 @@ const transactionsSchema = new Schema(
     category: {
       type: String,
       enum: types,
-      required: true,
+      // required: true,
     },
     comment: {
       type: String,
@@ -33,6 +33,10 @@ const transactionsSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'user',
       required: true,
+    },
+    balance: {
+      type: Number,
+      default: 0,
     },
     // эти 2 поля не отображаются на фронтенде в таблице, они нужны для подсчета статистики по месяцу и году
     month: {
@@ -52,9 +56,10 @@ transactionsSchema.post('save', handleSaveErrors);
 const addSchema = Joi.object({
   date: Joi.date(),
   isIncome: Joi.boolean(),
-  category: Joi.string().required(),
+  category: Joi.string(),
   comment: Joi.string(),
   sum: Joi.number().required(),
+  balance: Joi.number(),
 });
 
 const schemas = {
