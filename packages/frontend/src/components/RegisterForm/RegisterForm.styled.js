@@ -21,6 +21,7 @@ export const Input = styled.input`
   line-height: 1.5;
   &:focus {
     border-bottom-color: teal;
+    transition: opacity 0.3s ease;
     &::placeholder {
       color: transparent;
     }
@@ -113,6 +114,18 @@ export const Post = styled.p`
     display: inline;
     content: '⚠ ';
   }
+`;
+
+export const ProgressContainer = styled.div`
+  height: 5px;
+  width: 100%;
+  margin-top: -25px;
+  margin-bottom: 40px;
+`;
+
+export const ProgressBar = styled.div`
+  height: 5px;
+  border-radius: 50px;
 `;
 
 export const Button = styled.button``;

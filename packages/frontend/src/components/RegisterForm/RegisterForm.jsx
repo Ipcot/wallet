@@ -4,7 +4,7 @@ import EnvelopeImg from 'assets/icons/envelope.svg';
 import LockImg from 'assets/icons/lock.svg';
 import LogoImg from 'assets/icons/logo.svg';
 import PersonImg from 'assets/icons/person.svg';
-
+import { passwordStrength } from 'check-password-strength';
 import {
   Input,
   Form,
@@ -16,7 +16,10 @@ import {
   BoxLogo,
   PersonImage,
   Post,
+  ProgressContainer,
+  ProgressBar,
 } from './RegisterForm.styled';
+import { useState } from 'react';
 
 const RegisterForm = () => {
   const {
@@ -31,6 +34,35 @@ const RegisterForm = () => {
     reset();
   };
 
+  const [password, setPassword] = useState('');
+
+  const result = passwordStrength(password);
+
+  const handleChange1 = e => {
+    setPassword(e.currentTarget.value);
+    console.log(e.currentTarget.value);
+  };
+
+  const changeColor = () => {
+    switch (result.value) {
+      case 'Too weak':
+        return 'red';
+      case 'Weak':
+        return 'yellow';
+      case 'Medium':
+        return 'lightgreen';
+      case 'Strong':
+        return 'teal';
+      default:
+        return null;
+    }
+  };
+
+  const changeProgressBarSettings = () => ({
+    width: `${(result.id + 1) * 25}%`,
+    background: changeColor(),
+  });
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <BoxLogo>
@@ -43,9 +75,11 @@ const RegisterForm = () => {
         <Input
           {...register('email', {
             required: 'The field is required!',
-            minLength: {
-              value: 5,
-              message: 'Minimum 5 symbols!',
+            pattern: {
+              value:
+                /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
+
+              message: 'Minimum 5 symbols!Minimum 6 to maximum 12 characters!',
             },
           })}
           placeholder="E-mail"
@@ -62,25 +96,29 @@ const RegisterForm = () => {
       <InputContainer>
         <LockImage alt="lock" src={`${LockImg}`} />
         <Input
+          onChange={e => {
+            console.log(e.currentTarget.value);
+          }}
           {...register('password', {
             required: 'The field is required!',
-
-            /* maxLength: 12, */
-            minLength: {
-              value: 6,
+            pattern: {
+              value:
+                /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]){6-12}$/,
               message: 'Minimum 6 to maximum 12 characters!',
             },
           })}
           placeholder="Password"
         />
-        <div
-          style={{
-            height: 40,
-          }}
-        >
-          {errors?.email && <Post>{errors?.email?.message || 'Error!'}</Post>}
+        <div>
+          {errors?.password && (
+            <Post>{errors?.password?.message || 'Error!'}</Post>
+          )}
         </div>
       </InputContainer>
+
+      <ProgressContainer>
+        <ProgressBar style={changeProgressBarSettings()} />
+      </ProgressContainer>
 
       <InputContainer>
         <LockImage alt="lock" src={`${LockImg}`} />
@@ -104,19 +142,16 @@ const RegisterForm = () => {
         <Input
           {...register('firstname', {
             required: 'The field is required!',
-
             pattern: {
-              value: /^[a-zA-Z]+$/,
-              message: 'Firstname may contain only letters!',
-              minLength: {
+              value:
+                /^([a-zA-Z]|[а-яА-Я]){6,16}$/ /* {1}Первый символ только цифра или буква */,
+              message:
+                'Firstname may contain only letters! Minimum 6 to maximum 12 characters!',
+              /*  minLength: {
                 value: 3,
                 message: 'Minimum 3 to maximum 12 characters!',
-              },
+              }, */
             },
-            /*       minLength: {
-              value: 12,
-              message: 'Firstname minimum 1 to maximum 12 characters!',
-            }, */
           })}
           placeholder="First name"
         />
