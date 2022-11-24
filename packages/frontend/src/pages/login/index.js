@@ -6,9 +6,10 @@ import {
   ContainerStyled,
   LoginImage,
   LoginTitle,
+  Container,
 } from './index.styled';
 /* import { Container } from 'components/ui/Container'; */
-import Container from 'components/layout/common/Container/Container';
+
 const Register = () => {
   return (
     <Container>
