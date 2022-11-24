@@ -21,5 +21,7 @@
     "url": "https://github.com/Ipcot/wallet/issues"
   },
   "homepage": "https://github.com/Ipcot/wallet#readme",
-  "dependencies": {}
+  "dependencies": {
+    "@mui/x-data-grid": "^5.17.12"
+  }
 }
