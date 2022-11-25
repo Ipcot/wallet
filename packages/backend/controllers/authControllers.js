@@ -3,7 +3,7 @@ const {
   hashingPassword,
   comparePassword,
 } = require('../helpers/handlerPassword');
-
+const RequestError = require('../helpers/RequestError');
 const tokenCreater = require('../helpers/createToken');
 const { SECRET_KEY } = process.env;
 

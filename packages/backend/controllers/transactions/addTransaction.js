@@ -1,19 +1,27 @@
 const { Transaction } = require('../../models/transactions');
+const { User } = require('../../schemas/user');
 
 const addTransaction = async (req, res) => {
   const { _id: owner } = req.user;
+  const { isIncome, sum, date } = req.body;
 
-  // console.log(req.body);
+  console.log(isIncome);
 
-  // const { day, month, year } = req.body;
+  User.findById(owner, function (err, user) {
+    if (err) return;
+    user.balance = isIncome ? user.balance + sum : user.balance - sum;
 
-  const result = await Transaction.create({ ...req.body, owner });
+    console.log(user.balance);
+
+    user.save();
+  });
+
+  const createdDate = new Date(date);
+  const month = createdDate.getMonth() + 1;
+  const year = createdDate.getFullYear();
+
+  const result = await Transaction.create({ ...req.body, owner, month, year });
   res.status(201).json(result);
-  console.log('добавление транзакции');
 };
 
 module.exports = addTransaction;
-
-// создать перед резалтом 3 переменных день год месяц и вызвать через реквест бади дейт, получаю 3 поля из объекта дата и все 3 закинуть на 6 строку в креейт
-
-// создать новый контроллер фильтр транз вызвать у транзакшнс файнд мени (объект месяц и год, взьть из из реквест парамс)
