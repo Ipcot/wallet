@@ -21,7 +21,7 @@ export const MainContainer = styled(Container)`
   padding: 15px 20px;
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     justify-content: flex-start;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
     padding: 32px;
   }
