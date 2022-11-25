@@ -1,4 +1,7 @@
 import styled from '@emotion/styled';
+import { ReactComponent as PersonPic } from 'assets/icons/person.svg';
+import { ReactComponent as LockPic } from 'assets/icons/lock.svg';
+import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
 
 export const InputContainer = styled.div`
   height: 72px;
@@ -55,21 +58,21 @@ export const Form = styled.form`
   } */
 `;
 
-export const EnvelopeImage = styled.img`
+export const EnvelopeImage = styled(EnvelopePic)`
   width: 24px;
   height: 24px;
   position: absolute;
   left: 10px;
   top: 7%;
 `;
-export const LockImage = styled.img`
+export const LockImage = styled(LockPic)`
   width: 24px;
   height: 24px;
   position: absolute;
   left: 10px;
   top: 7%;
 `;
-export const PersonImage = styled.img`
+export const PersonImage = styled(PersonPic)`
   width: 24px;
   height: 24px;
   position: absolute;
@@ -82,10 +85,10 @@ export const BoxLogo = styled.div`
   justify-content: center;
   margin-bottom: 20px;
 `;
-export const LogoImage = styled.img`
+/* export const LogoImage = styled(LogoutPicc)`
   width: 38px;
   height: 30px;
-`;
+`; */
 
 export const LogoTitle = styled.div`
   font-family: 'Poppins';

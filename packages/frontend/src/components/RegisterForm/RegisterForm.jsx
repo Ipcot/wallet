@@ -1,17 +1,20 @@
+import Media from 'react-media';
 import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
-import EnvelopeImg from 'assets/icons/envelope.svg';
-import LockImg from 'assets/icons/lock.svg';
-import LogoImg from 'assets/icons/logo.svg';
-import PersonImg from 'assets/icons/person.svg';
+/* import EnvelopeImg from 'assets/icons/envelope.svg'; */
+/* import LockImg from 'assets/icons/lock.svg'; */
+/* import LogoImg from 'assets/icons/logo.svg'; */
+/* import PersonImg from 'assets/icons/person.svg'; */
 import { passwordStrength } from 'check-password-strength';
+import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
+
 import {
   Input,
   Form,
   InputContainer,
   EnvelopeImage,
   LockImage,
-  LogoImage,
+  /*  LogoImage, */
   LogoTitle,
   BoxLogo,
   PersonImage,
@@ -66,12 +69,15 @@ const RegisterForm = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <BoxLogo>
-        <LogoImage alt="logo" src={`${LogoImg}`} />
+        {/*  <LogoImage alt="logo" src={`${LogoImg}`} /> */}
+        <LogoImg style={{ width: '38px', height: '30px' }} />
         <LogoTitle>Wallet</LogoTitle>
       </BoxLogo>
 
       <InputContainer>
-        <EnvelopeImage alt="envelope" src={`${EnvelopeImg}`} />
+        {/*  <EnvelopeImage alt="envelope" src={`${EnvelopeImg}`} /> */}
+        <EnvelopeImage />
+
         <Input
           {...register('email', {
             required: 'The field is required!',
@@ -84,17 +90,14 @@ const RegisterForm = () => {
           })}
           placeholder="E-mail"
         />
-        <div
-          style={{
-            height: 40,
-          }}
-        >
+        <div>
           {errors?.email && <Post>{errors?.email?.message || 'Error!'}</Post>}
         </div>
       </InputContainer>
 
       <InputContainer>
-        <LockImage alt="lock" src={`${LockImg}`} />
+        {/* <LockImage alt="lock" src={`${LockImg}`} /> */}
+        <LockImage />
         <Input
           onChange={e => {
             console.log(e.currentTarget.value);
@@ -121,7 +124,8 @@ const RegisterForm = () => {
       </ProgressContainer>
 
       <InputContainer>
-        <LockImage alt="lock" src={`${LockImg}`} />
+        {/* <LockImage alt="lock" src={`${LockImg}`} /> */}
+        <LockImage />
         <Input
           {...register('confirmpassword', {
             required: 'The field is required!',
@@ -138,7 +142,8 @@ const RegisterForm = () => {
       </InputContainer>
 
       <InputContainer>
-        <PersonImage alt="lock" src={`${PersonImg}`} />
+        {/*  <PersonImage alt="lock" src={`${PersonImg}`} /> */}
+        <PersonImage />
         <Input
           {...register('firstname', {
             required: 'The field is required!',
@@ -174,125 +179,20 @@ const RegisterForm = () => {
         variant="contained"
         disabled={isValid}
       >
-        Log in
+        Register
       </Button>
       <Button
         type="submit"
         /* disabled={isValid} */
         color="secondary"
         variant="outlined"
-      >
-        Register
-      </Button>
-    </Form>
-  );
-};
-export default RegisterForm;
-
-/*  <div style={{ height: 40 }}>
-   {errors?.firstname && <Post>{errors?.firstname?.message || 'Error!'}</Post>}
- </div>; */
-
-/* const schema = yup.object().shape({
-  name: yup
-    .string()
-    .required()
-    .matches(/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/, {
-      message:
-        "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
-    }),
-
-  number: yup
-    .string()
-    .required()
-    .matches(
-      /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
-      {
-        message:
-          'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
-      }
-    ),
-});
- */
-/* { required: 'Поле обязательно к заполнению!' } */
-
-{
-  /* <div style={{ height: 40 }}>
-          {errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}
-        </div> */
-}
-
-/* const {
-  register,
-  formState: { errors },
-  handleSubmit,
-} = useForm();
-
-const onSubmit = data => {
-  alert(JSON.stringify(data));
-}; */
-
-/*import { Button } from '@mui/material';
-import EnvelopeImg from 'assets/icons/envelope.svg';
-import LockImg from 'assets/icons/lock.svg';
-import LogoImg from 'assets/icons/logo.svg';
-import PersonImg from 'assets/icons/person.svg';
-
-import {
-  Input,
-  Form,
-  InputContainer,
-  EnvelopeImage,
-  LockImage,
-  LogoImage,
-  LogoTitle,
-  BoxLogo,
-  PersonImage,
-} from './RegisterForm.styled';
-
-const RegisterForm = () => {
- 
-
-  return (
-    <Form>
-      <BoxLogo>
-        <LogoImage alt="logo" src={`${LogoImg}`} />
-        <LogoTitle>Wallet</LogoTitle>
-      </BoxLogo>
-
-      <InputContainer>
-        <EnvelopeImage alt="envelope" src={`${EnvelopeImg}`} />
-        <Input placeholder="E-mail" />
-      </InputContainer>
-
-      <InputContainer>
-        <LockImage alt="lock" src={`${LockImg}`} />
-        <Input placeholder="Password" />
-      </InputContainer>
-
-      <InputContainer>
-        <LockImage alt="lock" src={`${LockImg}`} />
-        <Input placeholder="Confirm password" />
-      </InputContainer>
-
-      <InputContainer>
-        <PersonImage alt="lock" src={`${PersonImg}`} />
-        <Input placeholder="First name" />
-      </InputContainer>
-
-      <Button
-        sx={{
-          marginBottom: 3,
-        }}
-        variant="contained"
+        /* sx={{
+          width: '300px',
+        }} */
       >
         Log in
       </Button>
-      <Button color="secondary" variant="outlined">
-        Register
-      </Button>
     </Form>
   );
 };
 export default RegisterForm;
- */
