@@ -10,8 +10,6 @@ export const ProgressContainer = styled.div`
 export const ProgressBar = styled.div`
   height: 10px;
   border-radius: 50px;
-  /* background-color: teal;
-  width: 70%; */
 `;
 
 export const InputContainer = styled.div`

@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import zxcvbn from 'zxcvbn';
+import { passwordStrength } from 'check-password-strength';
 import EnvelopeImg from 'assets/icons/envelope.svg';
 import LockImg from 'assets/icons/lock.svg';
 import LogoImg from 'assets/icons/logo.svg';
@@ -18,19 +18,24 @@ import {
   ProgressBar,
   ProgressContainer,
 } from './RegisterForm.styled';
+import { useState } from 'react';
 
 const RegisterForm = () => {
-  const result = zxcvbn('as').score;
-  console.log('password result: ', result);
+  const [password, setPassword] = useState('');
+  const result = passwordStrength(password);
+  const handleChange = e => {
+    setPassword(e.currentTarget.value);
+  };
+
   const changeColor = () => {
-    switch (result) {
-      case 0:
+    switch (result.value) {
+      case 'Too weak':
         return 'red';
-      case 1:
+      case 'Weak':
         return 'yellow';
-      case 2:
+      case 'Medium':
         return 'lightgreen';
-      case 3 || 4:
+      case 'Strong':
         return 'teal';
       default:
         return null;
@@ -38,7 +43,7 @@ const RegisterForm = () => {
   };
 
   const changeProgressBarSettings = () => ({
-    width: `${(result + 1) * 25}%`,
+    width: `${(result.id + 1) * 25}%`,
     background: changeColor(),
   });
 
@@ -56,8 +61,9 @@ const RegisterForm = () => {
 
       <InputContainer>
         <LockImage alt="lock" src={`${LockImg}`} />
-        <Input placeholder="Password" />
+        <Input placeholder="Password" onChange={handleChange} />
       </InputContainer>
+
       <ProgressContainer>
         <ProgressBar style={changeProgressBarSettings()} />
       </ProgressContainer>
