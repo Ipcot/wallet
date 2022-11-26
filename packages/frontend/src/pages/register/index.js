@@ -10,23 +10,8 @@ import {
   LoginTitle,
   Container,
 } from './index.styled';
-/* import { Container } from 'components/ui/Container'; */
-import Container from 'components/layout/common/Container/Container';
-import { useRegisterMutation } from 'store/auth/authApi';
-// import { useGetAllCategoriesQuery } from 'store/transactions/transactionsApi';
 
 const Register = () => {
-  // const { data, isLoading, isError } = useGetAllCategoriesQuery();
-  const user = {
-    email: 'anastasiia@mail.com',
-    password: 'password',
-    name: 'Anastasiia',
-  };
-  const [updatePost, result] = useRegisterMutation();
-  // updatePost(user);
-  // console.log('result: ', result);
-
-  // register(user);
   return (
     <div>
       <Container>

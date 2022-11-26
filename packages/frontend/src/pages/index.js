@@ -5,6 +5,8 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { SystemLayout } from 'components/layout';
+import PrivateRoute from 'hocs/PrivateRoute';
+import PublicRoute from 'hocs/PublicRoute';
 
 const Login = lazy(() => import('./login'));
 const Register = lazy(() => import('./register'));
@@ -16,11 +18,11 @@ const routes = [
     path: 'auth',
     children: [
       {
-        element: <Login />,
+        element: <PublicRoute component={<Login />} />,
         path: 'login',
       },
       {
-        element: <Register />,
+        element: <PublicRoute component={<Register />} />,
         path: 'register',
       },
     ],
@@ -39,7 +41,7 @@ const routes = [
         path: 'home',
       },
       {
-        element: <Statistics />,
+        element: <PrivateRoute component={<Statistics />} />,
         path: 'statistics',
       },
     ],

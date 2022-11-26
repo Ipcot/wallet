@@ -1,4 +1,6 @@
 import Media from 'react-media';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'store/auth';
 import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 import EnvelopeImg from 'assets/icons/envelope.svg';
@@ -16,12 +18,11 @@ import {
   LogoTitle,
   BoxLogo,
   Post,
-  ProgressContainer,
-  ProgressBar,
 } from './LoginForm.styled';
-import { useState } from 'react';
+import { gridColumnsTotalWidthSelector } from '@mui/x-data-grid';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const {
     register,
     formState: { errors, isValid },
@@ -30,7 +31,8 @@ const LoginForm = () => {
   } = useForm({ mode: 'onChange' });
 
   const onSubmit = data => {
-    alert(JSON.stringify('Отправлено:', data));
+    console.log('data: ', data);
+    dispatch(authOperations.logIn(data));
     reset();
   };
 
@@ -69,11 +71,11 @@ const LoginForm = () => {
           }}
           {...register('password', {
             required: 'The field is required!',
-            pattern: {
-              value:
-                /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]){6-12}$/,
-              message: 'Minimum 6 to maximum 12 characters!',
-            },
+            // pattern: {
+            //   value:
+            //     /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]){6-12}$/,
+            //   message: 'Minimum 6 to maximum 12 characters!',
+            // },
           })}
           placeholder="Password"
         />
@@ -93,7 +95,7 @@ const LoginForm = () => {
           width: '280px',
         }}
         variant="contained"
-        disabled={isValid}
+        // disabled={isValid}
       >
         Log in
       </Button>

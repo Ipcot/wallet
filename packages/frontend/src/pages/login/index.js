@@ -9,13 +9,8 @@ import {
   LoginTitle,
   Container,
 } from './index.styled';
-/* import { Container } from 'components/ui/Container'; */
-import Container from 'components/layout/common/Container/Container';
-import { useLoginMutation } from 'store/auth/authApi';
 
-const Register = () => {
-  const [login, result] = useLoginMutation();
-
+const Login = () => {
   return (
     <Container>
       <BoxStyled>
@@ -35,4 +30,4 @@ const Register = () => {
     </Container>
   );
 };
-export default Register;
+export default Login;

@@ -1,4 +1,6 @@
 import Media from 'react-media';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'store/auth';
 import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 /* import EnvelopeImg from 'assets/icons/envelope.svg'; */
@@ -25,6 +27,7 @@ import {
 import { useState } from 'react';
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
   const {
     register,
     formState: { errors, isValid },
@@ -33,7 +36,12 @@ const RegisterForm = () => {
   } = useForm({ mode: 'onChange' });
 
   const onSubmit = data => {
-    alert(JSON.stringify('Отправлено:', data));
+    const credentials = {
+      name: data.firstname,
+      email: data.email,
+      password: data.password,
+    };
+    dispatch(authOperations.register(credentials));
     reset();
   };
 
@@ -104,11 +112,11 @@ const RegisterForm = () => {
           }}
           {...register('password', {
             required: 'The field is required!',
-            pattern: {
-              value:
-                /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]){6-12}$/,
-              message: 'Minimum 6 to maximum 12 characters!',
-            },
+            // pattern: {
+            //   value:
+            //     /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]){6-12}$/,
+            //   message: 'Minimum 6 to maximum 12 characters!',
+            // },
           })}
           placeholder="Password"
         />
@@ -177,7 +185,7 @@ const RegisterForm = () => {
           marginTop: 2,
         }}
         variant="contained"
-        disabled={isValid}
+        // disabled={isValid}
       >
         Register
       </Button>
