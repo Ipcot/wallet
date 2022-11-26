@@ -2,7 +2,7 @@ const express = require('express');
 
 const ctrl = require('../../controllers/transactions');
 
-const validateBody = require('../../middlewares/validateBody');
+const userValidation = require('../../middlewares/userValidation');
 
 const verifyerToken = require('../../middlewares/verifyerToken');
 
@@ -15,7 +15,7 @@ const router = express.Router();
 router.post(
   '/',
   verifyerToken,
-  validateBody(schemas.addSchema),
+  userValidation(schemas.addSchema),
   ctrlWrapper(ctrl.addTransaction)
 );
 

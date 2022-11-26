@@ -1,4 +1,4 @@
-const { Schema, model, now } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 
 const handleSaveErrors = require('../helpers/handleSaveErrors');
@@ -19,7 +19,6 @@ const transactionsSchema = new Schema(
     category: {
       type: String,
       enum: types,
-      required: true,
     },
     comment: {
       type: String,
@@ -28,13 +27,15 @@ const transactionsSchema = new Schema(
       type: Number,
       required: true,
     },
-
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'user',
       required: true,
     },
-    // эти 2 поля не отображаются на фронтенде в таблице, они нужны для подсчета статистики по месяцу и году
+    balance: {
+      type: Number,
+      default: 0,
+    },
     month: {
       type: Number,
       default: new Date().getMonth() + 1,
@@ -48,13 +49,14 @@ const transactionsSchema = new Schema(
 );
 
 transactionsSchema.post('save', handleSaveErrors);
-// это приходит с фронта
+
 const addSchema = Joi.object({
   date: Joi.date(),
   isIncome: Joi.boolean(),
-  category: Joi.string().required(),
+  category: Joi.string(),
   comment: Joi.string(),
   sum: Joi.number().required(),
+  balance: Joi.number(),
 });
 
 const schemas = {
