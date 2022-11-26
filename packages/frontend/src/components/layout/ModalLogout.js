@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { Modal, Box, Button, Typography, Stack } from '@mui/material';
-import { contentStyles } from './ModalLogout.styled';
-import { ReactComponent as CloseSymbol } from '.././test/img/close.svg';
-import { LogoutImg, LogoutButton, UserExit } from './ModalLogout.styled';
+import {
+  LogoutImg,
+  LogoutButton,
+  UserExit,
+  contentStyles,
+  CloseBtn,
+} from './ModalLogout.styled';
 import Media from 'react-media';
 
 const ModalLogout = () => {
@@ -19,32 +23,18 @@ const ModalLogout = () => {
           render={() => <UserExit>Exit</UserExit>}
         />
       </LogoutButton>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={contentStyles}>
+      <Modal open={open} onClose={handleClose}>
+        <Box sx={[contentStyles]}>
           <Button
+            sx={{
+              width: '100%',
+            }}
             type="button"
             onClick={handleClose}
-            sx={{
-              ml: 55,
-              mt: -3,
-              width: '16px',
-              height: '16px',
-            }}
           >
-            <CloseSymbol width="16" />
+            <CloseBtn />
           </Button>
-          <Typography
-            mb={2}
-            variant="h4"
-            textAlign={'center'}
-            fontWeight={700}
-            fontFamily={'Arial, sans-serif'}
-          >
+          <Typography mb={2} variant="h4" textAlign="center" fontWeight={500}>
             Are you sure you want to logout?
           </Typography>
           <Box

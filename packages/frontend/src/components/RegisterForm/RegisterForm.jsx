@@ -84,8 +84,18 @@ const RegisterForm = () => {
             pattern: {
               value:
                 /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
+              /* /^([a-zA-Z]|[а-яА-Я]){6,16}$/ */
 
-              message: 'Minimum 5 symbols!Minimum 6 to maximum 12 characters!',
+              /* 
+
+- минимальное количество символов в поле – 10 (включительно), максимальное количество символов в поле – 63 (включительно)
+
+- поле может содержать дефисы, причем дефис не может находиться в начале или конце Email
+- в части эмейла по имени пользователя могут быть латинские буквы, цифры, точка, дефис, подчеркивание"""
+ */
+
+              message:
+                'Include Latin,numbers,signs,before "@" and "dot", at least 2 characters!',
             },
           })}
           placeholder="E-mail"
@@ -137,7 +147,9 @@ const RegisterForm = () => {
             height: 40,
           }}
         >
-          {errors?.email && <Post>{errors?.email?.message || 'Error!'}</Post>}
+          {errors?.confirmpassword && (
+            <Post>{errors?.confirmpassword?.message || 'Error!'}</Post>
+          )}
         </div>
       </InputContainer>
 
@@ -151,7 +163,7 @@ const RegisterForm = () => {
               value:
                 /^([a-zA-Z]|[а-яА-Я]){6,16}$/ /* {1}Первый символ только цифра или буква */,
               message:
-                'Firstname may contain only letters! Minimum 6 to maximum 12 characters!',
+                'Firstname may contain only letters! Minimum 6 to maximum 16 characters!',
               /*  minLength: {
                 value: 3,
                 message: 'Minimum 3 to maximum 12 characters!',

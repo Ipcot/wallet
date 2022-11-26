@@ -1,40 +1,5 @@
 import styled from '@emotion/styled';
-
-export const InputContainer = styled.div`
-  height: 72px;
-  position: relative;
-  @media screen and (min-width: 768px) {
-  }
-`;
-
-export const Input = styled.input`
-  color: ${props => props.theme.palette.primary.inputBorder};
-  padding: 8px 8px 8px 54px;
-  outline: none;
-  border: none;
-  margin-right: 22px;
-  border-bottom: 1px solid ${props => props.theme.palette.primary.inputBorder};
-  font-family: 'Circe', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5;
-  &:focus {
-    border-bottom-color: teal;
-  }
-  &::placeholder {
-    font-family: 'Circe', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.5;
-    color: #bdbdbd;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 409.5px;
-  }
-`;
+import themeMaterial from 'theme/themeMaterial';
 
 export const Form = styled.form`
   margin: 0 auto;
@@ -59,6 +24,38 @@ export const Form = styled.form`
   } */
 `;
 
+export const InputContainer = styled.div`
+  height: 72px;
+  position: relative;
+  @media screen and (min-width: 768px) {
+  }
+`;
+
+export const Input = styled.input`
+  color: ${props => props.theme.palette.primary.inputBorder};
+  padding: 8px 8px 8px 54px;
+  outline: none;
+  border: none;
+  margin-right: 22px;
+  border-bottom: 1px solid ${props => props.theme.palette.primary.inputBorder};
+  font-family: 'Circe', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  &:focus {
+    border-bottom-color: teal;
+    transition: opacity 0.3s ease;
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 409.5px;
+  }
+`;
+
 export const EnvelopeImage = styled.img`
   width: 24px;
   height: 24px;
@@ -73,13 +70,7 @@ export const LockImage = styled.img`
   left: 10px;
   top: 7%;
 `;
-/* export const PersonImage = styled.img`
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  left: 10px;
-  top: 7%;
-`; */
+
 export const BoxLogo = styled.div`
   display: flex;
   align-items: center;

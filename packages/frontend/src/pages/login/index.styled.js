@@ -7,7 +7,7 @@ export const Container = styled.div`
     background-color: green;
   }
   @media screen and (min-width: 1280px) {
-    width: 768px;
+    width: 1280px;
     padding: 60px 117px 196px 118px;
     background-color: green;
   }
@@ -49,6 +49,7 @@ export const ContainerStyled = styled.div`
 
 export const BoxForm = styled.div`
   height: 100vh;
+  background-color: yellow;
   /* padding: 60px 117px 196px 118px; */
   @media screen and (min-width: 1280px) {
     height: 100vh;

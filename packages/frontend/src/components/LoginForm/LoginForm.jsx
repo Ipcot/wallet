@@ -86,12 +86,13 @@ const LoginForm = () => {
 
       <Button
         type="submit"
-        sx={{
-          marginBottom: 3,
+        sx={
+          /* marginBottom: 3,
           marginTop: 2,
           sm: 320,
-          width: '280px',
-        }}
+          width: '280px', */
+          ConfirmButton
+        }
         variant="contained"
         disabled={isValid}
       >
