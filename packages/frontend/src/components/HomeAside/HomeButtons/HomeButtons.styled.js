@@ -23,6 +23,7 @@ export const ButtonsListItem = styled.li`
     padding-right: 0px;
     &:last-child {
       padding-bottom: 0;
+      margin-bottom: 0;
     }
   }
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
@@ -52,6 +53,7 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
+  margin-top: 40px;
 
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     /* padding-top: 40px;
@@ -61,6 +63,7 @@ export const ButtonsWrapper = styled.div`
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     /* padding-top: 40px;
     padding-left: 16px; */
+
     justify-content: flex-start;
   }
 `;

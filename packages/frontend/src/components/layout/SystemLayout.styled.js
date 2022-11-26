@@ -18,19 +18,23 @@ export const MainContainer = styled(Container)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 15px 20px;
+  /* padding: 15px 20px; */
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
-    justify-content: flex-start;
-    flex-direction: row;
+    /* justify-content: flex-start; */
+    /* flex-direction: row; */
+    flex-direction: column;
+    gap: 20px;
     align-items: flex-start;
-    padding: 32px;
+    /* justify-content: flex-start; */
+    padding: 0 32px 0 32px;
   }
 
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     justify-content: flex-start;
     flex-direction: row;
     align-items: flex-start;
-    padding: 45px 15px;
+    /* padding: 45px 15px; */
+    padding: 0 16px 0 16px;
   }
 `;
 
