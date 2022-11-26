@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { DataGrid } from '@mui/x-data-grid';
+// import { DataGrid } from '@mui/x-data-grid';
 import themeMaterial from 'theme/themeMaterial';
 
 export const StatisticsTableStyle = styled.div`
