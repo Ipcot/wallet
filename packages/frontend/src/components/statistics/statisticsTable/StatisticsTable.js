@@ -1,3 +1,4 @@
+import { calculateNewValue } from '@testing-library/user-event/dist/utils';
 import * as React from 'react';
 import Operation from '../../../pages/statistics/userOperation.json';
 import {
@@ -19,7 +20,7 @@ import {
 // ];
 
 const columns = [
-  { field: 'name', headerName: 'Operation', width: 140 },
+  { field: 'name', headerName: 'Operation' },
   {
     field: 'sum',
     headerName: 'Sum',
