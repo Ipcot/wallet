@@ -72,6 +72,7 @@ const themeMaterial = createTheme({
   borders: {
     normal: '1px solid',
     thick: '3px solid',
+    bottomTable: '1px solid #dcdcdf',
   },
   radii: {
     small: '6px',
