@@ -218,7 +218,7 @@
         }
       }
     },
-    "/transactions": {
+    "/api/transactions": {
       "post": {
         "tags": ["Transaction"],
         "summary": "Creating of transactions",
@@ -247,12 +247,14 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
-          },
-          "409": {
-            "description": "Provided email already exists",
-            "content": {}
+            "description": "Transactions validation error (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestErrorResponse"
+                }
+              }
+            }
           }
         }
       },
@@ -261,19 +263,8 @@
         "summary": "Getting users's transactions",
         "parameters": [],
         "security": [{ "Bearer": [] }],
-        "requestBody": {
-          "description": "Transaction's object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TransactionRequest"
-              }
-            }
-          }
-        },
         "responses": {
-          "201": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
@@ -282,58 +273,31 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
-          },
-          "409": {
-            "description": "Provided email already exists",
-            "content": {}
           }
         }
       }
     },
-    "/transactions/categories": {
+    "/api/transactions/categories": {
       "get": {
         "tags": ["Transaction"],
         "summary": "Getting list of categories",
         "parameters": [],
         "security": [],
-        "requestBody": {
-          "description": "Transaction's object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TransactionRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "201": {
             "description": "Successful operation",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TransactionResponse"
+                  "$ref": "#/components/schemas/TransactionCategoriesResponse"
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
-          },
-          "409": {
-            "description": "Provided email already exists",
-            "content": {}
           }
         }
       }
     },
-    "/transactions/stats/:year/:month": {
+    "/api/transactions/stats/:year/:month": {
       "get": {
         "tags": ["Transaction"],
         "summary": "Getting statistics on transactions for the n-th month of the n-th year",
@@ -354,17 +318,6 @@
           }
         ],
         "security": [{ "Bearer": [] }],
-        "requestBody": {
-          "description": "Transaction's object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TransactionRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "201": {
             "description": "Successful operation",
@@ -375,14 +328,6 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
-          },
-          "409": {
-            "description": "Provided email already exists",
-            "content": {}
           }
         }
       }
@@ -480,12 +425,12 @@
         "properties": {
           "message": {
             "type": "string",
-            "description": "Login validation error. Error from Joi or other validation library",
-            "example": "\"email\" with value \"1@gmail.comm\" fails to match the required pattern: /^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$/"
+            "description": "Error from Joi or other validation library",
+            "example": "{'message': 'missing required name field'}"
           }
         },
         "example": {
-          "message": "\"email\" with value \"1@gmail.comm\" fails to match the required pattern: /^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$/"
+          "message": "{'message': 'missing required name field'}"
         }
       },
       "ConflictErrorResponse": {
@@ -529,17 +474,32 @@
       },
       "TransactionRequest": {
         "type": "object",
-        "required": ["email", "password"],
+        "required": ["date", "isIncome", "category", "comment", "sum"],
         "properties": {
-          "email": {
+          "date": {
             "type": "string",
-            "description": "User's email",
-            "format": "email"
+            "description": "Transaction's date",
+            "format": "date-time"
           },
-          "password": {
+          "isIncome": {
+            "type": "boolean",
+            "description": "Is this transaction an income?",
+            "example": "true"
+          },
+          "category": {
             "type": "string",
-            "description": "User's password",
-            "example": "qwerty123"
+            "description": "Transaction's category",
+            "example": "Auto"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Transaction's comment",
+            "example": "Some comment"
+          },
+          "sum": {
+            "type": "integer",
+            "description": "Transaction's sum",
+            "example": "123"
           }
         }
       },
@@ -548,21 +508,137 @@
         "items": {
           "type": "object",
           "properties": {
-            "email": {
+            "_id": {
               "type": "string",
-              "description": "User's email",
-              "format": "email"
+              "description": "Transaction's id",
+              "example": "ObjectId('5349b4ddd2781d08c09890f3')"
             },
-            "userId": {
-              "type": "number",
-              "description": "User's id",
-              "example": "32143232436545474"
+            "date": {
+              "type": "string",
+              "description": "Transaction's date",
+              "format": "date-time"
+            },
+            "isIncome": {
+              "type": "boolean",
+              "description": "Is this transaction an income?",
+              "example": "true"
+            },
+            "category": {
+              "type": "string",
+              "description": "Transaction's category",
+              "example": "Auto"
+            },
+            "comment": {
+              "type": "string",
+              "description": "Transaction's comment",
+              "example": "Some comment"
+            },
+            "sum": {
+              "type": "integer",
+              "description": "Transaction's sum",
+              "example": "123"
+            },
+            "owner": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "description": "Owner's id",
+                  "example": "ObjectId('5349b4ddd2781d08c09890f3')"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Owner's name",
+                  "example": "Name"
+                },
+                "email": {
+                  "type": "string",
+                  "description": "Owner's email",
+                  "format": "email"
+                }
+              },
+              "description": "Transaction's owner"
+            },
+            "month": {
+              "type": "integer",
+              "description": "Transaction's month",
+              "example": "11"
+            },
+            "year": {
+              "type": "integer",
+              "description": "Transaction's month",
+              "example": "2022"
             }
           }
         },
         "example": [
-          { "email": "1@gmail.com", "userId": "1" },
-          { "email": "2@gmail.com", "userId": "2" }
+          {
+            "_id": "6380ce2f76302978a5365f1f",
+            "date": "2022-11-25T14:15:19.345Z",
+            "isIncome": true,
+            "category": "Auto",
+            "comment": "Some comment",
+            "sum": 123,
+            "owner": {
+              "_id": "637d226a858715efedde9ed4",
+              "name": "Name",
+              "email": "email@mail.com"
+            },
+            "month": 11,
+            "year": 2022
+          }
+        ]
+      },
+      "TransactionCategoriesResponse": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Transaction's category id",
+              "example": "1"
+            },
+            "name": {
+              "type": "string",
+              "description": "Transaction's category name",
+              "example": "Main"
+            }
+          }
+        },
+        "example": [
+          {
+            "id": "1",
+            "name": "Main"
+          },
+          {
+            "id": "2",
+            "name": "Food"
+          },
+          {
+            "id": "3",
+            "name": "Auto"
+          },
+          {
+            "id": "4",
+            "name": "Development"
+          },
+          {
+            "id": "5",
+            "name": "Children"
+          },
+          {
+            "id": "6",
+            "name": "House"
+          },
+          {
+            "id": "7",
+            "name": "Education"
+          },
+          {
+            "id": "8",
+            "name": "Reset"
+          }
         ]
       }
     },
