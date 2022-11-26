@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
 export const InputContainer = styled.div`
-  margin-bottom: 40px;
+  height: 72px;
   position: relative;
+  @media screen and (min-width: 768px) {
+  }
 `;
 
 export const Input = styled.input`
@@ -16,11 +18,19 @@ export const Input = styled.input`
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 27px;
+  line-height: 1.5;
   &:focus {
-    color: teal;
     border-bottom-color: teal;
   }
+  &::placeholder {
+    font-family: 'Circe', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #bdbdbd;
+  }
+
   @media screen and (min-width: 768px) {
     width: 409.5px;
   }
@@ -29,10 +39,9 @@ export const Input = styled.input`
 export const Form = styled.form`
   margin: 0 auto;
   width: 320px;
-  padding: 107px 20px;
+  padding: 110px 20px 107px 20px;
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
   position: relative;
   align-items: center;
   background-color: ${props => props.theme.palette.primary.contrastText};
@@ -41,7 +50,13 @@ export const Form = styled.form`
     width: 533px;
     background-color: ${props => props.theme.palette.primary.contrastText};
     padding: 40px 58.5px 62px 65px;
+    border-radius: 20px;
   }
+  /*  @media (${props => props.theme.breakpoints.values.lg}) {
+    width: 533px;
+    background-color: ${props => props.theme.palette.primary.contrastText};
+    padding: 40px 58.5px 62px 65px;
+  } */
 `;
 
 export const EnvelopeImage = styled.img`
@@ -49,25 +64,32 @@ export const EnvelopeImage = styled.img`
   height: 24px;
   position: absolute;
   left: 10px;
-  top: 13%;
+  top: 7%;
 `;
 export const LockImage = styled.img`
   width: 24px;
   height: 24px;
   position: absolute;
   left: 10px;
-  top: 13%;
+  top: 7%;
 `;
+/* export const PersonImage = styled.img`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 10px;
+  top: 7%;
+`; */
 export const BoxLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 `;
-export const LogoImage = styled.img`
+/* export const LogoImage = styled.img`
   width: 38px;
   height: 30px;
-`;
+`; */
 
 export const LogoTitle = styled.div`
   font-family: 'Poppins';
@@ -80,5 +102,26 @@ export const LogoTitle = styled.div`
   color: #000000;
   margin-right: 20px;
 `;
+export const Post = styled.p`
+  color: #bf1650;
+  padding-top: 5px;
+  padding-left: 30px;
+  position: absolute;
+  left: 20px;
+  top: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 0.87;
+  &::before {
+    display: inline;
+    content: '⚠ ';
+  }
+`;
 
-export const Button = styled.button``;
+export const Button = styled.button`
+  @media (${props => props.theme.breakpoints.values.sm}) {
+    width: 280px;
+  }
+`;

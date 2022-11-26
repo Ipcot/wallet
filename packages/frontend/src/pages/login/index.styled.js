@@ -1,7 +1,16 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.img`
-  width: 768px;
+export const Container = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 60px 117px 196px 118px;
+    background-color: green;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 768px;
+    padding: 60px 117px 196px 118px;
+    background-color: green;
+  }
 `;
 
 export const LoginTitle = styled.h1`
@@ -9,6 +18,9 @@ export const LoginTitle = styled.h1`
   font-family: 'Poppins';
   font-size: 30px;
   line-height: 45px;
+  @media screen and (min-width: 768px) {
+    margin-left: 45.5px;
+  }
 `;
 
 export const LoginImage = styled.img`
@@ -22,13 +34,13 @@ export const LoginImage = styled.img`
 `;
 
 export const ContainerStyled = styled.div`
-  height: 100vh;
   margin: 0 auto;
-  padding: 60px 394px 50px 114px;
   width: 533px;
   display: flex;
   align-items: center;
+  margin-bottom: 50px;
   @media screen and (min-width: 1280px) {
+    height: 100vh;
     flex-direction: column;
     background-color: ${props => props.theme.palette.primary.loginMain};
     padding: 150px 31px 77.5px 76px;
@@ -37,8 +49,9 @@ export const ContainerStyled = styled.div`
 
 export const BoxForm = styled.div`
   height: 100vh;
-  padding: 0px 117px 196px 118px;
+  /* padding: 60px 117px 196px 118px; */
   @media screen and (min-width: 1280px) {
+    height: 100vh;
     padding: 136px 91px 116px 107px;
   }
 `;

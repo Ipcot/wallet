@@ -1,3 +1,4 @@
+import Media from 'react-media';
 import LoginForm from 'components/LoginForm';
 import LoginImg from 'assets/icons/login.png';
 import {
@@ -6,17 +7,22 @@ import {
   ContainerStyled,
   LoginImage,
   LoginTitle,
+  Container,
 } from './index.styled';
-/* import { Container } from 'components/ui/Container'; */
-import Container from 'components/layout/common/Container/Container';
-const Register = () => {
+
+const Login = () => {
   return (
     <Container>
       <BoxStyled>
-        <ContainerStyled>
-          <LoginImage alt="logo" src={`${LoginImg}`} />
-          <LoginTitle>Finance App</LoginTitle>
-        </ContainerStyled>
+        <Media
+          query="(min-width: 767px)"
+          render={() => (
+            <ContainerStyled>
+              <LoginImage alt="logo" src={`${LoginImg}`} />
+              <LoginTitle>Finance App</LoginTitle>
+            </ContainerStyled>
+          )}
+        />
         <BoxForm>
           <LoginForm />
         </BoxForm>
@@ -24,4 +30,4 @@ const Register = () => {
     </Container>
   );
 };
-export default Register;
+export default Login;
