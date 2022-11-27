@@ -1,12 +1,30 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'store/auth';
 import { Modal, Box, Button, Typography, Stack } from '@mui/material';
-import { LogoutImg, LogoutButton, UserExit, contentStyles, CloseBtn } from './ModalLogout.styled';
+import {
+  LogoutImg,
+  LogoutButton,
+  UserExit,
+  contentStyles,
+  CloseBtnSymbol,
+  modalImg,
+  modalHeding,
+  ConfirmButton,
+  CloseBtn,
+} from './ModalLogout.styled';
 import Media from 'react-media';
 
 const ModalLogout = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(authOperations.logOut);
+    handleClose();
+  }
 
   return (
     <div>
@@ -22,28 +40,16 @@ const ModalLogout = () => {
         onClose={handleClose}
       >
         <Box sx={[contentStyles]}>
-          <Button sx={{
-            width: '100%',
-          }}
+          <Button sx={CloseBtn}
             type="button"
             onClick={handleClose}
           >
-            <CloseBtn/>
+            <CloseBtnSymbol/>
           </Button>
-          <Typography
-            mb={2}
-            variant="h4"
-            textAlign='center'
-            fontWeight={500}
-          >
+          <Typography sx={modalHeding}>
             Are you sure you want to logout?
           </Typography>
-          <Box
-            sx={{
-              width: 320,
-              margin: '0 auto',
-            }}
-          >
+          <Box sx={modalImg}>
             <img
               src="https://www.meme-arsenal.com/memes/f62a1fb31a58fa6a466ba878379702fa.jpg"
               alt="cat"
@@ -58,21 +64,16 @@ const ModalLogout = () => {
           >
             <Button
               variant="contained"
-              onClick={handleClose}
-              sx={{
-                marginBottom: '10px',
-              }}
+              sx={ConfirmButton}
+              onClick={handleClick}
             >
               LOG OUT
             </Button>
             <Button
               variant="outlined"
               color="secondary"
-              onClick={handleClose}
-              sx={{
-                marginTop: '10px',
-              }}
-            >
+              sx={ConfirmButton}
+              onClick={handleClose}>
               CANCEL
             </Button>
           </Stack>
