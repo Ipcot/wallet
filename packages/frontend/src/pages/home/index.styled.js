@@ -130,3 +130,13 @@ export const Cell = styled.td`
     }
   }};
 `;
+
+export const BoxButton = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  @media (min-width: 767px) {
+    bottom: 40px;
+    right: 40px;
+  }
+`;
