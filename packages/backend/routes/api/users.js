@@ -4,6 +4,7 @@ const {
   registerController,
   loginController,
   logoutController,
+  getCurrent,
 } = require('../../controllers/authControllers');
 
 const validationData = require('../../middlewares/userValidation');
@@ -28,9 +29,7 @@ router.post(
 
 router.get('/logout', verifyerToken, ctrlWrapper(logoutController));
 
-// router.get('/current', async (req, res, next) => {
-//   res.json({ message: 'template message' });
-// });
+router.get('/current', verifyerToken, ctrlWrapper(getCurrent));
 
 // router.post('/refresh', async (req, res, next) => {
 //   res.json({ message: 'template message' });
