@@ -1,5 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getTransactions, postTransaction } from 'api/fetchTransaction';
+import {
+  getTransactions,
+  postTransaction,
+  getTransactionsByCategory,
+} from 'api/fetchTransaction';
 
 const fetchTransactions = createAsyncThunk(
   '/transactions',
@@ -22,9 +26,22 @@ const addTransaction = createAsyncThunk('/transactions', async data => {
   }
 });
 
+const fetchTransactionsByCategory = createAsyncThunk(
+  '/transactions',
+  async ({ year, month }, thunkAPI) => {
+    try {
+      const result = await getTransactionsByCategory(year, month);
+      return result;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+);
+
 const transactionsOperations = {
   fetchTransactions,
   addTransaction,
+  fetchTransactionsByCategory,
 };
 
 export default transactionsOperations;
