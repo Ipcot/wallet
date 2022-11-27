@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
 
 import Header from "./Header"
-import Loader from './Loader'
+import Loader from './loader/Loader'
 import { Container, Sider, MainContainer } from './SystemLayout.styled'
 import TestMUIComponents from 'components/test'
 
