@@ -25,7 +25,7 @@ const CurrentBalance = () => {
   return (
     <BalanceWrapper>
       <BalanceTitle>Your balance</BalanceTitle>
-      <BalanceValue>&#8372; {balance}</BalanceValue>
+      <BalanceValue>&#x20b4; {balance}</BalanceValue>
     </BalanceWrapper>
   );
 };
