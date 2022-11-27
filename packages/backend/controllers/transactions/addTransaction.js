@@ -5,23 +5,27 @@ const addTransaction = async (req, res) => {
   const { _id: owner } = req.user;
   const { isIncome, sum, date } = req.body;
 
-  console.log(isIncome);
-
-  User.findById(owner, function (err, user) {
+  User.findById(owner, async function (err, user) {
     if (err) return;
     user.balance = isIncome ? user.balance + sum : user.balance - sum;
 
-    console.log(user.balance);
+    const createdDate = new Date(date);
+    const month = createdDate.getMonth() + 1;
+    const year = createdDate.getFullYear();
+
+    const transactionBalance = user.balance;
+
+    const result = await Transaction.create({
+      ...req.body,
+      owner,
+      month,
+      year,
+      balance: transactionBalance,
+    });
+    res.status(201).json(result);
 
     user.save();
   });
-
-  const createdDate = new Date(date);
-  const month = createdDate.getMonth() + 1;
-  const year = createdDate.getFullYear();
-
-  const result = await Transaction.create({ ...req.body, owner, month, year });
-  res.status(201).json(result);
 };
 
 module.exports = addTransaction;

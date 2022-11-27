@@ -1,20 +1,16 @@
-import Media from 'react-media';
+/* import Media from 'react-media'; */
 import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
-/* import EnvelopeImg from 'assets/icons/envelope.svg'; */
-/* import LockImg from 'assets/icons/lock.svg'; */
-/* import LogoImg from 'assets/icons/logo.svg'; */
-/* import PersonImg from 'assets/icons/person.svg'; */
 import { passwordStrength } from 'check-password-strength';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
 
 import {
+  ConfirmButton,
   Input,
   Form,
   InputContainer,
   EnvelopeImage,
   LockImage,
-  /*  LogoImage, */
   LogoTitle,
   BoxLogo,
   PersonImage,
@@ -69,13 +65,11 @@ const RegisterForm = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <BoxLogo>
-        {/*  <LogoImage alt="logo" src={`${LogoImg}`} /> */}
         <LogoImg style={{ width: '38px', height: '30px' }} />
         <LogoTitle>Wallet</LogoTitle>
       </BoxLogo>
 
       <InputContainer>
-        {/*  <EnvelopeImage alt="envelope" src={`${EnvelopeImg}`} /> */}
         <EnvelopeImage />
 
         <Input
@@ -85,15 +79,6 @@ const RegisterForm = () => {
               value:
                 /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
               /* /^([a-zA-Z]|[а-яА-Я]){6,16}$/ */
-
-              /* 
-
-- минимальное количество символов в поле – 10 (включительно), максимальное количество символов в поле – 63 (включительно)
-
-- поле может содержать дефисы, причем дефис не может находиться в начале или конце Email
-- в части эмейла по имени пользователя могут быть латинские буквы, цифры, точка, дефис, подчеркивание"""
- */
-
               message:
                 'Include Latin,numbers,signs,before "@" and "dot", at least 2 characters!',
             },
@@ -112,7 +97,11 @@ const RegisterForm = () => {
           onChange={e => {
             console.log(e.currentTarget.value);
           }}
+          /* register('firstName', {
+  onChange: (e) => console.log(e)
+}) */
           {...register('password', {
+            onChange: e => console.log(e),
             required: 'The field is required!',
             pattern: {
               value:
@@ -160,8 +149,7 @@ const RegisterForm = () => {
           {...register('firstname', {
             required: 'The field is required!',
             pattern: {
-              value:
-                /^([a-zA-Z]|[а-яА-Я]){6,16}$/ /* {1}Первый символ только цифра или буква */,
+              value: /^([a-zA-Z]|[а-яА-Я]){6,16}$/,
               message:
                 'Firstname may contain only letters! Minimum 6 to maximum 16 characters!',
               /*  minLength: {
@@ -195,12 +183,9 @@ const RegisterForm = () => {
       </Button>
       <Button
         type="submit"
-        /* disabled={isValid} */
         color="secondary"
         variant="outlined"
-        /* sx={{
-          width: '300px',
-        }} */
+        sx={ConfirmButton}
       >
         Log in
       </Button>

@@ -3,7 +3,8 @@ import CurrentBalance from './CurrentBalance';
 // import Grid from '@mui/material/Grid';
 // import themeMaterial from '../../theme/themeMaterial';
 // import { ThemeProvider } from '@mui/material/styles';
-import { AsideWrapper } from './Sider.styled';
+import { AsideWrapper, SydeBarWrapper } from './Sider.styled';
+import Currency from 'components/currency/Currency';
 
 const Sider = () => {
   return (
@@ -19,11 +20,13 @@ const Sider = () => {
     //     </Grid>
     //   </Grid>
     // </ThemeProvider>
-
-    <AsideWrapper>
-      <HomeButtons />
-      <CurrentBalance />
-    </AsideWrapper>
+    <SydeBarWrapper>
+      <AsideWrapper>
+        <HomeButtons />
+        <CurrentBalance />
+      </AsideWrapper>
+      <Currency />
+    </SydeBarWrapper>
   );
 };
 export default Sider;

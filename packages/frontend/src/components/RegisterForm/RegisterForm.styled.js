@@ -2,6 +2,18 @@ import styled from '@emotion/styled';
 import { ReactComponent as PersonPic } from 'assets/icons/person.svg';
 import { ReactComponent as LockPic } from 'assets/icons/lock.svg';
 import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
+import themeMaterial from '../../theme/themeMaterial';
+
+export const ConfirmButton = {
+  [themeMaterial.breakpoints.down('md')]: {
+    width: 280,
+    marginBottom: '10px',
+    marginTop: '10px',
+  },
+  width: 300,
+  marginBottom: '10px',
+  marginTop: '10px',
+};
 
 export const InputContainer = styled.div`
   height: 72px;
@@ -15,28 +27,25 @@ export const Input = styled.input`
   border: none;
   margin-right: 22px;
   border-bottom: 1px solid ${props => props.theme.palette.primary.inputBorder};
-  /* font-size: ${p => p.theme.fontSizes.xl};
+
+  font-size: ${p => p.theme.fontSizes.m};
   font-family: ${p => p.theme.fonts.body};
   font-weight: ${p => p.theme.fontWeights.normal};
-  line-height: ${p => p.theme.lineHeights.body}; */
+  line-height: ${p => p.theme.lineHeights.body};
+  /* font-family: 'Circe', sans-serif; */
+
   /*  font-family: 'Circe', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5; */
-
-  font-family: 'Circe', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5;
-  color: teal;
+  color: ${p => p.theme.palette.colors.text};
   &::placeholder {
     color: #bdbdbd;
   }
   &:focus {
     border-bottom-color: #4a56e2;
-    transition: opacity 0.3s ease;
+
     &::placeholder {
       color: transparent;
     }
@@ -62,6 +71,7 @@ export const Form = styled.form`
     background-color: ${props => props.theme.palette.primary.contrastText};
     padding: 40px 58.5px 62px 65px;
     border-radius: 20px;
+    /* border-radius: ${p => p.theme.shape.borderRadius}; */
   }
 `;
 

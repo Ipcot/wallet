@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 import EnvelopeImg from 'assets/icons/envelope.svg';
 import LockImg from 'assets/icons/lock.svg';
-/* import LogoImg from 'assets/icons/logo.svg'; */
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
 
 import {
@@ -12,12 +11,9 @@ import {
   InputContainer,
   EnvelopeImage,
   LockImage,
-  /* LogoImage, */
   LogoTitle,
   BoxLogo,
   Post,
-  ProgressContainer,
-  ProgressBar,
 } from './LoginForm.styled';
 import { useState } from 'react';
 
@@ -86,13 +82,10 @@ const LoginForm = () => {
 
       <Button
         type="submit"
-        sx={
-          /* marginBottom: 3,
+        sx={{
+          marginBottom: 3,
           marginTop: 2,
-          sm: 320,
-          width: '280px', */
-          ConfirmButton
-        }
+        }}
         variant="contained"
         disabled={isValid}
       >
