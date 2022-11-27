@@ -10,8 +10,13 @@ import {
   Separator,
 } from './Header.styled';
 import ModalLogout from '../../ModalLogout';
+import { useSelector } from 'react-redux';
+import authSelectors from 'store/auth/authSelectors';
 
 const Header = () => {
+  const user = useSelector(authSelectors.getUser);
+  const userName = user.name;
+
   return (
     <HeaderBar>
       <LogoWrapper>
@@ -30,7 +35,7 @@ const Header = () => {
         </NavLink>
       </div>
       <UserControlWrapper>
-        <UserName>Name</UserName>
+        <UserName>{userName}</UserName>
         <Media
           query="(min-width: 767px)"
           render={() => <Separator></Separator>}
