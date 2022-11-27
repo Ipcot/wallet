@@ -1,4 +1,6 @@
 import Media from 'react-media';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'store/auth';
 import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { passwordStrength } from 'check-password-strength';
@@ -21,6 +23,7 @@ import {
 import { useEffect, useState } from 'react';
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
   const {
     register,
     formState: { errors, isValid },
@@ -29,7 +32,12 @@ const RegisterForm = () => {
   } = useForm({ mode: 'onChange' });
 
   const onSubmit = data => {
-    alert(JSON.stringify('Отправлено:', data));
+    const credentials = {
+      name: data.firstname,
+      email: data.email,
+      password: data.password,
+    };
+    dispatch(authOperations.register(credentials));
     reset();
   };
 
@@ -171,7 +179,7 @@ const RegisterForm = () => {
           marginTop: 2,
         }}
         variant="contained"
-        disabled={isValid}
+        // disabled={isValid}
       >
         Register
       </Button>

@@ -9,9 +9,8 @@ import {
   LoginTitle,
   Container,
 } from './index.styled';
-/* import { Container } from 'components/ui/Container'; */
 
-const Register = () => {
+const Login = () => {
   return (
     <Container>
       <BoxStyled>
@@ -31,4 +30,4 @@ const Register = () => {
     </Container>
   );
 };
-export default Register;
+export default Login;

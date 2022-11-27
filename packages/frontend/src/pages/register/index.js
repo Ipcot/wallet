@@ -10,7 +10,6 @@ import {
   LoginTitle,
   Container,
 } from './index.styled';
-/* import { Container } from 'components/ui/Container'; */
 
 const Register = () => {
   return (

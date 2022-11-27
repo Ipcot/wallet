@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Gradient from 'components/Gradient/Gradient';
 import { useState, useEffect } from 'react';
 import {
   CurrencyWrapper,
@@ -8,6 +9,7 @@ import {
   CurrencyTableTd,
   GradientStyle,
   CurrencyTableHeadTr,
+  CurrencyErrorMasage,
 } from './Currency.styled';
 
 const getRatesApi = [
@@ -52,7 +54,8 @@ const Currency = () => {
   useEffect(() => {
     const getRates = async () => {
       try {
-        const response = await getRatesApi;
+        // await getCCurrency()
+        const response = await getCCurrency();
         const res = response.filter(
           obj =>
             (obj.currencyCodeA === 985 ||
@@ -71,45 +74,35 @@ const Currency = () => {
   useEffect(() => {
     window.localStorage.setItem('rates', JSON.stringify(rates));
   }, [rates]);
-  console.log();
   return (
     <CurrencyWrapper>
-      <CurrencyTable cellpadding="0" cellspacing="0">
-        <CurrencyTableHeadTr>
-          <CurrencyTableHead>Currency</CurrencyTableHead>
-          <CurrencyTableHead>Purchase</CurrencyTableHead>
-          <CurrencyTableHead>Sale</CurrencyTableHead>
-        </CurrencyTableHeadTr>
-        {rates.map(element => (
-          <CurrencyTableTr>
-            <CurrencyTableTd>
-              {cc.number(element.currencyCodeA).code}
-            </CurrencyTableTd>
-            <CurrencyTableTd>
-              {element.rateBuy || element.rateCross}
-            </CurrencyTableTd>
-            <CurrencyTableTd>
-              {element.rateSell || element.rateCross}
-            </CurrencyTableTd>
-          </CurrencyTableTr>
-        ))}
-        {/* <CurrencyTableTr>
-          <CurrencyTableTd>USD</CurrencyTableTd>
-          <CurrencyTableTd>27.55</CurrencyTableTd>
-          <CurrencyTableTd>27.65</CurrencyTableTd>
-        </CurrencyTableTr>
-        <CurrencyTableTr>
-          <CurrencyTableTd>USD</CurrencyTableTd>
-          <CurrencyTableTd>27.55</CurrencyTableTd>
-          <CurrencyTableTd>27.65</CurrencyTableTd>
-        </CurrencyTableTr>
-        <CurrencyTableTr>
-          <CurrencyTableTd>USD</CurrencyTableTd>
-          <CurrencyTableTd>27.55</CurrencyTableTd>
-          <CurrencyTableTd>27.65</CurrencyTableTd>
-        </CurrencyTableTr> */}
-      </CurrencyTable>
-      <GradientStyle></GradientStyle>
+      {rates.length === 0 ? (
+        <CurrencyErrorMasage>
+          Exchange rate is not available now!
+        </CurrencyErrorMasage>
+      ) : (
+        <CurrencyTable cellpadding="0" cellspacing="0">
+          <CurrencyTableHeadTr>
+            <CurrencyTableHead>Currency</CurrencyTableHead>
+            <CurrencyTableHead>Purchase</CurrencyTableHead>
+            <CurrencyTableHead>Sale</CurrencyTableHead>
+          </CurrencyTableHeadTr>
+          {rates.map(element => (
+            <CurrencyTableTr key={element.currencyCodeA}>
+              <CurrencyTableTd>
+                {cc.number(element.currencyCodeA).code}
+              </CurrencyTableTd>
+              <CurrencyTableTd>
+                {element.rateBuy || element.rateCross}
+              </CurrencyTableTd>
+              <CurrencyTableTd>
+                {element.rateSell || element.rateCross}
+              </CurrencyTableTd>
+            </CurrencyTableTr>
+          ))}
+        </CurrencyTable>
+      )}
+      <Gradient></Gradient>
     </CurrencyWrapper>
   );
 };
