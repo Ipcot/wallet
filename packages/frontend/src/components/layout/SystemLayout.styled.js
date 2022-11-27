@@ -23,24 +23,13 @@ export const MainContainer = styled(Container)`
     gap: 20px;
     align-items: flex-start;
     padding: 0 32px 0 32px;
-    background-image: url('./img/blured-tablet-background.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     justify-content: flex-start;
     flex-direction: row;
     align-items: flex-start;
     padding: 0 16px 0 16px;
-    background-image: url('./img/blured-desktop-background.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
 `;
 
-export const Sider = styled.div`
-  margin-right: 70px;
-  background-color: red;
-`;
+export const Sider = styled.div``;
