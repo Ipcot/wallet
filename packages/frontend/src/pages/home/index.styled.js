@@ -72,7 +72,8 @@ export const ConteinerTable = styled.div`
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     max-width: 715px;
     margin-left: auto;
-    margin-right: 0;
+    margin-right: auto;
+    padding-top: 45px;
   }
 `;
 

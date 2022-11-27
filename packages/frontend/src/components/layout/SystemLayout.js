@@ -9,7 +9,6 @@ import {
   Sider as SiderComponent,
   MainContainer,
 } from './SystemLayout.styled';
-// import TestMUIComponents from 'components/test';
 
 const SystemLayout = () => {
   return (
@@ -26,7 +25,6 @@ const SystemLayout = () => {
             <Outlet />
           </Suspense>
         </MainContainer>
-        {/* <TestMUIComponents /> */}
       </main>
     </div>
   );
