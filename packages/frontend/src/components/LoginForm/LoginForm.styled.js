@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
-
 import { ReactComponent as LockPic } from 'assets/icons/lock.svg';
 import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
-import themeMaterial from '../../theme/themeMaterial';
 
 export const InputContainer = styled.div`
   height: 72px;
   position: relative;
+  width: 100%;
 `;
 
 export const Input = styled.input`
@@ -14,8 +13,10 @@ export const Input = styled.input`
   padding: 8px 8px 8px 54px;
   outline: none;
   border: none;
-  margin-right: 22px;
+  /* margin-right: 22px; */
   border-bottom: 1px solid ${props => props.theme.palette.primary.inputBorder};
+  width: 100%;
+  display: block;
 
   font-size: ${p => p.theme.fontSizes.m};
   font-family: ${p => p.theme.fonts.body};

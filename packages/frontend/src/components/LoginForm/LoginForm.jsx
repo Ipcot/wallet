@@ -89,17 +89,18 @@ const LoginForm = () => {
           })}
           placeholder="Password"
         />
-        <InputAdornments />
+        {/* <InputAdornments /> */}
         <div>
           {errors?.password && (
             <Post>{errors?.password?.message || 'Error!'}</Post>
           )}
         </div>
       </InputContainer>
-      {/* <InputContainer>
-        <InputAdornments />
+      <InputContainer>
         <LockImage alt="lock" src={`${LockImg}`} />
-        <Input
+        <InputAdornments />
+
+        {/* <Input
           onChange={e => {
             console.log(e.currentTarget.value);
           }}
@@ -126,9 +127,9 @@ const LoginForm = () => {
           {errors?.password && (
             <Post>{errors?.password?.message || 'Error!'}</Post>
           )}
-        </div>
+        </div> */}
       </InputContainer>
- */}
+
       <Button
         type="submit"
         sx={{
