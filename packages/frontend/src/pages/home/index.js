@@ -1,6 +1,10 @@
 import Media from 'react-media';
 import { cardRender } from './helpers/cardRender';
 import { tableRender } from './helpers/tableRender';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import { BoxButton } from './index.styled';
+
 function createData(date, type, category, comment, sum, balance) {
   return { date, type, category, comment, sum, balance };
 }
@@ -21,6 +25,16 @@ const Home = () => {
           {matches => (matches.small ? cardRender(datas) : tableRender(datas))}
         </Media>
       ) : null}
+      <BoxButton sx={{ '& > :not(style)': { m: 1 } }}>
+        <Fab
+          color="primary"
+          aria-label="add"
+          sx={{ width: 44, height: 44 }}
+          onClick={() => console.log(`ModalAddTransactionIsOpen`)}
+        >
+          <AddIcon sx={{ fontSize: 30 }} />
+        </Fab>
+      </BoxButton>
     </>
   );
 };
