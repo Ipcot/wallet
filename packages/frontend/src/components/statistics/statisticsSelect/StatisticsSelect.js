@@ -1,57 +1,69 @@
 import { SelectWrapper } from './SelectWrapper.styled';
-import { StatisticsSelectStyle } from './StatisticsSelectStyle.styled';
-import { FormControl, MenuItem } from '@mui/material';
-import { useState } from 'react';
-// import { ReactComponent as SelectIcon } from '../img/Vector.svg';
-import { SelectIcon } from './SelectIcon.styled';
+import { useEffect, useState } from 'react';
+import {
+  StatisticsContainer,
+  StatisticsOptions,
+  StatisticsSelectStyle,
+} from './StatisticsSelectStyle.styled';
+
+const yaerArray = [2022, 2021, 2020];
+const monArray = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+let date = new Date(Date.now());
 
 const StatisticsSelect = ({ operation }) => {
-  const [year, setYear] = useState('2022');
-  const [month, setMonth] = useState('November');
+  const [year, setYear] = useState(date.getFullYear());
+  const [month, setMonth] = useState(monArray[date.getMonth()]);
 
   const name = operation.map(element => element.name);
-  const handleChangeYear = e => {
-    setYear(e.target.value);
-  };
-  const handleChangeMonth = e => {
-    setMonth(e.target.value);
+
+  const handleChange = e => {
+    if (e.target.name === 'month') {
+      setMonth(e.target.value);
+    }
+    if (e.target.name === 'year') {
+      setYear(e.target.value);
+    }
   };
 
   return (
     <SelectWrapper>
-      <FormControl fullWidth={true}>
-        <SelectIcon />
-        <StatisticsSelectStyle defaultValue={year} onChange={handleChangeYear}>
-          <MenuItem value={2022}>2022</MenuItem>
-          <MenuItem value={2021}>2021</MenuItem>
-          <MenuItem value={2020}>2020</MenuItem>
-        </StatisticsSelectStyle>
-      </FormControl>
-      <FormControl fullWidth={true}>
-        <SelectIcon />
+      <StatisticsContainer>
         <StatisticsSelectStyle
+          onChange={handleChange}
           defaultValue={month}
-          onChange={handleChangeMonth}
+          name={'month'}
         >
-          <MenuItem value={'November'}>November</MenuItem>
-          <MenuItem value={'October '}>October </MenuItem>
-          <MenuItem value={'September '}>September </MenuItem>
+          {monArray.map(element => (
+            <StatisticsOptions key={element}>{element}</StatisticsOptions>
+          ))}
         </StatisticsSelectStyle>
-      </FormControl>
+      </StatisticsContainer>
+      <StatisticsContainer>
+        <StatisticsSelectStyle
+          onChange={handleChange}
+          defaultValue={year}
+          name={'year'}
+        >
+          {yaerArray.map(element => (
+            <StatisticsOptions key={element}>{element}</StatisticsOptions>
+          ))}
+        </StatisticsSelectStyle>
+      </StatisticsContainer>
     </SelectWrapper>
   );
 };
 
 export default StatisticsSelect;
-
-// MuiSelect - select
-// MuiSelect - outlined
-// MuiInputBase - input
-// MuiOutlinedInput - input
-// css - dfve8h - MuiSelect - select - MuiInputBase - input - MuiOutlinedInput - input
-
-// MuiSvgIcon - root
-// MuiSvgIcon - fontSizeMedium
-// MuiSelect - icon
-// MuiSelect - iconOutlined
-// css - hfutr2 - MuiSvgIcon - root - MuiSelect - icon
