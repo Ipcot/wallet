@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import 'react-datetime/css/react-datetime.css';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -29,7 +28,6 @@ const TransactionModal = props => {
     control,
     watch,
     setValue,
-    getValues,
     formState: { errors, isDirty, isValid,  },
     handleSubmit,
     reset,
