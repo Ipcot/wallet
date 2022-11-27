@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import EnvelopeImg from 'assets/icons/envelope.svg';
 import LockImg from 'assets/icons/lock.svg';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
+import InputAdornments from './showPassword';
 
 import {
   Input,
@@ -37,17 +38,23 @@ const LoginForm = () => {
         <LogoImg style={{ width: '38px', height: '30px' }} />
         <LogoTitle>Wallet</LogoTitle>
       </BoxLogo>
-
       <InputContainer>
         <EnvelopeImage alt="envelope" src={`${EnvelopeImg}`} />
         <Input
           {...register('email', {
             required: 'The field is required!',
+            minLength: {
+              value: 10,
+              message: 'Minimum 10 characters!',
+            },
+            maxLength: {
+              value: 15,
+              message: 'Max 15 characters!',
+            },
             pattern: {
               value:
                 /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
-
-              message: 'Minimum 5 symbols!Minimum 6 to maximum 12 characters!',
+              message: 'Enter a valid email!',
             },
           })}
           placeholder="E-mail"
@@ -56,8 +63,41 @@ const LoginForm = () => {
           {errors?.email && <Post>{errors?.email?.message || 'Error!'}</Post>}
         </div>
       </InputContainer>
-
       <InputContainer>
+        <LockImage alt="lock" src={`${LockImg}`} />
+
+        <Input
+          onChange={e => {
+            console.log(e.currentTarget.value);
+          }}
+          {...register('password', {
+            required: 'The field is required!',
+            minLength: {
+              value: 6,
+              message: 'Minimum 6 characters!',
+            },
+            maxLength: {
+              value: 16,
+              message: 'Max 16 characters!',
+            },
+
+            pattern: {
+              value:
+                /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#])$/,
+              message: 'Enter a valid password!',
+            },
+          })}
+          placeholder="Password"
+        />
+        <InputAdornments />
+        <div>
+          {errors?.password && (
+            <Post>{errors?.password?.message || 'Error!'}</Post>
+          )}
+        </div>
+      </InputContainer>
+      {/* <InputContainer>
+        <InputAdornments />
         <LockImage alt="lock" src={`${LockImg}`} />
         <Input
           onChange={e => {
@@ -65,10 +105,19 @@ const LoginForm = () => {
           }}
           {...register('password', {
             required: 'The field is required!',
+            minLength: {
+              value: 6,
+              message: 'Minimum 6 characters!',
+            },
+            maxLength: {
+              value: 16,
+              message: 'Max 16 characters!',
+            },
+
             pattern: {
               value:
-                /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]){6-12}$/,
-              message: 'Minimum 6 to maximum 12 characters!',
+                /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#])$/,
+              message: 'Enter a valid password!',
             },
           })}
           placeholder="Password"
@@ -79,7 +128,7 @@ const LoginForm = () => {
           )}
         </div>
       </InputContainer>
-
+ */}
       <Button
         type="submit"
         sx={{

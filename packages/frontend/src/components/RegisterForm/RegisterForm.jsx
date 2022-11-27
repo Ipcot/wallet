@@ -1,4 +1,4 @@
-/* import Media from 'react-media'; */
+import Media from 'react-media';
 import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { passwordStrength } from 'check-password-strength';
@@ -18,7 +18,7 @@ import {
   ProgressContainer,
   ProgressBar,
 } from './RegisterForm.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const RegisterForm = () => {
   const {
@@ -33,17 +33,10 @@ const RegisterForm = () => {
     reset();
   };
 
-  const [password, setPassword] = useState('');
+  const [passwordStyles, setPasswordStyles] = useState({});
 
-  const result = passwordStrength(password);
-
-  const handleChange1 = e => {
-    setPassword(e.currentTarget.value);
-    console.log(e.currentTarget.value);
-  };
-
-  const changeColor = () => {
-    switch (result.value) {
+  const changeColor = value => {
+    switch (value) {
       case 'Too weak':
         return 'red';
       case 'Weak':
@@ -57,10 +50,13 @@ const RegisterForm = () => {
     }
   };
 
-  const changeProgressBarSettings = () => ({
-    width: `${(result.id + 1) * 25}%`,
-    background: changeColor(),
-  });
+  const verifyPassword = e => {
+    const result = passwordStrength(e.target.value);
+    setPasswordStyles({
+      width: `${(result.id + 1) * 25}%`,
+      background: changeColor(result.value),
+    });
+  };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -71,16 +67,21 @@ const RegisterForm = () => {
 
       <InputContainer>
         <EnvelopeImage />
-
         <Input
           {...register('email', {
             required: 'The field is required!',
+            minLength: {
+              value: 10,
+              message: 'Minimum 10 characters!',
+            },
+            maxLength: {
+              value: 15,
+              message: 'Max 15 characters!',
+            },
             pattern: {
               value:
                 /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
-              /* /^([a-zA-Z]|[а-яА-Я]){6,16}$/ */
-              message:
-                'Include Latin,numbers,signs,before "@" and "dot", at least 2 characters!',
+              message: 'Enter a valid email!',
             },
           })}
           placeholder="E-mail"
@@ -91,18 +92,13 @@ const RegisterForm = () => {
       </InputContainer>
 
       <InputContainer>
-        {/* <LockImage alt="lock" src={`${LockImg}`} /> */}
         <LockImage />
         <Input
-          onChange={e => {
-            console.log(e.currentTarget.value);
-          }}
-          /* register('firstName', {
-  onChange: (e) => console.log(e)
-}) */
           {...register('password', {
-            onChange: e => console.log(e),
+            onChange: verifyPassword,
+
             required: 'The field is required!',
+
             pattern: {
               value:
                 /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]){6-12}$/,
@@ -119,11 +115,10 @@ const RegisterForm = () => {
       </InputContainer>
 
       <ProgressContainer>
-        <ProgressBar style={changeProgressBarSettings()} />
+        <ProgressBar style={passwordStyles} />
       </ProgressContainer>
 
       <InputContainer>
-        {/* <LockImage alt="lock" src={`${LockImg}`} /> */}
         <LockImage />
         <Input
           {...register('confirmpassword', {
@@ -143,27 +138,26 @@ const RegisterForm = () => {
       </InputContainer>
 
       <InputContainer>
-        {/*  <PersonImage alt="lock" src={`${PersonImg}`} /> */}
         <PersonImage />
         <Input
           {...register('firstname', {
             required: 'The field is required!',
+            minLength: {
+              value: 6,
+              message: 'Minimum 10 characters!',
+            },
+            maxLength: {
+              value: 13,
+              message: 'Max 16 characters!',
+            },
             pattern: {
-              value: /^([a-zA-Z]|[а-яА-Я]){6,16}$/,
-              message:
-                'Firstname may contain only letters! Minimum 6 to maximum 16 characters!',
-              /*  minLength: {
-                value: 3,
-                message: 'Minimum 3 to maximum 12 characters!',
-              }, */
+              value: /^[a-zA-Z]|[а-яА-Я]$/,
+              message: 'Firstname may contain only letters!',
             },
           })}
           placeholder="First name"
         />
-
-        {/*  {error.name && <Post>'Минимум 5 символов'</Post>}
-        <hr /> */}
-        <div /* style={{ height: 40 }} */>
+        <div>
           {errors?.firstname && (
             <Post>{errors?.firstname?.message || 'Error!'}</Post>
           )}
