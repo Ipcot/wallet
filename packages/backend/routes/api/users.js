@@ -1,27 +1,38 @@
-const express = require('express')
+const express = require('express');
 
-const router = express.Router()
+const {
+  registerController,
+  loginController,
+  logoutController,
+  getCurrent,
+} = require('../../controllers/authControllers');
 
+const validationData = require('../../middlewares/userValidation');
+const ctrlWrapper = require('../../helpers/ctrlWrapper');
 
+const { registSchemaJoi, loginSchemaJoi } = require('../../schemas/user');
+const verifyerToken = require('../../middlewares/verifyerToken');
 
-router.post('/register', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+const router = express.Router();
 
-router.post('/login', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post(
+  '/register',
+  validationData(registSchemaJoi),
+  ctrlWrapper(registerController)
+);
 
-router.get('/logout', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post(
+  '/login',
+  validationData(loginSchemaJoi),
+  ctrlWrapper(loginController)
+);
 
-router.get('/current', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get('/logout', verifyerToken, ctrlWrapper(logoutController));
 
-router.post('/refresh', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get('/current', verifyerToken, ctrlWrapper(getCurrent));
 
-module.exports = router
+// router.post('/refresh', async (req, res, next) => {
+//   res.json({ message: 'template message' });
+// });
+
+module.exports = router;

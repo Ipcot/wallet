@@ -1,8 +1,33 @@
-const Register = () => {
+import Media from 'react-media';
+import LoginForm from 'components/LoginForm';
+import LoginImg from 'assets/icons/login.png';
+import {
+  BoxForm,
+  BoxStyled,
+  ContainerStyled,
+  LoginImage,
+  LoginTitle,
+  Container,
+} from './index.styled';
+
+const Login = () => {
   return (
-    <div style={{ background: 'blue', width: '100vw', height: '100vh' }}>
-      Login Page
-    </div>
+    <Container>
+      <BoxStyled>
+        <Media
+          query="(min-width: 767px)"
+          render={() => (
+            <ContainerStyled>
+              <LoginImage alt="logo" src={`${LoginImg}`} />
+              <LoginTitle>Finance App</LoginTitle>
+            </ContainerStyled>
+          )}
+        />
+        <BoxForm>
+          <LoginForm />
+        </BoxForm>
+      </BoxStyled>
+    </Container>
   );
 };
-export default Register;
+export default Login;

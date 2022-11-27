@@ -1,36 +1,33 @@
-import { Suspense } from "react";
-import { Outlet } from "react-router";
-import { NavLink } from "react-router-dom";
-
-import Header from "./Header"
-import Loader from './loader/Loader'
-import { Container, Sider, MainContainer } from './SystemLayout.styled'
-import TestMUIComponents from 'components/test'
+import Currency from 'components/currency/Currency';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router';
+import Sider from '../HomeAside/Sider';
+import Header from './common/Header/Header';
+import Loader from './Loader';
+import {
+  Container,
+  Sider as SiderComponent,
+  MainContainer,
+} from './SystemLayout.styled';
 
 const SystemLayout = () => {
-  return <div>
-    <Container>
-      <Header />
-    </Container>
-
-    <main>
-      <MainContainer>
-        <Sider>
-          <NavLink to={'home'}>Home</NavLink>
-          <NavLink to={'statistics'}>Statistics</NavLink>
-
-          <TestMUIComponents />
-
-          <div style={{ background: "yellow", marginTop: 100 }}>Balance component: 24 000.00</div>
-          <div style={{ background: "lightblue" }}>Currencies course: USD EUR UAH</div>
-        </Sider>
-
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </MainContainer>
-    </main>
-  </div>
-}
+  return (
+    <div>
+      <Container>
+        <Header />
+      </Container>
+      <main>
+        <MainContainer>
+          <Sider>
+            <SiderComponent />
+          </Sider>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </MainContainer>
+      </main>
+    </div>
+  );
+};
 
 export default SystemLayout;

@@ -1,0 +1,653 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "Wallet API",
+    "description": "Showing off Wallet API with swagger-ui-express"
+  },
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "servers": [
+    { "url": "https://wallet-goit.onrender.com" },
+    { "url": "http://localhost:8080" }
+  ],
+  "tags": [
+    {
+      "name": "User",
+      "description": "Users endpoints"
+    },
+    {
+      "name": "Transaction",
+      "description": "Transactions endpoints"
+    }
+  ],
+  "paths": {
+    "/api/users/register": {
+      "post": {
+        "tags": ["User"],
+        "summary": "User registration",
+        "parameters": [],
+        "requestBody": {
+          "description": "Registration's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Login validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/login": {
+      "post": {
+        "tags": ["User"],
+        "summary": "User login",
+        "parameters": [],
+        "security": [],
+        "requestBody": {
+          "description": "Logins's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Login validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Login auth error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WrongCredentialsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/logout": {
+      "get": {
+        "tags": ["User"],
+        "summary": "User logout",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "204": {
+            "description": "Successful operation",
+            "content": {}
+          },
+          "401": {
+            "description": "Logout unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/current": {
+      "get": {
+        "tags": ["User"],
+        "summary": "User current",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistrationResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Logout unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/refresh": {
+      "post": {
+        "tags": ["User"],
+        "summary": "User's token refresh",
+        "parameters": [],
+        "security": [],
+        "requestBody": {
+          "description": "Registration's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Logout unauthorized error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/transactions": {
+      "post": {
+        "tags": ["Transaction"],
+        "summary": "Creating of transactions",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Transaction's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransactionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Transactions validation error (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Transaction"],
+        "summary": "Getting users's transactions",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/transactions/categories": {
+      "get": {
+        "tags": ["Transaction"],
+        "summary": "Getting list of categories",
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionCategoriesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/transactions/stats/:year/:month": {
+      "get": {
+        "tags": ["Transaction"],
+        "summary": "Getting statistics on transactions for the n-th month of the n-th year",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "year",
+            "required": true,
+            "type": "string",
+            "description": "n-th year of the transactions"
+          },
+          {
+            "in": "path",
+            "name": "month",
+            "required": true,
+            "type": "string",
+            "description": "n-th month of the transactions"
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RegistrationRequest": {
+        "type": "object",
+        "required": ["name", "email", "password"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "qwerty123"
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "qwerty123"
+          }
+        }
+      },
+      "RegistrationResponse": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "userId": {
+            "type": "number",
+            "description": "User's id",
+            "example": "32143232436545474"
+          }
+        },
+        "example": { "email": "1@gmail.com", "userId": "1" }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Response status",
+            "example": "success"
+          },
+          "code": {
+            "type": "number",
+            "description": "Response code",
+            "example": "200"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "token": {
+                "type": "string",
+                "description": "token",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2QyMjZhODU4NzE1ZWZlZGRlOWVkNCIsImlhdCI6MTY2OTE0NTM3MiwiZXhwIjoxNjY5MjMxNzcyfQ._b_E2fDIuHuVwRCCSzLxoM8485th1l6mjdcQjTP-65s"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 200,
+          "data": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2QyMjZhODU4NzE1ZWZlZGRlOWVkNCIsImlhdCI6MTY2OTE0NTM3MiwiZXhwIjoxNjY5MjMxNzcyfQ._b_E2fDIuHuVwRCCSzLxoM8485th1l6mjdcQjTP-65s"
+          }
+        }
+      },
+      "BadRequestErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error from Joi or other validation library",
+            "example": "{'message': 'missing required name field'}"
+          }
+        },
+        "example": {
+          "message": "{'message': 'missing required name field'}"
+        }
+      },
+      "ConflictErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Conflict Error",
+            "example": "Email in use"
+          }
+        },
+        "example": {
+          "message": "Email in use"
+        }
+      },
+      "WrongCredentialsErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Login auth error",
+            "example": "Email or password is wrong"
+          }
+        },
+        "example": {
+          "message": "Email or password is wrong"
+        }
+      },
+      "UnauthorizedErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Not authorized auth error",
+            "example": "Not authorized"
+          }
+        },
+        "example": {
+          "message": "Not authorized"
+        }
+      },
+      "TransactionRequest": {
+        "type": "object",
+        "required": ["date", "isIncome", "category", "comment", "sum"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Transaction's date",
+            "format": "date-time"
+          },
+          "isIncome": {
+            "type": "boolean",
+            "description": "Is this transaction an income?",
+            "example": "true"
+          },
+          "category": {
+            "type": "string",
+            "description": "Transaction's category",
+            "example": "Auto"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Transaction's comment",
+            "example": "Some comment"
+          },
+          "sum": {
+            "type": "integer",
+            "description": "Transaction's sum",
+            "example": "123"
+          }
+        }
+      },
+      "TransactionResponse": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "description": "Transaction's id",
+              "example": "ObjectId('5349b4ddd2781d08c09890f3')"
+            },
+            "date": {
+              "type": "string",
+              "description": "Transaction's date",
+              "format": "date-time"
+            },
+            "isIncome": {
+              "type": "boolean",
+              "description": "Is this transaction an income?",
+              "example": "true"
+            },
+            "category": {
+              "type": "string",
+              "description": "Transaction's category",
+              "example": "Auto"
+            },
+            "comment": {
+              "type": "string",
+              "description": "Transaction's comment",
+              "example": "Some comment"
+            },
+            "sum": {
+              "type": "integer",
+              "description": "Transaction's sum",
+              "example": "123"
+            },
+            "owner": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "description": "Owner's id",
+                  "example": "ObjectId('5349b4ddd2781d08c09890f3')"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Owner's name",
+                  "example": "Name"
+                },
+                "email": {
+                  "type": "string",
+                  "description": "Owner's email",
+                  "format": "email"
+                }
+              },
+              "description": "Transaction's owner"
+            },
+            "month": {
+              "type": "integer",
+              "description": "Transaction's month",
+              "example": "11"
+            },
+            "year": {
+              "type": "integer",
+              "description": "Transaction's month",
+              "example": "2022"
+            }
+          }
+        },
+        "example": [
+          {
+            "_id": "6380ce2f76302978a5365f1f",
+            "date": "2022-11-25T14:15:19.345Z",
+            "isIncome": true,
+            "category": "Auto",
+            "comment": "Some comment",
+            "sum": 123,
+            "owner": {
+              "_id": "637d226a858715efedde9ed4",
+              "name": "Name",
+              "email": "email@mail.com"
+            },
+            "month": 11,
+            "year": 2022
+          }
+        ]
+      },
+      "TransactionCategoriesResponse": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Transaction's category id",
+              "example": "1"
+            },
+            "name": {
+              "type": "string",
+              "description": "Transaction's category name",
+              "example": "Main"
+            }
+          }
+        },
+        "example": [
+          {
+            "id": "1",
+            "name": "Main"
+          },
+          {
+            "id": "2",
+            "name": "Food"
+          },
+          {
+            "id": "3",
+            "name": "Auto"
+          },
+          {
+            "id": "4",
+            "name": "Development"
+          },
+          {
+            "id": "5",
+            "name": "Children"
+          },
+          {
+            "id": "6",
+            "name": "House"
+          },
+          {
+            "id": "7",
+            "name": "Education"
+          },
+          {
+            "id": "8",
+            "name": "Reset"
+          }
+        ]
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

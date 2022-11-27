@@ -1,54 +1,71 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 
-const { handleSaveErrors } = require('../helpers');
+const handleSaveErrors = require('../helpers/handleSaveErrors');
+const data = require('../data/categories.json');
 
-const contactSchema = new Schema(
+const types = data.map(item => item.name);
+
+const transactionsSchema = new Schema(
   {
-    name: {
-      type: String,
-      required: [true, 'Set name for contact'],
+    date: {
+      type: Date,
+      required: true,
     },
-    email: {
-      type: String,
-    },
-    phone: {
-      type: String,
-    },
-    favorite: {
+    isIncome: {
       type: Boolean,
       default: false,
+    },
+    category: {
+      type: String,
+      enum: types,
+    },
+    comment: {
+      type: String,
+    },
+    sum: {
+      type: Number,
+      required: true,
     },
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'user',
       required: true,
     },
+    balance: {
+      type: Number,
+      default: 0,
+    },
+    month: {
+      type: Number,
+      default: new Date().getMonth() + 1,
+    },
+    year: {
+      type: Number,
+      default: new Date().getFullYear(),
+    },
   },
   { versionKey: false, timestamps: true }
 );
 
-contactSchema.post('save', handleSaveErrors);
+transactionsSchema.post('save', handleSaveErrors);
 
 const addSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().required(),
-  phone: Joi.string().required(),
-  favorite: Joi.boolean(),
-});
-
-const updateFavoriteSchema = Joi.object({
-  favorite: Joi.boolean().required(),
+  date: Joi.date(),
+  isIncome: Joi.boolean(),
+  category: Joi.string(),
+  comment: Joi.string(),
+  sum: Joi.number().required(),
+  balance: Joi.number(),
 });
 
 const schemas = {
   addSchema,
-  updateFavoriteSchema,
 };
 
-const Contact = model('contact', contactSchema);
+const Transaction = model('Transaction', transactionsSchema);
 
 module.exports = {
-  Contact,
+  Transaction,
   schemas,
 };

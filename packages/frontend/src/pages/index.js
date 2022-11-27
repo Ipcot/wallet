@@ -1,52 +1,54 @@
-import { lazy, memo } from "react";
+import { lazy, memo } from 'react';
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
-} from "react-router-dom";
-import { SystemLayout } from "components/layout";
+} from 'react-router-dom';
+import { SystemLayout } from 'components/layout';
+import PrivateRoute from 'hocs/PrivateRoute';
+import PublicRoute from 'hocs/PublicRoute';
 
-const Login = lazy(() => import("./login"));
-const Register = lazy(() => import("./register"));
-const Statistics = lazy(() => import("./statistics/Statistics"));
-const Home = lazy(() => import("./home"));
+const Login = lazy(() => import('./login'));
+const Register = lazy(() => import('./register'));
+const Statistics = lazy(() => import('./statistics/Statistics'));
+const Home = lazy(() => import('./home'));
 
 const routes = [
   {
-    path: "auth",
+    path: 'auth',
     children: [
       {
-        element: <Login />,
-        path: "login",
+        element: <PublicRoute component={<Login />} />,
+        path: 'login',
       },
       {
-        element: <Register />,
-        path: "register",
+        element: <PublicRoute component={<Register />} />,
+        path: 'register',
       },
     ],
   },
   {
-    path: "",
+    path: '',
     element: <SystemLayout />,
     children: [
       {
-        element: <Navigate to={"/home"} replace />,
-        path: "",
+        element: <Navigate to={'/home'} replace />,
+        path: '',
       },
       {
         element: <Home />,
-        index: "true",
-        path: "home",
+        index: 'true',
+        path: 'home',
       },
       {
-        element: <Statistics />,
-        path: "statistics",
+        element: <PrivateRoute component={<Statistics />} />,
+        path: 'statistics',
       },
     ],
   },
   {
-    element: <Navigate to={"/home"} replace />,
-    path: "*",
+    element: <Navigate to={'/home'} replace />,
+    path: '*',
   },
 ];
 

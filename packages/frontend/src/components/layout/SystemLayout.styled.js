@@ -1,27 +1,35 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  width: ${p => p.theme.breakpoints[0]};
+  min-width: ${p => p.theme.breakpoints.values.sm};
   margin: 0 auto;
-  /* background: red; */
 
-  @media (min-width: ${p => p.theme.breakpoints[1]}) {
-    width: ${p => p.theme.breakpoints[1]};
+  @media (min-width: ${p => p.theme.breakpoints.values.md}) {
+    min-width: ${p => p.theme.breakpoints.values.md};
   }
 
-  @media (min-width: ${p => p.theme.breakpoints[2]}) {
-    width: ${p => p.theme.breakpoints[2]};
+  @media (min-width: ${p => p.theme.breakpoints.values.lg}) {
+    width: ${p => p.theme.breakpoints.values.lg};
   }
 `;
 
 export const MainContainer = styled(Container)`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 0 32px 0 32px;
+  }
+  @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0 16px 0 16px;
+  }
 `;
 
-export const Sider = styled.div`
-  display: flex; 
-  flex-direction: column; 
-  width: 50%; 
-  justify-content: start;
-  /* background: green; */
-`;
+export const Sider = styled.div``;
