@@ -5,15 +5,18 @@ export const BalanceWrapper = styled.div`
   padding: 8px 32px 12px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: ${p => p.theme.space[5]}px;
   background-color: ${p => p.theme.palette.colors.white};
   border-radius: ${p => p.theme.radii.large};
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     padding: 8px 55px 12px;
     width: 336px;
+    margin-bottom: 0;
   }
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     padding: 8px 55px 12px;
     width: 395px;
+    margin-bottom: 0;
   }
 `;
 
