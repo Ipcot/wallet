@@ -24,7 +24,7 @@ const ModalLogout = () => {
   const handleClick = () => {
     dispatch(authOperations.logOut);
     handleClose();
-  }
+  };
 
   return (
     <div>
@@ -35,16 +35,10 @@ const ModalLogout = () => {
           render={() => <UserExit>Exit</UserExit>}
         />
       </LogoutButton>
-      <Modal
-        open={open}
-        onClose={handleClose}
-      >
+      <Modal open={open} onClose={handleClose}>
         <Box sx={[contentStyles]}>
-          <Button sx={CloseBtn}
-            type="button"
-            onClick={handleClose}
-          >
-            <CloseBtnSymbol/>
+          <Button sx={CloseBtn} type="button" onClick={handleClose}>
+            <CloseBtnSymbol />
           </Button>
           <Typography sx={modalHeding}>
             Are you sure you want to logout?
@@ -73,7 +67,8 @@ const ModalLogout = () => {
               variant="outlined"
               color="secondary"
               sx={ConfirmButton}
-              onClick={handleClose}>
+              onClick={handleClose}
+            >
               CANCEL
             </Button>
           </Stack>
