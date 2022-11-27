@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
 export const StatisticsSection = styled.div`
-  /* margin-top: 20px; */
+  padding-bottom: 51px;
+  padding-top: 43px;
 `;

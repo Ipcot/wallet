@@ -1,15 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authApi } from './auth/authApi';
-import { transactionsApi } from './transactions/transactionsApi';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+// import transactionsReducer from './transactions';
+import { transactionsReducer } from './transactions';
+import middleware from './middleware';
+import { authReducer } from './auth';
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 export const store = configureStore({
   reducer: {
-    [authApi.reducerPath]: authApi.reducer,
-    [transactionsApi.reducerPath]: transactionsApi.reducer,
+    auth: persistReducer(authPersistConfig, authReducer),
+    transactions: transactionsReducer,
   },
-  middleware: getDefaultMiddleware => [
-    ...getDefaultMiddleware(),
-    authApi.middleware,
-    transactionsApi.middleware,
-  ],
+  middleware,
+  devTools: process.env.NODE_ENV === 'development',
 });
+
+export const persistedStore = persistStore(store);
