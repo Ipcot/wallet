@@ -6,9 +6,10 @@ import { Button } from '@mui/material';
 import EnvelopeImg from 'assets/icons/envelope.svg';
 import LockImg from 'assets/icons/lock.svg';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
-import InputAdornments from './showPassword';
+/* import InputAdornments from './showPassword'; */
 
 import {
+  Link,
   Input,
   Form,
   InputContainer,
@@ -17,16 +18,13 @@ import {
   LogoTitle,
   BoxLogo,
   Post,
-  ProgressContainer,
-  ProgressBar,
 } from './LoginForm.styled';
-import { gridColumnsTotalWidthSelector } from '@mui/x-data-grid';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const {
     register,
-    formState: { errors, isValid },
+    formState: { errors /* isValid */ },
     handleSubmit,
     reset,
   } = useForm({ mode: 'onChange' });
@@ -53,10 +51,7 @@ const LoginForm = () => {
               value: 10,
               message: 'Minimum 10 characters!',
             },
-            maxLength: {
-              value: 15,
-              message: 'Max 15 characters!',
-            },
+
             pattern: {
               value:
                 /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
@@ -87,11 +82,10 @@ const LoginForm = () => {
               message: 'Max 16 characters!',
             },
 
-            // pattern: {
-            //   value:
-            //     /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#])$/,
-            //   message: 'Enter a valid password!',
-            // },
+            pattern: {
+              value: /(([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))$/,
+              message: 'Enter a valid password!',
+            },
           })}
           placeholder="Password"
         />
@@ -103,8 +97,8 @@ const LoginForm = () => {
         </div>
       </InputContainer>
       <InputContainer>
-        <LockImage alt="lock" src={`${LockImg}`} />
-        <InputAdornments />
+        {/*  <LockImage alt="lock" src={`${LockImg}`} /> */}
+        {/* <InputAdornments /> */}
 
         {/* <Input
           onChange={e => {
@@ -150,16 +144,11 @@ const LoginForm = () => {
       <Button
         type="submit"
         /* disabled={isValid} */
+        /*  disabled={!isValid || !dirty} */
         color="secondary"
         variant="outlined"
-        /* sx={{
-          ml: 55,
-          mt: -3,
-          width: '16px',
-          height: '16px',
-        }} */
       >
-        Register
+        <Link to="/auth/register">Register</Link>
       </Button>
     </Form>
   );

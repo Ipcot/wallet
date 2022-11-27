@@ -1,4 +1,4 @@
-import * as React from 'react';
+/* import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
@@ -27,13 +27,13 @@ const CustomInput = React.forwardRef(function CustomInput(props, ref) {
   );
 });
 
-CustomInput.propTypes = {
-  /**
+CustomInput.propTypes = { */
+/**
    * The components used for each slot inside the InputBase.
    * Either a string to use a HTML element or a component.
-   * @default {}
-   */
-  slots: PropTypes.shape({
+   @default {} */
+
+/* slots: PropTypes.shape({
     input: PropTypes.elementType,
     root: PropTypes.elementType,
     textarea: PropTypes.elementType,
@@ -85,3 +85,4 @@ export default function InputAdornments() {
     </Box>
   );
 }
+ */

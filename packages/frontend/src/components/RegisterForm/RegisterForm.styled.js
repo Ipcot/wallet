@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 import { ReactComponent as PersonPic } from 'assets/icons/person.svg';
 import { ReactComponent as LockPic } from 'assets/icons/lock.svg';
 import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
@@ -112,7 +113,6 @@ export const LogoTitle = styled.div`
   display: flex;
   align-items: center;
   color: #000000;
-  margin-right: 20px;
 `;
 export const Post = styled.p`
   color: #bf1650;
@@ -142,6 +142,13 @@ export const ProgressContainer = styled.div`
 export const ProgressBar = styled.div`
   height: 5px;
   border-radius: 50px;
+`;
+export const Link = styled(NavLink)`
+  color: #4a56e2;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const Button = styled.button``;

@@ -7,6 +7,7 @@ import { passwordStrength } from 'check-password-strength';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
 
 import {
+  Link,
   ConfirmButton,
   Input,
   Form,
@@ -82,10 +83,7 @@ const RegisterForm = () => {
               value: 10,
               message: 'Minimum 10 characters!',
             },
-            maxLength: {
-              value: 15,
-              message: 'Max 15 characters!',
-            },
+
             pattern: {
               value:
                 /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
@@ -106,11 +104,19 @@ const RegisterForm = () => {
             onChange: verifyPassword,
 
             required: 'The field is required!',
+            minLength: {
+              value: 6,
+              message: 'Minimum 6 characters!',
+            },
+            maxLength: {
+              value: 16,
+              message: 'Max 16 characters!',
+            },
 
             pattern: {
-              value:
-                /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]){6-12}$/,
-              message: 'Minimum 6 to maximum 12 characters!',
+              value: /(([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))$/,
+
+              message: 'Enter a valid password!"',
             },
           })}
           placeholder="Password"
@@ -151,12 +157,12 @@ const RegisterForm = () => {
           {...register('firstname', {
             required: 'The field is required!',
             minLength: {
-              value: 6,
-              message: 'Minimum 10 characters!',
+              value: 3,
+              message: 'Minimum 3 characters!',
             },
             maxLength: {
-              value: 13,
-              message: 'Max 16 characters!',
+              value: 12,
+              message: 'Max 12 characters!',
             },
             pattern: {
               value: /^[a-zA-Z]|[а-яА-Я]$/,
@@ -183,13 +189,14 @@ const RegisterForm = () => {
       >
         Register
       </Button>
+
       <Button
         type="submit"
         color="secondary"
         variant="outlined"
         sx={ConfirmButton}
       >
-        Log in
+        <Link to="/auth/login">Log in</Link>
       </Button>
     </Form>
   );
