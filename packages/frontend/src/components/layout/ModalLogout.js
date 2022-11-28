@@ -22,7 +22,7 @@ const ModalLogout = () => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(authOperations.logOut);
+    dispatch(authOperations.logOut());
     handleClose();
   };
 
