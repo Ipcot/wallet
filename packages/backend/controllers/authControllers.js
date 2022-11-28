@@ -16,9 +16,11 @@ const registerController = async (req, res) => {
   const hashedPass = await hashingPassword(password);
   const result = await createUser(name, email, hashedPass);
   res.status(201).json({
-    name: result.name,
-    email: result.email,
-    password: result.password,
+    user: {
+      name: result.name,
+      email: result.email,
+      password: result.password,
+    },
   });
 };
 
@@ -36,10 +38,11 @@ const loginController = async (req, res) => {
   res.status(200).json({
     status: 'success',
     code: 200,
-    data: {
+    user: {
       name: user.name,
-      token,
+      email: user.email,
     },
+    token,
   });
 };
 
