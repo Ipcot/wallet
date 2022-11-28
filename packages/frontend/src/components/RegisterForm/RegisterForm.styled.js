@@ -6,17 +6,14 @@ import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
 import themeMaterial from '../../theme/themeMaterial';
 
 export const ConfirmButton = {
-  /*   @media (min-width: [themeMaterial.breakpoints.down('sm')]) {
-    width: 280px;
-  } */
-  /* [themeMaterial.breakpoints.down('sm')]: {
+  [themeMaterial.breakpoints.down('md')]: {
     width: 280,
     marginBottom: '10px',
     marginTop: '10px',
   },
   width: 300,
   marginBottom: '10px',
-  marginTop: '10px', */
+  marginTop: '10px',
 };
 
 export const InputContainer = styled.div`
@@ -32,7 +29,7 @@ export const Input = styled.input`
   margin-right: 22px;
   border-bottom: 1px solid ${props => props.theme.palette.primary.inputBorder};
 
-  font-size: ${p => p.theme.fontSizes.m};
+  font-size: ${p => p.theme.fontSizes.s};
   font-family: ${p => p.theme.fonts.body};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
@@ -160,7 +157,6 @@ export const IconEye = styled.div`
   position: absolute;
   top: 10px;
   right: 30px;
-
   color: #bdbdbd;
 `;
 
