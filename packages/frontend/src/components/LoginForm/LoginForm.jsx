@@ -6,9 +6,14 @@ import { Button } from '@mui/material';
 import EnvelopeImg from 'assets/icons/envelope.svg';
 import LockImg from 'assets/icons/lock.svg';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
+import Icon from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
+
 /* import InputAdornments from './showPassword'; */
 
 import {
+  IconEye,
   Link,
   Input,
   Form,
@@ -19,12 +24,13 @@ import {
   BoxLogo,
   Post,
 } from './LoginForm.styled';
+import { useState } from 'react';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const {
     register,
-    formState: { errors /* isValid */ },
+    formState: { errors, isValid },
     handleSubmit,
     reset,
   } = useForm({ mode: 'onChange' });
@@ -33,6 +39,19 @@ const LoginForm = () => {
     console.log('data: ', data);
     dispatch(authOperations.logIn(data));
     reset();
+  };
+
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(eyeOff);
+
+  const handleToggle = () => {
+    if (type === 'password') {
+      setIcon(eye);
+      setType('text');
+    } else {
+      setIcon(eyeOff);
+      setType('password');
+    }
   };
 
   return (
@@ -71,6 +90,7 @@ const LoginForm = () => {
           onChange={e => {
             console.log(e.currentTarget.value);
           }}
+          type={type}
           {...register('password', {
             required: 'The field is required!',
             minLength: {
@@ -95,6 +115,11 @@ const LoginForm = () => {
             <Post>{errors?.password?.message || 'Error!'}</Post>
           )}
         </div>
+        <IconEye>
+          <span onClick={handleToggle}>
+            <Icon icon={icon} size={20} />
+          </span>
+        </IconEye>
       </InputContainer>
       <InputContainer>
         {/*  <LockImage alt="lock" src={`${LockImg}`} /> */}
@@ -142,9 +167,9 @@ const LoginForm = () => {
         Log in
       </Button>
       <Button
-        type="submit"
-        /* disabled={isValid} */
-        /*  disabled={!isValid || !dirty} */
+        type="button"
+        disabled={isValid}
+        /*   disabled={!isValid || !dirty} */
         color="secondary"
         variant="outlined"
       >

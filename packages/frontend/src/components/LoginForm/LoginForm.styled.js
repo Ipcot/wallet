@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { ReactComponent as LockPic } from 'assets/icons/lock.svg';
 import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
 import { NavLink } from 'react-router-dom';
+
 export const InputContainer = styled.div`
   height: 72px;
   position: relative;
@@ -128,11 +129,21 @@ export const ProgressBar = styled.div`
 `;
 
 export const Link = styled(NavLink)`
+  padding: 10px 100px;
   color: #4a56e2;
 
   :hover {
     cursor: pointer;
   }
+`;
+
+export const IconEye = styled.div`
+  display: inline;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  color: #bdbdbd;
 `;
 
 export const Button = styled.button``;

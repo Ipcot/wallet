@@ -5,8 +5,14 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { passwordStrength } from 'check-password-strength';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
+import Icon from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
+  IconEye,
   Link,
   ConfirmButton,
   Input,
@@ -21,7 +27,7 @@ import {
   ProgressContainer,
   ProgressBar,
 } from './RegisterForm.styled';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -38,6 +44,16 @@ const RegisterForm = () => {
       email: data.email,
       password: data.password,
     };
+    console.log(credentials);
+    if (data.password !== data.confirmpassword) {
+      toast.error('Password doesnt match!');
+      return;
+    }
+
+    /*  if (search.trim() === '') {
+      toast('Введите название!');
+      return;
+    } */
     dispatch(authOperations.register(credentials));
     reset();
   };
@@ -65,6 +81,19 @@ const RegisterForm = () => {
       width: `${(result.id + 1) * 25}%`,
       background: changeColor(result.value),
     });
+  };
+
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(eyeOff);
+
+  const handleToggle = () => {
+    if (type === 'password') {
+      setIcon(eye);
+      setType('text');
+    } else {
+      setIcon(eyeOff);
+      setType('password');
+    }
   };
 
   return (
@@ -100,6 +129,7 @@ const RegisterForm = () => {
       <InputContainer>
         <LockImage />
         <Input
+          type={type}
           {...register('password', {
             onChange: verifyPassword,
 
@@ -126,6 +156,11 @@ const RegisterForm = () => {
             <Post>{errors?.password?.message || 'Error!'}</Post>
           )}
         </div>
+        <IconEye>
+          <span onClick={handleToggle}>
+            <Icon icon={icon} size={20} />
+          </span>
+        </IconEye>
       </InputContainer>
 
       <ProgressContainer>
@@ -149,6 +184,11 @@ const RegisterForm = () => {
             <Post>{errors?.confirmpassword?.message || 'Error!'}</Post>
           )}
         </div>
+        <IconEye>
+          <span onClick={handleToggle}>
+            <Icon icon={icon} size={20} />
+          </span>
+        </IconEye>
       </InputContainer>
 
       <InputContainer>
@@ -191,7 +231,7 @@ const RegisterForm = () => {
       </Button>
 
       <Button
-        type="submit"
+        type="button"
         color="secondary"
         variant="outlined"
         sx={ConfirmButton}
