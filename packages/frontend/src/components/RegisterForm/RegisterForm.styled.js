@@ -1,18 +1,22 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 import { ReactComponent as PersonPic } from 'assets/icons/person.svg';
 import { ReactComponent as LockPic } from 'assets/icons/lock.svg';
 import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
 import themeMaterial from '../../theme/themeMaterial';
 
 export const ConfirmButton = {
-  [themeMaterial.breakpoints.down('md')]: {
+  /*   @media (min-width: [themeMaterial.breakpoints.down('sm')]) {
+    width: 280px;
+  } */
+  /* [themeMaterial.breakpoints.down('sm')]: {
     width: 280,
     marginBottom: '10px',
     marginTop: '10px',
   },
   width: 300,
   marginBottom: '10px',
-  marginTop: '10px',
+  marginTop: '10px', */
 };
 
 export const InputContainer = styled.div`
@@ -112,7 +116,6 @@ export const LogoTitle = styled.div`
   display: flex;
   align-items: center;
   color: #000000;
-  margin-right: 20px;
 `;
 export const Post = styled.p`
   color: #bf1650;
@@ -142,6 +145,23 @@ export const ProgressContainer = styled.div`
 export const ProgressBar = styled.div`
   height: 5px;
   border-radius: 50px;
+`;
+
+export const Link = styled(NavLink)`
+  padding: 10px 100px;
+  color: #4a56e2;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+export const IconEye = styled.div`
+  display: inline;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+
+  color: #bdbdbd;
 `;
 
 export const Button = styled.button``;

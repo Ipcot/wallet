@@ -6,9 +6,15 @@ import { Button } from '@mui/material';
 import EnvelopeImg from 'assets/icons/envelope.svg';
 import LockImg from 'assets/icons/lock.svg';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
-import InputAdornments from './showPassword';
+import Icon from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
+
+/* import InputAdornments from './showPassword'; */
 
 import {
+  IconEye,
+  Link,
   Input,
   Form,
   InputContainer,
@@ -17,10 +23,8 @@ import {
   LogoTitle,
   BoxLogo,
   Post,
-  ProgressContainer,
-  ProgressBar,
 } from './LoginForm.styled';
-import { gridColumnsTotalWidthSelector } from '@mui/x-data-grid';
+import { useState } from 'react';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -35,6 +39,19 @@ const LoginForm = () => {
     console.log('data: ', data);
     dispatch(authOperations.logIn(data));
     reset();
+  };
+
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(eyeOff);
+
+  const handleToggle = () => {
+    if (type === 'password') {
+      setIcon(eye);
+      setType('text');
+    } else {
+      setIcon(eyeOff);
+      setType('password');
+    }
   };
 
   return (
@@ -53,10 +70,7 @@ const LoginForm = () => {
               value: 10,
               message: 'Minimum 10 characters!',
             },
-            maxLength: {
-              value: 15,
-              message: 'Max 15 characters!',
-            },
+
             pattern: {
               value:
                 /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
@@ -76,6 +90,7 @@ const LoginForm = () => {
           onChange={e => {
             console.log(e.currentTarget.value);
           }}
+          type={type}
           {...register('password', {
             required: 'The field is required!',
             minLength: {
@@ -87,11 +102,10 @@ const LoginForm = () => {
               message: 'Max 16 characters!',
             },
 
-            // pattern: {
-            //   value:
-            //     /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#])$/,
-            //   message: 'Enter a valid password!',
-            // },
+            pattern: {
+              value: /(([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))$/,
+              message: 'Enter a valid password!',
+            },
           })}
           placeholder="Password"
         />
@@ -101,10 +115,15 @@ const LoginForm = () => {
             <Post>{errors?.password?.message || 'Error!'}</Post>
           )}
         </div>
+        <IconEye>
+          <span onClick={handleToggle}>
+            <Icon icon={icon} size={20} />
+          </span>
+        </IconEye>
       </InputContainer>
       <InputContainer>
-        <LockImage alt="lock" src={`${LockImg}`} />
-        <InputAdornments />
+        {/*  <LockImage alt="lock" src={`${LockImg}`} /> */}
+        {/* <InputAdornments /> */}
 
         {/* <Input
           onChange={e => {
@@ -148,18 +167,13 @@ const LoginForm = () => {
         Log in
       </Button>
       <Button
-        type="submit"
-        /* disabled={isValid} */
+        type="button"
+        disabled={isValid}
+        /*   disabled={!isValid || !dirty} */
         color="secondary"
         variant="outlined"
-        /* sx={{
-          ml: 55,
-          mt: -3,
-          width: '16px',
-          height: '16px',
-        }} */
       >
-        Register
+        <Link to="/auth/register">Register</Link>
       </Button>
     </Form>
   );

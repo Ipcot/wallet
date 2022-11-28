@@ -5,8 +5,15 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { passwordStrength } from 'check-password-strength';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
+import Icon from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
+  IconEye,
+  Link,
   ConfirmButton,
   Input,
   Form,
@@ -20,7 +27,7 @@ import {
   ProgressContainer,
   ProgressBar,
 } from './RegisterForm.styled';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -37,6 +44,16 @@ const RegisterForm = () => {
       email: data.email,
       password: data.password,
     };
+    console.log(credentials);
+    if (data.password !== data.confirmpassword) {
+      toast.error('Password doesnt match!');
+      return;
+    }
+
+    /*  if (search.trim() === '') {
+      toast('Введите название!');
+      return;
+    } */
     dispatch(authOperations.register(credentials));
     reset();
   };
@@ -66,6 +83,19 @@ const RegisterForm = () => {
     });
   };
 
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(eyeOff);
+
+  const handleToggle = () => {
+    if (type === 'password') {
+      setIcon(eye);
+      setType('text');
+    } else {
+      setIcon(eyeOff);
+      setType('password');
+    }
+  };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <BoxLogo>
@@ -82,10 +112,7 @@ const RegisterForm = () => {
               value: 10,
               message: 'Minimum 10 characters!',
             },
-            maxLength: {
-              value: 15,
-              message: 'Max 15 characters!',
-            },
+
             pattern: {
               value:
                 /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
@@ -102,15 +129,24 @@ const RegisterForm = () => {
       <InputContainer>
         <LockImage />
         <Input
+          type={type}
           {...register('password', {
             onChange: verifyPassword,
 
             required: 'The field is required!',
+            minLength: {
+              value: 6,
+              message: 'Minimum 6 characters!',
+            },
+            maxLength: {
+              value: 16,
+              message: 'Max 16 characters!',
+            },
 
             pattern: {
-              value:
-                /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]){6-12}$/,
-              message: 'Minimum 6 to maximum 12 characters!',
+              value: /(([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))$/,
+
+              message: 'Enter a valid password!"',
             },
           })}
           placeholder="Password"
@@ -120,6 +156,11 @@ const RegisterForm = () => {
             <Post>{errors?.password?.message || 'Error!'}</Post>
           )}
         </div>
+        <IconEye>
+          <span onClick={handleToggle}>
+            <Icon icon={icon} size={20} />
+          </span>
+        </IconEye>
       </InputContainer>
 
       <ProgressContainer>
@@ -143,6 +184,11 @@ const RegisterForm = () => {
             <Post>{errors?.confirmpassword?.message || 'Error!'}</Post>
           )}
         </div>
+        <IconEye>
+          <span onClick={handleToggle}>
+            <Icon icon={icon} size={20} />
+          </span>
+        </IconEye>
       </InputContainer>
 
       <InputContainer>
@@ -151,12 +197,12 @@ const RegisterForm = () => {
           {...register('firstname', {
             required: 'The field is required!',
             minLength: {
-              value: 6,
-              message: 'Minimum 10 characters!',
+              value: 3,
+              message: 'Minimum 3 characters!',
             },
             maxLength: {
-              value: 13,
-              message: 'Max 16 characters!',
+              value: 12,
+              message: 'Max 12 characters!',
             },
             pattern: {
               value: /^[a-zA-Z]|[а-яА-Я]$/,
@@ -183,13 +229,14 @@ const RegisterForm = () => {
       >
         Register
       </Button>
+
       <Button
-        type="submit"
+        type="button"
         color="secondary"
         variant="outlined"
         sx={ConfirmButton}
       >
-        Log in
+        <Link to="/auth/login">Log in</Link>
       </Button>
     </Form>
   );
