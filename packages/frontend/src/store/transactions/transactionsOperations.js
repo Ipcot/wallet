@@ -27,8 +27,8 @@ const addTransaction = createAsyncThunk('/transactions', async data => {
 });
 
 const fetchTransactionsByCategory = createAsyncThunk(
-  '/transactions',
-  async ({ year, month }, thunkAPI) => {
+  '/transactions/:year/:month',
+  async ({ year, month }) => {
     try {
       const result = await getTransactionsByCategory(year, month);
       return result;

@@ -33,7 +33,6 @@ const LoginForm = () => {
   } = useForm({ mode: 'onChange' });
 
   const onSubmit = data => {
-    console.log('data: ', data);
     dispatch(authOperations.logIn(data));
     reset();
   };
