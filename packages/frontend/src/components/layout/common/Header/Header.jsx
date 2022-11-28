@@ -40,7 +40,7 @@ const Header = () => {
           query="(min-width: 767px)"
           render={() => <Separator></Separator>}
         />
-        <ModalLogout></ModalLogout>
+        <ModalLogout />
       </UserControlWrapper>
     </HeaderBar>
   );
