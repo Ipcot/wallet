@@ -5,9 +5,9 @@ const getLoading = state => state.transactions.loading;
 const getTransactionsSortedByCategory = state =>
   state.transactionsSortedByCategory;
 
-const contactsSelectors = {
+const transactionsSelectors = {
   getLoading,
   getAllTransactions,
   getTransactionsSortedByCategory,
 };
-export default contactsSelectors;
+export default transactionsSelectors;

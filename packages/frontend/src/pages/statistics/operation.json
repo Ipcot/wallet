@@ -2,55 +2,46 @@
   {
     "id": 1,
     "name": "Basic expenses",
-    "money": 8700.0,
     "color": "#FED057"
   },
   {
     "id": 2,
     "name": "Products",
-    "money": 3800.74,
     "color": "#FFD8D0"
   },
   {
     "id": 3,
     "name": "Car",
-    "money": 1500.0,
     "color": "#FD9498"
   },
   {
     "id": 4,
     "name": "Self care",
-    "money": 800.0,
     "color": "#C5BAFF"
   },
   {
     "id": 5,
     "name": "Child care",
-    "money": 2208.5,
     "color": "#6E78E8"
   },
   {
     "id": 6,
     "name": "Household products",
-    "money": 300.0,
     "color": "#4A56E2"
   },
   {
     "id": 7,
     "name": "Education",
-    "money": 3400.0,
     "color": "#81E1FF"
   },
   {
     "id": 8,
     "name": "Leisure",
-    "money": 1230.0,
     "color": "#24CCA7"
   },
   {
     "id": 9,
     "name": "Other expenses",
-    "money": 610.0,
     "color": "#00AD84"
   }
 ]
