@@ -44,7 +44,6 @@ const RegisterForm = () => {
       email: data.email,
       password: data.password,
     };
-    console.log(credentials);
     if (data.password !== data.confirmpassword) {
       toast.error('Password doesnt match!');
       return;
