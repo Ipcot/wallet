@@ -56,14 +56,9 @@ export const ButtonsWrapper = styled.div`
   margin-top: 40px;
 
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
-    /* padding-top: 40px;
-    padding-left: 32px; */
     justify-content: flex-start;
   }
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
-    /* padding-top: 40px;
-    padding-left: 16px; */
-
     justify-content: flex-start;
   }
 `;

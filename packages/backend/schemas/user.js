@@ -2,11 +2,14 @@ const Joi = require('joi');
 const { Schema, model } = require('mongoose');
 const handleSaveErrors = require('../helpers/handleSaveErrors');
 
-const emailReg = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+const emailReg =
+  /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u;
 const userSchema = new Schema(
   {
     name: {
       type: String,
+      required: [true, 'Name is required'],
+
     },
     password: {
       type: String,

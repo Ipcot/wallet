@@ -18,35 +18,18 @@ export const MainContainer = styled(Container)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* padding: 15px 20px; */
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
-
-    /* justify-content: flex-start; */
-    /* flex-direction: row; */
     flex-direction: column;
     gap: 20px;
-
     align-items: flex-start;
-    /* justify-content: flex-start; */
     padding: 0 32px 0 32px;
   }
-
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     justify-content: flex-start;
     flex-direction: row;
     align-items: flex-start;
-    /* padding: 45px 15px; */
     padding: 0 16px 0 16px;
   }
 `;
 
-export const Sider = styled.div`
-  margin-right: 70px;
-  background-color: red;
-  /* width: 100%;
-  display: flex;
-  flex-direction: column; */
-  /* width: 50%; */
-  /* justify-content: start; */
-  /* background: green; */
-`;
+export const Sider = styled.div``;
