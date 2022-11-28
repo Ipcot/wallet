@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-
 import { StatisticsTitle } from '../../components/statistics/statisticsTitle/StatisticsTitle.styled';
 import { StatisticsContainer } from '../../components/statistics/statisticsContainer/StatisticsContainer.styled';
 import userOperation from './userOperation.json';
@@ -17,10 +16,17 @@ import {
 } from '../../store/transactions';
 
 const Statistics = () => {
-  const dispatch = useDispatch(transactionsOperations.fetchTransactions);
-  const operation = useSelector(transactionsSelectors.getAllTransactions);
+  const dispatch = useDispatch();
+  const operation = useSelector(
+    transactionsSelectors.getTransactionsSortedByCategory
+  );
   useEffect(() => {
-    dispatch(transactionsOperations.fetchTransactions());
+    dispatch(
+      transactionsOperations.fetchTransactionsByCategory({
+        year: 2022,
+        month: 11,
+      })
+    );
   }, [dispatch]);
   console.log(operation);
   return (
