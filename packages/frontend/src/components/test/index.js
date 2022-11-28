@@ -1,6 +1,9 @@
 import { Button } from '@mui/material';
 import { CustomSwitch } from './index.styled';
 
+import TransactionModal from 'components/transactionModal/TransactionModal'
+import { useState } from 'react'
+
 const TestMUIComponents = () => {
   return (
     <div
