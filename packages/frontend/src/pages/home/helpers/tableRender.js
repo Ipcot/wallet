@@ -34,7 +34,9 @@ export const tableRender = datas => {
         <TableBody>
           {datas.map(data => (
             <TableRowBody key={nanoid()}>
-              <Cell>{data.date}</Cell>
+              <Cell component="th" scope="row">
+                {data.date}
+              </Cell>
               <Cell align="right">{data.type}</Cell>
               <Cell align="right">{data.category}</Cell>
               <Cell align="right">{data.comment}</Cell>
