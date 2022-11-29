@@ -16,7 +16,7 @@ import authSelectors from 'store/auth/authSelectors';
 
 const Header = () => {
   const user = useSelector(authSelectors.getUser);
-  const userName = user.name;
+  const userName = user?.name;
 
   return (
     <HeaderBar>
