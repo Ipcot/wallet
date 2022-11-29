@@ -57,9 +57,12 @@ export const CurrencyTableHead = styled.th`
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
+    height: 60px;
+  }
 `;
 export const CurrencyTableTd = styled.td`
-  height: 45px;
+  height: 40px;
   padding: 0;
   text-align: center;
   font-family: ${p => p.theme.fonts.body};

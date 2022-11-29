@@ -5,18 +5,20 @@ import { DoughnutWrapper } from './DoughnutWrapper.styled';
 
 ChartJS.register(ArcElement, Legend, Tooltip);
 
-const StatisticsDoughnut = ({ operation }) => {
+const StatisticsDoughnut = ({ operation, getExpenses }) => {
   const [userOperation, setUserOperation] = useState([]);
   useEffect(() => {
     setUserOperation(operation);
   }, [operation]);
 
-  const money = userOperation.map(element => element.money);
+  const money = userOperation.map(element => element.sum);
   const color = userOperation.map(element => element.color);
+  const nameOperation = userOperation.map(element => element.name);
   const data = {
+    labels: [...nameOperation],
     datasets: [
       {
-        label: 'Statistics',
+        label: '$',
         data: [...money],
         backgroundColor: [...color],
         hoverOffset: 4,
@@ -45,10 +47,12 @@ const StatisticsDoughnut = ({ operation }) => {
         (prevValue, currentValue) => prevValue + currentValue,
         initialValue
       );
+      const expenses = money.toFixed(2);
+      getExpenses(expenses);
       ctx.font = '700 18px Circle';
       ctx.fillStyle = '#000000';
       ctx.textAlign = 'center';
-      ctx.fillText(`${money}`, width / 2, height / 2 + top);
+      ctx.fillText(`$ ${expenses}`, width / 2, height / 2 + top);
     },
   };
   const config = {
@@ -57,6 +61,15 @@ const StatisticsDoughnut = ({ operation }) => {
     options: {
       maintainAspectRatio: false,
       // aspectRatio: 1,
+      plugins: {
+        legend: {
+          labels: {
+            generateLabels: chart => {
+              return;
+            },
+          },
+        },
+      },
     },
     plugins: [doughnutText],
   };

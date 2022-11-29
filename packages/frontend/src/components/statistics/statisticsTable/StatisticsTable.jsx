@@ -7,28 +7,10 @@ import {
   StatisticsBody,
   StatisticsBodyLeft,
   StatisticsBodyRigth,
+  StatisticsBodyicon,
 } from './StatisticsTableStyle.styled';
 
-const columns = [
-  { field: 'operation', headerName: 'Operation' },
-  {
-    field: 'sum',
-    headerName: 'Sum',
-    // width: 140,
-    type: 'number',
-  },
-];
-
-const rows = [
-  { id: 1, name: 'Hello', sum: 'World' },
-  { id: 2, name: 'MUI X', sum: 'is awesome' },
-  { id: 3, name: 'Material UI', sum: 'is amazing' },
-  { id: 4, name: 'MUI', sum: '' },
-  { id: 5, name: 'Joy UI', sum: 'is awesome' },
-  { id: 6, name: 'MUI Base', sum: 'is amazing' },
-];
-
-const StatisticsTable = () => {
+const StatisticsTable = ({ operation }) => {
   return (
     <div>
       <StatisticsTableStyle>
@@ -36,9 +18,14 @@ const StatisticsTable = () => {
           <StatisticsThLeft>Operation</StatisticsThLeft>
           <StatisticsThRigth>Sum</StatisticsThRigth>
         </StatisticsHead>
-        {rows.map(element => (
+        {operation.map(element => (
           <StatisticsBody key={element.id}>
-            <StatisticsBodyLeft>{element.name}</StatisticsBodyLeft>
+            <StatisticsBodyLeft>
+              <StatisticsBodyicon
+                style={{ backgroundColor: `${element.color}` }}
+              ></StatisticsBodyicon>
+              {element.name}
+            </StatisticsBodyLeft>
             <StatisticsBodyRigth>{element.sum}</StatisticsBodyRigth>
           </StatisticsBody>
         ))}

@@ -55,68 +55,14 @@ export const StatisticsBody = styled.tr`
   line-height: 18px;
   color: #000000;
 `;
+export const StatisticsBodyicon = styled.div`
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+`;
 export const StatisticsBodyLeft = styled.td`
-  /* display: flex;
-  justify-content: flex-start; */
-  /* border-radius: 30px; */
-  /* padding-left: 20px; */
-  /* border-bottom: 1px solid #dcdcdf;
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6); */
-  /* transform: rotate(-90deg); */
+  display: flex;
+  align-items: center;
+  gap: 16px;
 `;
-export const StatisticsBodyRigth = styled.td`
-  /* display: flex;
-  justify-content: flex-end; */
-  /* padding-right: 20px; */
-  /* border-bottom: 1px solid #dcdcdf;
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6); */
-`;
-
-// export const StyledDataGrid = styled(DataGrid)({
-//   border: 'none',
-
-//   '& .MuiDataGrid-main': {
-//     padding: '0 20px 0 20px ',
-//   },
-//   '& .MuiDataGrid-columnHeaders': {
-//     backgroundColor: `#ffffff`,
-//     borderRadius: `${themeMaterial.radii.large}`,
-//     display: 'flex',
-//     justifyContent: 'center',
-//   },
-//   '& .MuiDataGrid-columnHeadersInner': {
-//     width: '395px',
-//   },
-//   '& .MuiDataGrid-columnHeaderRow': {
-//     width: '100%',
-//     display: 'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'space-around',
-//   },
-//   '& ..MuiDataGrid-columnHeaderDraggableContainer': {
-//     width: '197px',
-//   },
-//   '& .MuiDataGrid-columnSeparator--sideRight': {
-//     display: 'none',
-//   },
-//   '& .MuiDataGrid-columnHeaderTitle': {
-//     fontFamily: `${themeMaterial.fonts.body}`,
-//     fontStyle: 'normal',
-//     fontWeight: `${themeMaterial.fontWeights.bold}`,
-//     fontSize: `${themeMaterial.fontSizes.m}`,
-//     lineHeight: `${themeMaterial.lineHeights.heading}`,
-//   },
-//   '& .MuiDataGrid-row': {
-//     fontFamily: `${themeMaterial.fonts.body}`,
-//     fontStyle: 'normal',
-//     fontWeight: `${themeMaterial.fontWeights.normal}`,
-//     fontSize: `${themeMaterial.fontSizes.s}`,
-//     lineHeight: 1.125,
-//     color: '#000000',
-//     width: '395px',
-//   },
-//   '& .MuiDataGrid-cell': {
-//     // display: 'none',
-//     // width: '197px',
-//   },
-// });
+export const StatisticsBodyRigth = styled.td``;
