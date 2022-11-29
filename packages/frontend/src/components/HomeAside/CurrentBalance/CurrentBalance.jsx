@@ -12,14 +12,18 @@ const CurrentBalance = () => {
   let balance = 0;
   const dispatch = useDispatch();
   const allTransaction = useSelector(contactsSelectors.getAllTransactions);
-
   useEffect(() => {
     dispatch(transactionsOperations.fetchTransactions());
   }, [dispatch]);
 
-  if (allTransaction?.length > 0) {
-    const lastTransaction = allTransaction[0];
-    balance = spaceCreator(lastTransaction.balance);
+  if (
+    allTransaction &&
+    allTransaction.transactions &&
+    allTransaction.transactions.data &&
+    allTransaction.transactions.data.length > 0
+  ) {
+    const lastTransaction = allTransaction.transactions.data[0];
+    balance = lastTransaction.balance;
   }
 
   return (
