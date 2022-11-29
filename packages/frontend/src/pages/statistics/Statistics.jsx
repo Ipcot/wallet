@@ -17,6 +17,10 @@ import {
   transactionsSelectors,
   contactsSelectors,
 } from '../../store/transactions';
+import {
+  StatisticsMassage,
+  StatisticsMassageTitle,
+} from 'components/statistics/StatisticsMassage/StatisticsMassage.styled';
 
 const Statistics = () => {
   const [expensesMoney, setExpensesMoney] = useState('');
@@ -64,14 +68,24 @@ const Statistics = () => {
     .reduce((acc, num) => {
       return acc + num;
     }, 0);
+  console.log(transactions.data.length);
   return (
     <StatisticsSection>
       <StatisticsTitle>Statistics</StatisticsTitle>
       <StatisticsContainer>
-        <StatisticsDoughnut
-          operation={sortedExpensesByCategory}
-          getExpenses={getExpenses}
-        />
+        {transactions.data.length === 0 ? (
+          <StatisticsMassage>
+            <StatisticsMassageTitle>
+              You have no expenses
+            </StatisticsMassageTitle>
+          </StatisticsMassage>
+        ) : (
+          <StatisticsDoughnut
+            operation={sortedExpensesByCategory}
+            getExpenses={getExpenses}
+          />
+        )}
+
         <StatisticsRight>
           <StatisticsSelect getDate={getDate} />
           <StatisticsTable operation={sortedExpensesByCategory} />
