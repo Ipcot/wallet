@@ -2,18 +2,15 @@ import styled from '@emotion/styled';
 
 export const CurrencyWrapper = styled.div`
   height: 182px;
-  width: 336px;
-  display: none;
+  width: 280px;
   border-radius: 30px;
   background-color: #4a56e2;
   position: relative;
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
-    display: block;
     margin-top: 32px;
     height: 182px;
   }
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
-    display: block;
     margin-top: 32px;
     width: 393px;
     height: 347px;
@@ -57,9 +54,12 @@ export const CurrencyTableHead = styled.th`
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
+    height: 60px;
+  }
 `;
 export const CurrencyTableTd = styled.td`
-  height: 45px;
+  height: 40px;
   padding: 0;
   text-align: center;
   font-family: ${p => p.theme.fonts.body};

@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
+
 import { ReactComponent as LockPic } from 'assets/icons/lock.svg';
 import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
+import { NavLink } from 'react-router-dom';
 
 export const InputContainer = styled.div`
-  height: 72px;
+  /* height: 72px; */
   position: relative;
   width: 100%;
 `;
@@ -17,12 +19,12 @@ export const Input = styled.input`
   border-bottom: 1px solid ${props => props.theme.palette.primary.inputBorder};
   width: 100%;
   display: block;
+  margin-bottom: 25px;
 
-  font-size: ${p => p.theme.fontSizes.m};
+  font-size: ${p => p.theme.fontSizes.s};
   font-family: ${p => p.theme.fonts.body};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
-  /* font-family: 'Circe', sans-serif; */
 
   /*  font-family: 'Circe', sans-serif;
   font-style: normal;
@@ -121,11 +123,30 @@ export const ProgressContainer = styled.div`
   width: 100%;
   margin-top: -25px;
   margin-bottom: 40px;
+  color: lightgreen;
 `;
 
 export const ProgressBar = styled.div`
   height: 5px;
   border-radius: 50px;
+`;
+
+export const Link = styled(NavLink)`
+  padding: 10px 100px;
+  color: #4a56e2;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const IconEye = styled.div`
+  display: inline;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  color: #bdbdbd;
 `;
 
 export const Button = styled.button``;

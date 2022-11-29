@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { ReactComponent as WalletIco } from '../../../../img/header/WalletIco.svg';
+import { NavLink } from 'react-router-dom';
 
 export const HeaderBar = styled.header`
   display: flex;
@@ -19,6 +20,11 @@ export const HeaderBar = styled.header`
     margin-left: auto;
     padding: 20px 16px;
   }
+`;
+
+export const LogoButton = styled(NavLink)`
+  display: flex;
+  align-items: center;
 `;
 
 export const AppTitle = styled.p`

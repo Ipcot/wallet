@@ -6,6 +6,12 @@ export const StatisticsTableFooterStyle = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 20px 0 20px;
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
+    width: 336px;
+  }
+  @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
+    width: 395px;
+  }
 `;
 
 export const TableFooterTitle = styled.h3`

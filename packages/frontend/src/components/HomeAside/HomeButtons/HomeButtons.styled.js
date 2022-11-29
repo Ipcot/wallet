@@ -46,6 +46,9 @@ export const ButtonItem = styled(NavLink)`
   &:focus,
   &:active {
     font-weight: ${p => p.theme.fontWeights.bold};
+    svg {
+      color: ${p => p.theme.palette.colors.secondary};
+    }
   }
 `;
 
@@ -65,11 +68,6 @@ export const ButtonsWrapper = styled.div`
 
 export const HomeIcon = styled(HomeActive)`
   color: ${p => p.theme.palette.colors.notActive};
-  &:hover,
-  &:focus,
-  &:active {
-    color: ${p => p.theme.palette.colors.secondary};
-  }
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     width: 18px;
     height: 18px;
@@ -79,11 +77,6 @@ export const HomeIcon = styled(HomeActive)`
 
 export const DiagramIcon = styled(DiagramActive)`
   color: ${p => p.theme.palette.colors.notActive};
-  &:hover,
-  &:focus,
-  &:active {
-    color: ${p => p.theme.palette.colors.secondary};
-  }
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     width: 18px;
     height: 18px;
@@ -93,11 +86,6 @@ export const DiagramIcon = styled(DiagramActive)`
 
 export const DollarIcon = styled(DollarActive)`
   color: ${p => p.theme.palette.colors.notActive};
-  &:hover,
-  &:focus,
-  &:active {
-    color: ${p => p.theme.palette.colors.secondary};
-  }
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     width: 18px;
     height: 18px;

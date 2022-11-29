@@ -6,9 +6,12 @@ import { Button } from '@mui/material';
 import EnvelopeImg from 'assets/icons/envelope.svg';
 import LockImg from 'assets/icons/lock.svg';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
-import InputAdornments from './showPassword';
+import { BsEyeSlash } from 'react-icons/bs';
+import { BsEye } from 'react-icons/bs';
 
 import {
+  IconEye,
+  Link,
   Input,
   Form,
   InputContainer,
@@ -17,10 +20,8 @@ import {
   LogoTitle,
   BoxLogo,
   Post,
-  ProgressContainer,
-  ProgressBar,
 } from './LoginForm.styled';
-import { gridColumnsTotalWidthSelector } from '@mui/x-data-grid';
+import { useState } from 'react';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -32,31 +33,37 @@ const LoginForm = () => {
   } = useForm({ mode: 'onChange' });
 
   const onSubmit = data => {
-    console.log('data: ', data);
     dispatch(authOperations.logIn(data));
     reset();
   };
 
+  const [type, setType] = useState('password');
+
+  const handleToggle = () => {
+    if (type === 'password') {
+      setType('text');
+    } else {
+      setType('password');
+    }
+  };
+
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form autoComplete="new-password" onSubmit={handleSubmit(onSubmit)}>
       <BoxLogo>
-        {/* <LogoImage alt="logo" src={`${LogoImg}`} /> */}
         <LogoImg style={{ width: '38px', height: '30px' }} />
         <LogoTitle>Wallet</LogoTitle>
       </BoxLogo>
       <InputContainer>
         <EnvelopeImage alt="envelope" src={`${EnvelopeImg}`} />
         <Input
+          autoComplete="new-password"
           {...register('email', {
             required: 'The field is required!',
             minLength: {
-              value: 10,
-              message: 'Minimum 10 characters!',
+              value: 7,
+              message: 'Minimum 7 characters!',
             },
-            maxLength: {
-              value: 15,
-              message: 'Max 15 characters!',
-            },
+
             pattern: {
               value:
                 /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
@@ -73,43 +80,11 @@ const LoginForm = () => {
         <LockImage alt="lock" src={`${LockImg}`} />
 
         <Input
+          autoComplete="new-password"
           onChange={e => {
             console.log(e.currentTarget.value);
           }}
-          {...register('password', {
-            required: 'The field is required!',
-            minLength: {
-              value: 6,
-              message: 'Minimum 6 characters!',
-            },
-            maxLength: {
-              value: 16,
-              message: 'Max 16 characters!',
-            },
-
-            // pattern: {
-            //   value:
-            //     /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#])$/,
-            //   message: 'Enter a valid password!',
-            // },
-          })}
-          placeholder="Password"
-        />
-        {/* <InputAdornments /> */}
-        <div>
-          {errors?.password && (
-            <Post>{errors?.password?.message || 'Error!'}</Post>
-          )}
-        </div>
-      </InputContainer>
-      <InputContainer>
-        <LockImage alt="lock" src={`${LockImg}`} />
-        <InputAdornments />
-
-        {/* <Input
-          onChange={e => {
-            console.log(e.currentTarget.value);
-          }}
+          type={type}
           {...register('password', {
             required: 'The field is required!',
             minLength: {
@@ -122,19 +97,29 @@ const LoginForm = () => {
             },
 
             pattern: {
-              value:
-                /^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#])$/,
+              value: /(([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))$/,
               message: 'Enter a valid password!',
             },
           })}
           placeholder="Password"
         />
+
         <div>
           {errors?.password && (
             <Post>{errors?.password?.message || 'Error!'}</Post>
           )}
-        </div> */}
+        </div>
+        <IconEye>
+          <span onClick={handleToggle}>
+            {type === 'password' ? (
+              <BsEyeSlash size={20} />
+            ) : (
+              <BsEye size={20} />
+            )}
+          </span>
+        </IconEye>
       </InputContainer>
+      <InputContainer></InputContainer>
 
       <Button
         type="submit"
@@ -143,23 +128,12 @@ const LoginForm = () => {
           marginTop: 2,
         }}
         variant="contained"
-        // disabled={isValid}
+        disabled={!isValid}
       >
         Log in
       </Button>
-      <Button
-        type="submit"
-        /* disabled={isValid} */
-        color="secondary"
-        variant="outlined"
-        /* sx={{
-          ml: 55,
-          mt: -3,
-          width: '16px',
-          height: '16px',
-        }} */
-      >
-        Register
+      <Button type="button" color="secondary" variant="outlined">
+        <Link to="/auth/register">Register</Link>
       </Button>
     </Form>
   );

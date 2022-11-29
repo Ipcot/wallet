@@ -8,6 +8,7 @@ import {
   AppLogo,
   LogoWrapper,
   Separator,
+  LogoButton,
 } from './Header.styled';
 import ModalLogout from '../../ModalLogout';
 import { useSelector } from 'react-redux';
@@ -20,27 +21,18 @@ const Header = () => {
   return (
     <HeaderBar>
       <LogoWrapper>
-        <AppLogo />
-        <AppTitle>Wallet</AppTitle>
+        <LogoButton to={'/home'}>
+          <AppLogo />
+          <AppTitle>Wallet</AppTitle>
+        </LogoButton>
       </LogoWrapper>
-      <div>
-        <NavLink style={{ display: 'inline-block' }} to={'home'}>
-          Home
-        </NavLink>
-        <NavLink to={'auth/login'} style={{ padding: 2 }}>
-          Login
-        </NavLink>
-        <NavLink to={'auth/register'} style={{ padding: 2 }}>
-          Register
-        </NavLink>
-      </div>
       <UserControlWrapper>
         <UserName>{userName}</UserName>
         <Media
           query="(min-width: 767px)"
           render={() => <Separator></Separator>}
         />
-        <ModalLogout></ModalLogout>
+        <ModalLogout />
       </UserControlWrapper>
     </HeaderBar>
   );

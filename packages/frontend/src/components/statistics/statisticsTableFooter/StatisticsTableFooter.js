@@ -5,16 +5,16 @@ import {
   TableFooterIncome,
 } from './StatisticsTableFooter.styled';
 
-const StatisticaTableFooter = () => {
+const StatisticaTableFooter = ({ expensesMoney, isIncome }) => {
   return (
     <div>
       <StatisticsTableFooterStyle>
         <TableFooterTitle>Expenses:</TableFooterTitle>
-        <TableFooterExpenses>22 549.24</TableFooterExpenses>
+        <TableFooterExpenses>{expensesMoney}</TableFooterExpenses>
       </StatisticsTableFooterStyle>
       <StatisticsTableFooterStyle>
         <TableFooterTitle>Income:</TableFooterTitle>
-        <TableFooterIncome>27 350.00</TableFooterIncome>
+        <TableFooterIncome>{`${isIncome.toFixed(2)}`}</TableFooterIncome>
       </StatisticsTableFooterStyle>
     </div>
   );

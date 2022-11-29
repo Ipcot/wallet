@@ -1,10 +1,13 @@
 import { SelectWrapper } from './SelectWrapper.styled';
 import { useEffect, useState } from 'react';
 import {
+  SelectIconWrapper,
+  SelectStyle,
   StatisticsContainer,
   StatisticsOptions,
   StatisticsSelectStyle,
 } from './StatisticsSelectStyle.styled';
+import { Select, FormControl, MenuItem } from '@mui/material';
 
 const yaerArray = [2022, 2021, 2020];
 const monArray = [
@@ -23,11 +26,9 @@ const monArray = [
 ];
 let date = new Date(Date.now());
 
-const StatisticsSelect = ({ operation }) => {
+const StatisticsSelect = ({ getDate }) => {
   const [year, setYear] = useState(date.getFullYear());
-  const [month, setMonth] = useState(monArray[date.getMonth()]);
-
-  const name = operation.map(element => element.name);
+  const [month, setMonth] = useState(`${monArray[date.getMonth()]}`);
 
   const handleChange = e => {
     if (e.target.name === 'month') {
@@ -38,9 +39,47 @@ const StatisticsSelect = ({ operation }) => {
     }
   };
 
+  useEffect(() => {
+    const monthNumber = monArray.indexOf(month) + 1;
+    getDate({ year, month: monthNumber });
+  }, [year, month]);
+
   return (
     <SelectWrapper>
-      <StatisticsContainer>
+      {/* <FormControl fullWidth> */}
+      <SelectIconWrapper>
+        <SelectStyle
+          id="demo-simple-select"
+          defaultValue={month}
+          value={month}
+          name="month"
+          onChange={handleChange}
+          variant="outlined"
+        >
+          {monArray.map(element => (
+            <MenuItem key={element} value={element}>
+              {element}
+            </MenuItem>
+          ))}
+        </SelectStyle>
+      </SelectIconWrapper>
+      <SelectIconWrapper>
+        <SelectStyle
+          id="demo-simple-select"
+          defaultValue={year}
+          value={year}
+          name="year"
+          onChange={handleChange}
+        >
+          {yaerArray.map(element => (
+            <MenuItem key={element} value={element}>
+              {element}
+            </MenuItem>
+          ))}
+        </SelectStyle>
+      </SelectIconWrapper>
+      {/* </FormControl> */}
+      {/* <StatisticsContainer>
         <StatisticsSelectStyle
           onChange={handleChange}
           defaultValue={month}
@@ -61,7 +100,7 @@ const StatisticsSelect = ({ operation }) => {
             <StatisticsOptions key={element}>{element}</StatisticsOptions>
           ))}
         </StatisticsSelectStyle>
-      </StatisticsContainer>
+      </StatisticsContainer> */}
     </SelectWrapper>
   );
 };

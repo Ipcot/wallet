@@ -1,4 +1,55 @@
 import styled from '@emotion/styled';
+import { Select, FormControl, MenuItem } from '@mui/material';
+import themeMaterial from '../../../theme/themeMaterial';
+
+export const SelectStyle = styled(Select)({
+  width: '100%',
+  // padding: '12px 40px 12px 20px',
+  // paddingLeft: '20px',
+  // paddingRight: '0',
+  // height: '50px',
+  borderRadius: '30px',
+  border: '1.5px solid #000000',
+  outline: 'none',
+  backgroundColor: 'transparent',
+  fontFamily: `${themeMaterial.fonts.body}`,
+  fontWeight: '400',
+  fontSize: '16px',
+  lineHeight: '24px',
+  color: '#000000',
+  '& .MuiSelect-select': {
+    // height: '50px',
+    // padding: '20px',
+    paddingLeft: '20px',
+    paddingRight: '0',
+  },
+  '& .MuiSelect-icon': {
+    display: 'none',
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    border: 'none',
+  },
+
+  '& .MuiSelect:before': {
+    position: 'relative',
+  },
+});
+/* width: 100%;
+  padding: 12px 40px 12px 20px;
+  appearance: none;
+  border-radius: 30px;
+  border: 1.5px solid #000000;
+  outline: none;
+  background-color: transparent;
+  font-family: ${p => p.theme.fonts.body};
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`; */
 
 export const StatisticsSelectStyle = styled.select`
   width: 100%;
@@ -32,7 +83,7 @@ export const StatisticsOptions = styled.option`
   color: #000000;
 `;
 
-export const StatisticsContainer = styled.div`
+export const SelectIconWrapper = styled.div`
   position: relative;
 
   &::before {
@@ -43,7 +94,7 @@ export const StatisticsContainer = styled.div`
     border: 0.5px solid #000000;
     position: absolute;
     right: 28px;
-    bottom: 23px;
+    bottom: 28px;
     -webkit-transform: rotate(227deg);
     -moz-transform: rotate(227deg);
     -ms-transform: rotate(227deg);
@@ -57,7 +108,7 @@ export const StatisticsContainer = styled.div`
     border: 0.5px solid #000000;
     position: absolute;
     right: 20px;
-    bottom: 23px;
+    bottom: 28px;
     -webkit-transform: rotate(316deg);
     -moz-transform: rotate(316deg);
     -ms-transform: rotate(316deg);
