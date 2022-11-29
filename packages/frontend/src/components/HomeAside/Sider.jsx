@@ -2,6 +2,7 @@ import HomeButtons from './HomeButtons';
 import CurrentBalance from './CurrentBalance';
 import { AsideWrapper, SydeBarWrapper } from './Sider.styled';
 import Currency from 'components/currency/Currency';
+import Media from 'react-media';
 
 const Sider = () => {
   return (
@@ -10,7 +11,7 @@ const Sider = () => {
         <HomeButtons />
         <CurrentBalance />
       </AsideWrapper>
-      <Currency />
+      <Media query="(min-width: 768px)" render={() => <Currency />} />
     </SydeBarWrapper>
   );
 };
