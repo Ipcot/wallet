@@ -23,18 +23,7 @@ const Header = () => {
         <AppLogo />
         <AppTitle>Wallet</AppTitle>
       </LogoWrapper>
-      <div>
-        <NavLink style={{ display: 'inline-block' }} to={'home'}>
-          Home
-        </NavLink>
-        <NavLink to={'auth/login'} style={{ padding: 2 }}>
-          Login
-        </NavLink>
-        <NavLink to={'auth/register'} style={{ padding: 2 }}>
-          Register
-        </NavLink>
-      </div>
-      <UserControlWrapper>
+           <UserControlWrapper>
         <UserName>{userName}</UserName>
         <Media
           query="(min-width: 767px)"

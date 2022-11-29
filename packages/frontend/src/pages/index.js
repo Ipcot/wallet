@@ -36,7 +36,7 @@ const routes = [
         path: '',
       },
       {
-        element: <Home />,
+        element: <PrivateRoute redirectTo="/auth/login" component={<Home />} />,
         index: 'true',
         path: 'home',
       },
