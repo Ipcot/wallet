@@ -30,5 +30,33 @@
   {
     "id": "8",
     "name": "Reset"
+  },
+  {
+    "id": "9",
+    "name": "Basic expenses"
+  },
+  {
+    "id": "10",
+    "name": "Products"
+  },
+  {
+    "id": "11",
+    "name": "Car"
+  },
+  {
+    "id": "12",
+    "name": "Self care"
+  },
+  {
+    "id": "13",
+    "name": "Child care"
+  },
+  {
+    "id": "14",
+    "name": "Household products"
+  },
+  {
+    "id": "15",
+    "name": "Other expenses"
   }
 ]
