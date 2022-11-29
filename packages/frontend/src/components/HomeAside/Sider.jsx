@@ -11,7 +11,7 @@ const Sider = () => {
         <HomeButtons />
         <CurrentBalance />
       </AsideWrapper>
-      <Media query="(min-width: 768px)" render={() => <Currency />} />
+      <Media query="(min-width: 767px)" render={() => <Currency />} />
     </SydeBarWrapper>
   );
 };

@@ -6,10 +6,18 @@ import { DoughnutWrapper } from './DoughnutWrapper.styled';
 ChartJS.register(ArcElement, Legend, Tooltip);
 
 const StatisticsDoughnut = ({ operation, getExpenses }) => {
+  const [moneyExpenses, setMoneyExpenses] = useState(0);
   const [userOperation, setUserOperation] = useState([]);
   useEffect(() => {
     setUserOperation(operation);
   }, [operation]);
+
+  // const getMoneyExpenses = expenses => {
+  //   const sumExpenses = Number(expenses);
+  //   setMoneyExpenses(sumExpenses);
+  //   getExpenses(expenses);
+  //   console.log(expenses);
+  // };
 
   const money = userOperation.map(element => element.sum);
   const color = userOperation.map(element => element.color);
@@ -49,6 +57,7 @@ const StatisticsDoughnut = ({ operation, getExpenses }) => {
       );
       const expenses = money.toFixed(2);
       getExpenses(expenses);
+
       ctx.font = '700 18px Circle';
       ctx.fillStyle = '#000000';
       ctx.textAlign = 'center';
@@ -73,14 +82,19 @@ const StatisticsDoughnut = ({ operation, getExpenses }) => {
     },
     plugins: [doughnutText],
   };
+  // console.log(moneyExpenses);
 
   return (
     <DoughnutWrapper>
+      {/* {moneyExpenses >= 0 ? (
+        <div>You have no expenses</div>
+      ) : ( */}
       <Doughnut
         data={config.data}
         options={config.options}
         plugins={config.plugins}
       />
+      {/* )} */}
     </DoughnutWrapper>
   );
 };

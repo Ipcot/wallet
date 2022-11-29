@@ -4,9 +4,11 @@ import {
   RouterProvider,
   Navigate,
 } from 'react-router-dom';
+import Media from 'react-media';
 import { SystemLayout } from 'components/layout';
 import PrivateRoute from 'hocs/PrivateRoute';
 import PublicRoute from 'hocs/PublicRoute';
+import Currency from 'components/currency/Currency';
 
 const Login = lazy(() => import('./login'));
 const Register = lazy(() => import('./register'));
@@ -43,6 +45,19 @@ const routes = [
       {
         element: <PrivateRoute component={<Statistics />} />,
         path: 'statistics',
+      },
+      {
+        element: (
+          <PrivateRoute
+            component={
+              <Media query={{ maxWidth: 762 }}>
+                {matches => (matches ? <Currency /> : <Home />)}
+              </Media>
+              // <Media query="(max-width: 767px)" render={() => <Currency />} />
+            }
+          />
+        ),
+        path: 'currency',
       },
     ],
   },

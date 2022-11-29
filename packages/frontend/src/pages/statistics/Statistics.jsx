@@ -64,7 +64,6 @@ const Statistics = () => {
     .reduce((acc, num) => {
       return acc + num;
     }, 0);
-
   return (
     <StatisticsSection>
       <StatisticsTitle>Statistics</StatisticsTitle>
