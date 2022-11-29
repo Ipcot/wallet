@@ -85,10 +85,6 @@ export const TableContent = styled.table`
   }
 `;
 
-export const Row = styled.tr`
-  display: flex;
-  width: 100%;
-`;
 export const THead = styled.th`
   display: flex;
   justify-content: space-around;
@@ -100,6 +96,11 @@ export const THead = styled.th`
   padding: 16px 20px 15px;
 `;
 
+export const Row = styled.tr`
+  display: flex;
+  width: 100%;
+`;
+
 export const TableRowBody = styled.tr`
   display: flex;
   justify-content: space-around;
@@ -109,7 +110,7 @@ export const TableRowBody = styled.tr`
   }
 `;
 
-export const Cell = styled.td`
+export const Cell = styled.th`
   display: flex;
   justify-content: center;
   width: 100%;
