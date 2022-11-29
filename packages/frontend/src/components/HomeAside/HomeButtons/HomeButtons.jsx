@@ -15,23 +15,25 @@ const HomeButtons = () => {
       <Media
         query="(max-width: 767px)"
         render={() => (
-          <ButtonsList>
-            <ButtonsListItem>
-              <ButtonItem to={'/home'}>
-                <HomeIcon />
-              </ButtonItem>
-            </ButtonsListItem>
-            <ButtonsListItem>
-              <ButtonItem to={'/statistics'}>
-                <DiagramIcon />
-              </ButtonItem>
-            </ButtonsListItem>
-            <ButtonsListItem>
-              <ButtonItem>
-                <DollarIcon />
-              </ButtonItem>
-            </ButtonsListItem>
-          </ButtonsList>
+          <>
+            <ButtonsList>
+              <ButtonsListItem>
+                <ButtonItem to={'/home'}>
+                  <HomeIcon />
+                </ButtonItem>
+              </ButtonsListItem>
+              <ButtonsListItem>
+                <ButtonItem to={'/statistics'}>
+                  <DiagramIcon />
+                </ButtonItem>
+              </ButtonsListItem>
+              <ButtonsListItem>
+                <ButtonItem to={'/currency'}>
+                  <DollarIcon />
+                </ButtonItem>
+              </ButtonsListItem>
+            </ButtonsList>
+          </>
         )}
       />
       <Media
