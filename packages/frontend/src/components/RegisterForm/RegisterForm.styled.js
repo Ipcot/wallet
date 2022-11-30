@@ -5,8 +5,8 @@ import { ReactComponent as LockPic } from 'assets/icons/lock.svg';
 import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
 import themeMaterial from '../../theme/themeMaterial';
 
-export const ConfirmButton = {
-  [themeMaterial.breakpoints.down('md')]: {
+/* export const ConfirmButton = {
+  [themeMaterial.breakpoints.down('sm')]: {
     width: 280,
     marginBottom: '10px',
     marginTop: '10px',
@@ -14,10 +14,10 @@ export const ConfirmButton = {
   width: 300,
   marginBottom: '10px',
   marginTop: '10px',
-};
+}; */
 
 export const InputContainer = styled.div`
-  height: 72px;
+  height: 69px;
   position: relative;
 `;
 
@@ -33,13 +33,6 @@ export const Input = styled.input`
   font-family: ${p => p.theme.fonts.body};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
-  /* font-family: 'Circe', sans-serif; */
-
-  /*  font-family: 'Circe', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5; */
   color: ${p => p.theme.palette.colors.text};
   &::placeholder {
     color: #bdbdbd;

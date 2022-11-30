@@ -14,7 +14,7 @@ import { BsEye } from 'react-icons/bs';
 import {
   IconEye,
   Link,
-  ConfirmButton,
+  /* ConfirmButton, */
   Input,
   Form,
   InputContainer,
@@ -57,10 +57,6 @@ const RegisterForm = () => {
     width: '95%',
     background: ' #d3f9f0',
   });
-  /* const [passwordStyles, setPasswordStyles] = useState({
-    width: '10%',
-    background: 'orange',
-  }); */
 
   const changeColor = value => {
     switch (value) {
@@ -115,7 +111,8 @@ const RegisterForm = () => {
 
             pattern: {
               value:
-                /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
+                /*  /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u, */
+                /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,}[0-9A-Za-z]{1})$/u,
               message: 'Enter a valid email!',
             },
           })}
@@ -152,11 +149,13 @@ const RegisterForm = () => {
           })}
           placeholder="Password"
         />
+
         <div>
           {errors?.password && (
             <Post>{errors?.password?.message || 'Error!'}</Post>
           )}
         </div>
+
         <IconEye>
           <span onClick={handleToggle}>
             {type === 'password' ? (
@@ -226,11 +225,11 @@ const RegisterForm = () => {
 
       <Button
         type="submit"
-        /* sx={{
+        sx={{
           marginBottom: 3,
           marginTop: 2,
-        }} */
-        sx={ConfirmButton}
+        }}
+        /*  sx={ConfirmButton} */
         variant="contained"
         disabled={!isValid}
       >
@@ -241,7 +240,7 @@ const RegisterForm = () => {
         type="button"
         color="secondary"
         variant="outlined"
-        sx={ConfirmButton}
+        /* sx={ConfirmButton} */
       >
         <Link to="/auth/login">Log in</Link>
       </Button>
