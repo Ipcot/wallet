@@ -1,30 +1,30 @@
 import { nanoid } from 'nanoid';
 import { CardConteiner, CardBox, TypographyCard, Span } from '../index.styled';
 
-export const cardRender = datas => {
+export const СardRender = data => {
   const card =
-    datas &&
-    datas.map(data => {
+    data &&
+    data.map(({ type, category, comment, sum, balance }) => {
       return (
-        <CardConteiner sx={{ minWidth: 280 }} typeTr={data.type}>
+        <CardConteiner sx={{ minWidth: 280 }} typeTr={type}>
           <CardBox key={nanoid()}>
             <TypographyCard>
-              Date <Span>{data.date}</Span>
+              Date <Span>{date}</Span>
             </TypographyCard>
             <TypographyCard>
-              Type <Span>{data.type}</Span>
+              Type <Span>{type}</Span>
             </TypographyCard>
             <TypographyCard>
-              Category <Span>{data.category}</Span>
+              Category <Span>{category}</Span>
             </TypographyCard>
             <TypographyCard>
-              Comment <Span>{data.comment}</Span>
+              Comment <Span>{comment}</Span>
             </TypographyCard>
             <TypographyCard>
-              Sum <Span typeTr={data.type}>{data.sum}</Span>
+              Sum <Span typeTr={type}>{sum}</Span>
             </TypographyCard>
             <TypographyCard>
-              Balance <Span>{data.balance}</Span>
+              Balance <Span>{balance}</Span>
             </TypographyCard>
           </CardBox>
         </CardConteiner>

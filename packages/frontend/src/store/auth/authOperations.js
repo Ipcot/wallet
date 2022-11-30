@@ -6,6 +6,8 @@ import {
   fetchLogin,
   fetchLogout,
 } from 'api/fetchUser';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 /*
  * POST @ /users/signup
@@ -30,10 +32,11 @@ const register = createAsyncThunk('users/register', async credentials => {
 const logIn = createAsyncThunk('users/login', async credentials => {
   try {
     const { data } = await fetchLogin(credentials);
+    toast.success(`Welcome, ${data.user.name}`);
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log('error: ', error);
+    toast.error('Invalid credentials');
   }
 });
 

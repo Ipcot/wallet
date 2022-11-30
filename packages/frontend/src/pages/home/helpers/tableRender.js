@@ -11,8 +11,9 @@ import {
   Cell,
 } from '../index.styled';
 
-export const tableRender = datas => {
-  const table = datas && (
+export const TableRender = data => {
+  console.log('data table: ', data);
+  const table = data && (
     <ConteinerTable>
       <TableContent>
         <TableHead
@@ -32,18 +33,18 @@ export const tableRender = datas => {
           </Row>
         </TableHead>
         <TableBody>
-          {datas.map(data => (
+          {data.map(({ date, type, category, balance, sum, comment }) => (
             <TableRowBody key={nanoid()}>
               <Cell component="th" scope="row">
-                {data.date}
+                {date}
               </Cell>
-              <Cell align="right">{data.type}</Cell>
-              <Cell align="right">{data.category}</Cell>
-              <Cell align="right">{data.comment}</Cell>
-              <Cell align="right" typeTr={data.type}>
-                {data.sum}
+              <Cell align="right">{type}</Cell>
+              <Cell align="right">{category}</Cell>
+              <Cell align="right">{comment}</Cell>
+              <Cell align="right" typeTr={type}>
+                {sum}
               </Cell>
-              <Cell align="right">{data.balance}</Cell>
+              <Cell align="right">{balance}</Cell>
             </TableRowBody>
           ))}
         </TableBody>
