@@ -20,8 +20,8 @@ export const CloseButton = styled(IconButton)`
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     display: block;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 5px;
+    right: 5px;
     width: 40px;
     height: 40px;
   }
@@ -150,6 +150,12 @@ export const SumField = styled(TextField)(props => ({
 
   '@media (min-width: 768px)': {
     width: '181px',
+
+    '& .MuiInput-root': {
+      '& .MuiInputBase-input.MuiInput-input': {
+        textAlign: 'center',
+      },
+    },
   },
 }));
 
