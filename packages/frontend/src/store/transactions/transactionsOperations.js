@@ -27,10 +27,12 @@ const addTransaction = createAsyncThunk('/transactions', async data => {
 });
 
 const fetchTransactionsByCategory = createAsyncThunk(
-  '/transactions/:year/:month',
+  '/stats/:year/:month',
   async ({ year, month }) => {
     try {
+      // console.log(year, month);
       const result = await getTransactionsByCategory(year, month);
+      console.log(result);
       return result;
     } catch (error) {
       console.log(error.message);

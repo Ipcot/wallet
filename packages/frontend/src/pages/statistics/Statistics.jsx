@@ -26,54 +26,60 @@ const Statistics = () => {
   const [expensesMoney, setExpensesMoney] = useState('');
   const [transactionsDate, setTransactionsDate] = useState({});
   const getDate = ({ year, month }) => {
+    // const yearString = year.toString();
+    // const monthString = month.toString();
+    // setTransactionsDate({ year: yearString, month: monthString });
+    // setTransactionsDate({ year: yearString, month: monthString });
     setTransactionsDate({ year, month });
   };
 
-  const dispatch = useDispatch(
-    transactionsOperations.fetchTransactionsByCategory
-  );
-  const { transactions } = useSelector(
-    transactionsSelectors.getAllTransactions
-  );
+  const dispatch = useDispatch();
+  // const { transactions } = useSelector(
+  //   transactionsSelectors.getAllTransactions
+  // );
   useEffect(() => {
-    // const { year, month } = transactionsDate;
-    dispatch(transactionsOperations.fetchTransactions());
-  }, [dispatch]);
-  const getExpenses = expenses => {
-    setExpensesMoney(expenses);
-  };
-  const { year, month } = transactionsDate;
-  const expenseTransactions = transactions.data.filter(
-    t => t.isIncome === false
-  );
-  const sortByDate = expenseTransactions.filter(
-    element => element.year === year && element.month === month
-  );
+    const { year, month } = transactionsDate;
 
-  const expensesArray = sortByDate;
+    dispatch(
+      transactionsOperations.fetchTransactionsByCategory({ year, month })
+    );
+  }, [dispatch, transactionsDate]);
+  // console.log(transactionsDate);
+  // const getExpenses = expenses => {
+  //   setExpensesMoney(expenses);
+  // };
+  // const { year, month } = transactionsDate;
+  // const expenseTransactions = transactions.data.filter(
+  //   t => t.isIncome === false
+  // );
+  // const sortByDate = expenseTransactions.filter(
+  //   element => element.year === year && element.month === month
+  // );
 
-  const sortedExpensesByCategory = operation.map(category => {
-    const sumByCategory = expensesArray.reduce((acc, el) => {
-      return acc + (el.category === category.name ? el.sum : 0);
-    }, 0);
-    return {
-      name: category.name,
-      sum: sumByCategory,
-      color: category.color,
-    };
-  });
-  const incomExpenseSum = transactions.data
-    .filter(t => t.isIncome === true)
-    .map(t => t.sum)
-    .reduce((acc, num) => {
-      return acc + num;
-    }, 0);
-  console.log(transactions.data.length);
+  // const expensesArray = sortByDate;
+
+  // const sortedExpensesByCategory = operation.map(category => {
+  //   const sumByCategory = expensesArray.reduce((acc, el) => {
+  //     return acc + (el.category === category.name ? el.sum : 0);
+  //   }, 0);
+  //   return {
+  //     name: category.name,
+  //     sum: sumByCategory,
+  //     color: category.color,
+  //   };
+  // });
+  // const incomExpenseSum = transactions.data
+  //   .filter(t => t.isIncome === true)
+  //   .map(t => t.sum)
+  //   .reduce((acc, num) => {
+  //     return acc + num;
+  //   }, 0);
+  // console.log(transactions.data.length);
   return (
     <StatisticsSection>
       <StatisticsTitle>Statistics</StatisticsTitle>
       <StatisticsContainer>
-        {transactions.data.length === 0 ? (
+        {/* {transactions.data.length === 0 ? (
           <StatisticsMassage>
             <StatisticsMassageTitle>
               You have no expenses
@@ -84,15 +90,15 @@ const Statistics = () => {
             operation={sortedExpensesByCategory}
             getExpenses={getExpenses}
           />
-        )}
+        )} */}
 
         <StatisticsRight>
           <StatisticsSelect getDate={getDate} />
-          <StatisticsTable operation={sortedExpensesByCategory} />
+          {/* <StatisticsTable operation={sortedExpensesByCategory} />
           <StatisticaTableFooter
             expensesMoney={expensesMoney}
             isIncome={incomExpenseSum}
-          />
+          /> */}
         </StatisticsRight>
       </StatisticsContainer>
     </StatisticsSection>
