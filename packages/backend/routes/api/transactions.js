@@ -24,7 +24,7 @@ router.get('/', verifyerToken, ctrlWrapper(ctrl.getAll));
 router.get('/categories', verifyerToken, ctrlWrapper(ctrl.getCategories));
 
 router.get(
-  '/stats/:month/:year',
+  '/stats/:year/:month',
   verifyerToken,
   ctrlWrapper(ctrl.getTransactionsStats)
 );

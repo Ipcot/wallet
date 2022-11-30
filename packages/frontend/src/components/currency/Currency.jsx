@@ -12,34 +12,6 @@ import {
   CurrencyErrorMasage,
 } from './Currency.styled';
 
-const getRatesApi = [
-  {
-    currencyCodeA: 840,
-    currencyCodeB: 980,
-    date: 1669327811,
-    rateBuy: 36.65,
-    rateSell: 37.4406,
-  },
-  {
-    currencyCodeA: 978,
-    currencyCodeB: 980,
-    date: 1669327811,
-    rateBuy: 38.1,
-    rateSell: 39.1497,
-  },
-  {
-    currencyCodeA: 985,
-    currencyCodeB: 980,
-    date: 1669411471,
-    rateCross: 8.3268,
-  },
-];
-
-const currencyCode = [
-  { name: 'USD', code: 840 },
-  { name: 'EUR', code: 978 },
-  { name: 'PLN', code: 985 },
-];
 async function getCCurrency() {
   const { data } = await axios.get('https://api.monobank.ua/bank/currency');
   return data;
@@ -82,24 +54,28 @@ const Currency = () => {
         </CurrencyErrorMasage>
       ) : (
         <CurrencyTable cellpadding="0" cellspacing="0">
-          <CurrencyTableHeadTr>
-            <CurrencyTableHead>Currency</CurrencyTableHead>
-            <CurrencyTableHead>Purchase</CurrencyTableHead>
-            <CurrencyTableHead>Sale</CurrencyTableHead>
-          </CurrencyTableHeadTr>
-          {rates.map(element => (
-            <CurrencyTableTr key={element.currencyCodeA}>
-              <CurrencyTableTd>
-                {cc.number(element.currencyCodeA).code}
-              </CurrencyTableTd>
-              <CurrencyTableTd>
-                {element.rateBuy || element.rateCross}
-              </CurrencyTableTd>
-              <CurrencyTableTd>
-                {element.rateSell || element.rateCross}
-              </CurrencyTableTd>
-            </CurrencyTableTr>
-          ))}
+          <thead>
+            <CurrencyTableHeadTr>
+              <CurrencyTableHead>Currency</CurrencyTableHead>
+              <CurrencyTableHead>Purchase</CurrencyTableHead>
+              <CurrencyTableHead>Sale</CurrencyTableHead>
+            </CurrencyTableHeadTr>
+          </thead>
+          <tbody>
+            {rates.map(element => (
+              <CurrencyTableTr key={element.currencyCodeA}>
+                <CurrencyTableTd>
+                  {cc.number(element.currencyCodeA).code}
+                </CurrencyTableTd>
+                <CurrencyTableTd>
+                  {element.rateBuy || element.rateCross}
+                </CurrencyTableTd>
+                <CurrencyTableTd>
+                  {element.rateSell || element.rateCross}
+                </CurrencyTableTd>
+              </CurrencyTableTr>
+            ))}
+          </tbody>
         </CurrencyTable>
       )}
       <Gradient></Gradient>

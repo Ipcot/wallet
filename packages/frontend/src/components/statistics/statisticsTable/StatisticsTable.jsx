@@ -14,21 +14,25 @@ const StatisticsTable = ({ operation }) => {
   return (
     <div>
       <StatisticsTableStyle>
-        <StatisticsHead>
-          <StatisticsThLeft>Operation</StatisticsThLeft>
-          <StatisticsThRigth>Sum</StatisticsThRigth>
-        </StatisticsHead>
-        {operation.map(element => (
-          <StatisticsBody key={element.id}>
-            <StatisticsBodyLeft>
-              <StatisticsBodyicon
-                style={{ backgroundColor: `${element.color}` }}
-              ></StatisticsBodyicon>
-              {element.name}
-            </StatisticsBodyLeft>
-            <StatisticsBodyRigth>{element.sum}</StatisticsBodyRigth>
-          </StatisticsBody>
-        ))}
+        <thead>
+          <StatisticsHead>
+            <StatisticsThLeft>Operation</StatisticsThLeft>
+            <StatisticsThRigth>Sum</StatisticsThRigth>
+          </StatisticsHead>
+        </thead>
+        <tbody>
+          {operation.map(element => (
+            <StatisticsBody key={element.id}>
+              <StatisticsBodyLeft>
+                <StatisticsBodyicon
+                  style={{ backgroundColor: `${element.color}` }}
+                ></StatisticsBodyicon>
+                {element.name}
+              </StatisticsBodyLeft>
+              <StatisticsBodyRigth>{element.sum}</StatisticsBodyRigth>
+            </StatisticsBody>
+          ))}
+        </tbody>
       </StatisticsTableStyle>
     </div>
   );
