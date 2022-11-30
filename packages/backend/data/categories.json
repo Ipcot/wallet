@@ -1,62 +1,47 @@
 [
   {
     "id": "1",
-    "name": "Main"
+    "name": "Main",
+    "color": "#FED057"
   },
   {
     "id": "2",
-    "name": "Food"
+    "name": "Food",
+    "color": "#FFD8D0"
   },
   {
     "id": "3",
-    "name": "Auto"
+    "name": "Auto",
+    "color": "#FD9498"
   },
   {
     "id": "4",
-    "name": "Development"
+    "name": "Development",
+    "color": "#C5BAFF"
   },
   {
     "id": "5",
-    "name": "Children"
+    "name": "Children",
+    "color": "#6E78E8"
   },
   {
     "id": "6",
-    "name": "House"
+    "name": "House",
+    "color": "#4A56E2"
   },
   {
     "id": "7",
-    "name": "Education"
+    "name": "Education",
+    "color": "#81E1FF"
   },
   {
     "id": "8",
-    "name": "Reset"
+    "name": "Reset",
+    "color": "#24CCA7"
   },
   {
     "id": "9",
-    "name": "Basic expenses"
-  },
-  {
-    "id": "10",
-    "name": "Products"
-  },
-  {
-    "id": "11",
-    "name": "Car"
-  },
-  {
-    "id": "12",
-    "name": "Self care"
-  },
-  {
-    "id": "13",
-    "name": "Child care"
-  },
-  {
-    "id": "14",
-    "name": "Household products"
-  },
-  {
-    "id": "15",
-    "name": "Other expenses"
+    "name": "Basic expenses",
+    "color": "#00AD84"
   }
 ]

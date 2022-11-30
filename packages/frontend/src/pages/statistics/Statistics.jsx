@@ -26,16 +26,12 @@ const Statistics = () => {
   const [expensesMoney, setExpensesMoney] = useState('');
   const [transactionsDate, setTransactionsDate] = useState({});
   const getDate = ({ year, month }) => {
-    // const yearString = year.toString();
-    // const monthString = month.toString();
-    // setTransactionsDate({ year: yearString, month: monthString });
-    // setTransactionsDate({ year: yearString, month: monthString });
     setTransactionsDate({ year, month });
   };
 
   const dispatch = useDispatch();
   // const { transactions } = useSelector(
-  //   transactionsSelectors.getAllTransactions
+  //   transactionsSelectors.getTransactionsSortedByCategory
   // );
   useEffect(() => {
     const { year, month } = transactionsDate;
@@ -44,7 +40,7 @@ const Statistics = () => {
       transactionsOperations.fetchTransactionsByCategory({ year, month })
     );
   }, [dispatch, transactionsDate]);
-  // console.log(transactionsDate);
+  // console.log(transactions);
   // const getExpenses = expenses => {
   //   setExpensesMoney(expenses);
   // };
