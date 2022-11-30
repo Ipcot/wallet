@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     width: 768px;
+    margin: 0 auto;
     padding: 60px 117px 196px 118px;
     background-color: ${p => p.theme.palette.primary.bg};
   }
