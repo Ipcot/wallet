@@ -20,8 +20,7 @@ const transactionsSlice = createSlice({
       state,
       { payload }
     ) => {
-      console.log(state.transactions);
-      state.transactions = payload;
+      state.transactions = payload.data.data;
       state.loading = false;
     },
     [transactionsOperations.fetchTransactionsByCategory.fulfilled]: (

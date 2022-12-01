@@ -11,7 +11,6 @@ function App() {
   const dispatch = useDispatch();
 
   const { isRefreshing } = useAuth();
-  console.log('isRefreshing', isRefreshing);
 
   useEffect(() => {
     dispatch(operations.fetchCurrentUser());
