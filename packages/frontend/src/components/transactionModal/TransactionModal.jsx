@@ -54,7 +54,7 @@ const TransactionModal = ({ opened, closeModal }) => {
   const onSubmit = (data) => {
     const isIncome = !data.isExpense;
     const { transactionDate:date, category, sum, comment } = data;
-    dispatch(transactionsOperations.addTransaction(JSON.stringify({ isIncome, date, category, sum, comment })));
+    dispatch(transactionsOperations.addTransaction({ isIncome, date, category, sum, comment }));
     closeModal();
     reset();
   };

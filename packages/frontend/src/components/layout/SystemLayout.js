@@ -12,21 +12,19 @@ import {
 
 const SystemLayout = () => {
   return (
-    <div>
+    <>
       <Container>
         <Header />
       </Container>
-      <main>
-        <MainContainer>
-          <Sider>
-            <SiderComponent />
-          </Sider>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </MainContainer>
-      </main>
-    </div>
+      <MainContainer>
+        <Sider>
+          <SiderComponent />
+        </Sider>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </MainContainer>
+    </>
   );
 };
 
