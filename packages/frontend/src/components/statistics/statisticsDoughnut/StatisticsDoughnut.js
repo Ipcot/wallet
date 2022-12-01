@@ -60,6 +60,7 @@ const StatisticsDoughnut = ({ operation }) => {
     data: data,
     options: {
       maintainAspectRatio: false,
+
       // aspectRatio: 1,
       plugins: {
         legend: {
