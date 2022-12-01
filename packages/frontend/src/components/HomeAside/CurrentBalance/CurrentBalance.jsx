@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import contactsSelectors from 'store/transactions/transactionsSelectors';
-import transactionsOperations from 'store/transactions/transactionsOperations';
+import { authSelectors, authOperations } from 'store/auth';
+
 import {
   BalanceWrapper,
   BalanceTitle,
@@ -9,28 +9,25 @@ import {
 } from './CurrentBalance.styled';
 
 const CurrentBalance = () => {
-  let balance = 0;
   const dispatch = useDispatch();
-  const allTransaction = useSelector(contactsSelectors.getAllTransactions);
-  useEffect(() => {
-    dispatch(transactionsOperations.fetchTransactions());
-  }, [dispatch]);
 
-  if (
-    allTransaction &&
-    allTransaction.transactions &&
-    allTransaction.transactions.data &&
-    allTransaction.transactions.data.length > 0
-  ) {
-    const lastTransaction = allTransaction.transactions.data[0];
-    balance = lastTransaction.balance.toFixed(2);
-  }
+  const user = useSelector(authSelectors.getUser);
+  const balance = user?.balance;
+
+  // console.log(user);
+  // console.log(balance);
+
+  // endless re-render
+
+  // useEffect(() => {
+  //   dispatch(authOperations.fetchCurrentUser());
+  // }, [dispatch]);
 
   return (
     <BalanceWrapper>
       <BalanceTitle>Your balance</BalanceTitle>
       <BalanceValue>
-        &#x20b4;{' '}
+        &#x20b4;
         <span
           style={{
             color: balance > 0 ? '#000000' : '#FF6596',
