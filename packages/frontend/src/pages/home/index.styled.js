@@ -67,12 +67,11 @@ export const Span = styled.span`
 export const ConteinerTable = styled.div`
   max-width: 704px;
   width: 100%;
-  margin-right: auto;
+  margin-left: auto;
 
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     max-width: 715px;
     margin-left: auto;
-    margin-right: auto;
     padding-top: 45px;
   }
 `;

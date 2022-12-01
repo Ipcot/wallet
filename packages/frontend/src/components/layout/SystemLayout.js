@@ -1,4 +1,3 @@
-import Currency from 'components/currency/Currency';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router';
 import Sider from '../HomeAside/Sider';
