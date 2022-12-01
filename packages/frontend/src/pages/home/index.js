@@ -30,19 +30,15 @@ const Home = () => {
     setOpen(false);
   };
 
-  if (transactions.transactions?.length === 0) {
-    return;
-  }
-
   return (
     <>
-      {transactions.transactions?.data.length ? (
+      {transactions?.data ? (
         <Media queries={{ small: '(max-width: 767px)' }}>
           {matches =>
             matches.small ? (
-              <СardRender data={transactions.transactions?.data} />
+              <СardRender data={transactions?.data} />
             ) : (
-              <TableRender data={transactions.transactions?.data} />
+              <TableRender data={transactions?.data} />
             )
           }
         </Media>

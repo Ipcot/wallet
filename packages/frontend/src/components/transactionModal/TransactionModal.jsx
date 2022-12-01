@@ -61,9 +61,8 @@ const TransactionModal = ({ opened, closeModal }) => {
         comment,
       })
     );
-    console.log('dispatch');
-    // closeModal();
-    // reset();
+    closeModal();
+    reset();
   };
 
   const matchesTablet = useMediaQuery('(min-width:768px)');
