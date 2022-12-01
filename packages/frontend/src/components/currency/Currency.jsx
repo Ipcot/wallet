@@ -10,6 +10,7 @@ import {
   GradientStyle,
   CurrencyTableHeadTr,
   CurrencyErrorMasage,
+  CurrencyHead,
 } from './Currency.styled';
 
 async function getCCurrency() {
@@ -54,13 +55,17 @@ const Currency = () => {
         </CurrencyErrorMasage>
       ) : (
         <CurrencyTable cellpadding="0" cellspacing="0">
-          <thead>
+          <CurrencyHead>
             <CurrencyTableHeadTr>
-              <CurrencyTableHead>Currency</CurrencyTableHead>
+              <CurrencyTableHead style={{ borderTopLeftRadius: 30 }}>
+                Currency
+              </CurrencyTableHead>
               <CurrencyTableHead>Purchase</CurrencyTableHead>
-              <CurrencyTableHead>Sale</CurrencyTableHead>
+              <CurrencyTableHead style={{ borderTopRightRadius: 30 }}>
+                Sale
+              </CurrencyTableHead>
             </CurrencyTableHeadTr>
-          </thead>
+          </CurrencyHead>
           <tbody>
             {rates.map(element => (
               <CurrencyTableTr key={element.currencyCodeA}>
