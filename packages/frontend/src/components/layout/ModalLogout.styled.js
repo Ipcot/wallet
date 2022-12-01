@@ -61,6 +61,7 @@ export const LogoutButton = styled.button`
   border: none;
   display: flex;
   align-items: center;
+  background-color: transparent;
   color: ${p => p.theme.palette.colors.headerSecondary};
   &:hover,
   &:focus,

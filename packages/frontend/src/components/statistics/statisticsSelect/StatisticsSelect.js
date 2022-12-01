@@ -41,7 +41,7 @@ const StatisticsSelect = ({ getDate }) => {
 
   useEffect(() => {
     const monthNumber = monArray.indexOf(month) + 1;
-    getDate({ year, month: monthNumber });
+    getDate(year, monthNumber);
   }, [year, month]);
 
   return (

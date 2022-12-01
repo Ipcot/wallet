@@ -1,6 +1,10 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors, authOperations } from 'store/auth';
+import {
+  transactionsSelectors,
+  transactionsOperations,
+} from 'store/transactions';
 
 import {
   BalanceWrapper,
@@ -9,19 +13,12 @@ import {
 } from './CurrentBalance.styled';
 
 const CurrentBalance = () => {
+  // const [balance, setBalance] = useState(second)
   const dispatch = useDispatch();
+  const User = useSelector(authSelectors.getUser);
+  // dispatch(authOperations.fetchCurrentUser());
 
-  const user = useSelector(authSelectors.getUser);
-  const balance = user?.balance;
-
-  // console.log(user);
-  // console.log(balance);
-
-  // endless re-render
-
-  // useEffect(() => {
-  //   dispatch(authOperations.fetchCurrentUser());
-  // }, [dispatch]);
+  console.log(User);
 
   return (
     <BalanceWrapper>
@@ -30,10 +27,10 @@ const CurrentBalance = () => {
         &#x20b4;
         <span
           style={{
-            color: balance > 0 ? '#000000' : '#FF6596',
+            color: User.balance > 0 ? '#000000' : '#FF6596',
           }}
         >
-          {balance}
+          {User.balance}
         </span>
       </BalanceValue>
     </BalanceWrapper>
