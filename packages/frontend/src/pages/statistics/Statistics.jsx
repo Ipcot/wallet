@@ -1,10 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 
 import { StatisticsTitle } from '../../components/statistics/statisticsTitle/StatisticsTitle.styled';
 import { StatisticsContainer } from '../../components/statistics/statisticsContainer/StatisticsContainer.styled';
-import userOperation from './userOperation.json';
-import operation from '../../constants/operation.json';
 import StatisticsDoughnut from '../../components/statistics/statisticsDoughnut/StatisticsDoughnut';
 import StatisticsSelect from '../../components/statistics/statisticsSelect/StatisticsSelect';
 import StatisticsTable from '../../components/statistics/statisticsTable/StatisticsTable';
@@ -23,8 +20,6 @@ import {
 } from 'components/statistics/StatisticsMessage/StatisticsMessage.styled';
 
 const Statistics = () => {
-  const [expensesMoney, setExpensesMoney] = useState('');
-  const [transactionsDate, setTransactionsDate] = useState({});
   const stats = useSelector(
     transactionsSelectors.getTransactionsSortedByCategory
   );
@@ -39,7 +34,7 @@ const Statistics = () => {
     );
   };
 
-  console.log(stats.sorted);
+  const expense = stats.sorted.filter(element => element.name != 'Main');
 
   return (
     <StatisticsSection>
@@ -52,12 +47,12 @@ const Statistics = () => {
             </StatisticsMessageTitle>
           </StatisticsMessage>
         ) : (
-          <StatisticsDoughnut operation={stats.sorted} />
+          <StatisticsDoughnut operation={expense} />
         )}
 
         <StatisticsRight>
           <StatisticsSelect getDate={getDate} />
-          <StatisticsTable stats={stats.sorted} />
+          <StatisticsTable stats={expense} />
           <StatisticaTableFooter
             expensesMoney={stats.expense}
             isIncome={stats.income}
