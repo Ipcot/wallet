@@ -3,7 +3,7 @@ import { СardRender } from './helpers/cardRender';
 import { TableRender } from './helpers/tableRender';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import { BoxButton } from './index.styled';
+import { BoxButton, Title } from './index.styled';
 import Modal from 'hocs/Modal';
 import TransactionModal from 'components/transactionModal/TransactionModal';
 import { useEffect, useState } from 'react';
