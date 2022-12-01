@@ -15,13 +15,14 @@ export const Container = styled.div`
 
 export const MainContainer = styled(Container)`
   width: 320px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
-    width: 768px;
+    min-width: 768px;
+    width: 100%;
     height: 100vh;
     flex-direction: column;
     gap: 20px;
@@ -35,7 +36,7 @@ export const MainContainer = styled(Container)`
   }
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     height: 100vh;
-    width: 1280px;
+    min-width: 1280px;
     justify-content: flex-start;
     flex-direction: row;
     align-items: flex-start;
