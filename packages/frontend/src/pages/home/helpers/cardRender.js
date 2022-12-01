@@ -7,13 +7,13 @@ export const СardRender = ({ data }) => {
     data.map(({ isIncome, category, comment, sum, balance, date }) => {
       console.log('type: ', isIncome);
       return (
-        <CardConteiner sx={{ minWidth: 280 }} typeTr={type}>
+        <CardConteiner sx={{ minWidth: 280 }} typeTr={isIncome ? '+' : '-'}>
           <CardBox key={nanoid()}>
             <TypographyCard>
               Date <Span>{date.slice(0, 10)}</Span>
             </TypographyCard>
             <TypographyCard>
-              Type <Span>{isIncome ? 'Income' : 'Expense'}</Span>
+              Type <Span>{isIncome ? '+' : '-'}</Span>
             </TypographyCard>
             <TypographyCard>
               Category <Span>{category}</Span>
@@ -22,7 +22,7 @@ export const СardRender = ({ data }) => {
               Comment <Span>{comment}</Span>
             </TypographyCard>
             <TypographyCard>
-              Sum <Span typeTr={type}>{sum}</Span>
+              Sum <Span typeTr={isIncome ? '+' : '-'}>{sum}</Span>
             </TypographyCard>
             <TypographyCard>
               Balance <Span>{balance}</Span>
