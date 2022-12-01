@@ -60,39 +60,39 @@ const Statistics = () => {
   //   element => element.year === year && element.month === month
   // );
 
-  const sortedExpensesByCategory = operation.map(category => {
-    const sumByCategory = expensesArray.reduce((acc, el) => {
-      return acc + (el.category === category.name ? el.sum : 0);
-    }, 0);
-    return {
-      name: category.name,
-      sum: sumByCategory,
-      color: category.color,
-    };
-  });
-  const incomExpenseSum = transactions.data
-    .filter(t => t.isIncome === true)
-    .map(t => t.sum)
-    .reduce((acc, num) => {
-      return acc + num;
-    }, 0);
+  // const sortedExpensesByCategory = operation.map(category => {
+  //   const sumByCategory = expensesArray.reduce((acc, el) => {
+  //     return acc + (el.category === category.name ? el.sum : 0);
+  //   }, 0);
+  //   return {
+  //     name: category.name,
+  //     sum: sumByCategory,
+  //     color: category.color,
+  //   };
+  // });
+  // const incomExpenseSum = transactions.data
+  //   .filter(t => t.isIncome === true)
+  //   .map(t => t.sum)
+  //   .reduce((acc, num) => {
+  //     return acc + num;
+  //   }, 0);
 
   return (
     <StatisticsSection>
       <StatisticsTitle>Statistics</StatisticsTitle>
       <StatisticsContainer>
-        {stats.expense === 0 ? (
+        {/* {stats.expense === 0 ? (
           <StatisticsMassage>
             <StatisticsMassageTitle>
               You have no expenses
             </StatisticsMassageTitle>
           </StatisticsMassage>
-        ) : (
-          <StatisticsDoughnut
-            operation={stats.sorted}
-            // getExpenses={getExpenses}
-          />
-        )}
+        ) : ( */}
+        <StatisticsDoughnut
+          operation={stats.sorted}
+          // getExpenses={getExpenses}
+        />
+        {/* )} */}
 
         <StatisticsRight>
           <StatisticsSelect getDate={getDate} />

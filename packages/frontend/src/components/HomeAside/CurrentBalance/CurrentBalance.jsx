@@ -15,17 +15,17 @@ const CurrentBalance = () => {
   useEffect(() => {
     dispatch(transactionsOperations.fetchTransactions());
   }, [dispatch]);
-  console.log(allTransaction.data);
-
-  if (
-    // allTransaction &&
-    // allTransaction.transactions &&
-    // allTransaction.data &&
-    allTransaction.data.length > 0
-  ) {
-    const lastTransaction = allTransaction.data[0];
-    balance = lastTransaction.balance.toFixed(2);
-  }
+  // console.log(allTransaction.data);
+  // // if()
+  // if (
+  //   // allTransaction &&
+  //   // allTransaction.transactions &&
+  //   // allTransaction.data &&
+  //   allTransaction.data.length >= 0
+  // ) {
+  //   const lastTransaction = allTransaction.data[0];
+  //   balance = lastTransaction.balance.toFixed(2);
+  // }
 
   return (
     <BalanceWrapper>
