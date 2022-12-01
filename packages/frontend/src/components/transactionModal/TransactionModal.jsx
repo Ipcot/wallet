@@ -25,6 +25,7 @@ import {
 } from './TransactionModal.styled';
 
 import { Button, FormGroup, Stack } from '@mui/material';
+import { authOperations } from 'store/auth';
 
 const TransactionModal = ({ opened, closeModal }) => {
   const {
@@ -36,10 +37,10 @@ const TransactionModal = ({ opened, closeModal }) => {
     handleSubmit,
     reset,
   } = useForm({
-    mode: 'onChange',
+    mode: 'onBlur',
     defaultValues: {
       isExpense: false,
-      category: '',
+      category: 'Products',
       sum: '',
       transactionDate: new Date(),
       comment: '',
@@ -52,15 +53,18 @@ const TransactionModal = ({ opened, closeModal }) => {
   const onSubmit = data => {
     const isIncome = !data.isExpense;
     const { transactionDate: date, sum, comment, category } = data;
+    const transactionData = {
+      isIncome,
+      date,
+      sum: Number(sum),
+      comment,
+    };
     dispatch(
-      transactionsOperations.addTransaction({
-        isIncome,
-        date,
-        sum: Number(sum),
-        comment,
-        category: isIncome ? 'Main' : category,
-      })
+      transactionsOperations.addTransaction(
+        isIncome ? transactionData : { ...transactionData, category }
+      )
     );
+    dispatch(authOperations.fetchCurrentUser());
     closeModal();
     reset();
   };
@@ -101,7 +105,7 @@ const TransactionModal = ({ opened, closeModal }) => {
                     value={value}
                     onChange={(event, val) => {
                       if (!val) {
-                        setValue(`category`, '');
+                        setValue(`category`, 'Main');
                       }
                       return onChange(val);
                     }}
@@ -234,8 +238,12 @@ const TransactionModal = ({ opened, closeModal }) => {
             <Controller
               control={control}
               name={'comment'}
+              rules={{
+                required: true,
+              }}
               render={({ field: { onChange, value } }) => (
                 <Comment
+                  error={!!errors?.comment}
                   minRows={matchesTablet ? '1' : '3'}
                   multiline={true}
                   placeholder="Comment"
@@ -253,7 +261,7 @@ const TransactionModal = ({ opened, closeModal }) => {
             <Button
               variant="contained"
               type="submit"
-              disabled={!isDirty || !isValid}
+              // disabled={!isDirty || !isValid}
             >
               Add
             </Button>
