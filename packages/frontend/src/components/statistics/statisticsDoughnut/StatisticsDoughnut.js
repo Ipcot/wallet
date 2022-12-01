@@ -18,12 +18,12 @@ const StatisticsDoughnut = ({ operation }) => {
     labels: [...nameOperation],
     datasets: [
       {
-        label: '$',
+        label: '   $',
         data: [...money],
         backgroundColor: [...color],
         hoverOffset: 4,
         borderWidth: 1,
-        cutout: '68%',
+        cutout: '70%',
       },
     ],
   };
