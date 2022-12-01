@@ -4,6 +4,7 @@ import {
   postTransaction,
   getTransactionsByCategory,
 } from 'api/fetchTransaction';
+import { fetchCurrent } from 'api/fetchUser';
 
 const fetchTransactions = createAsyncThunk(
   '/transactions',
@@ -18,10 +19,11 @@ const fetchTransactions = createAsyncThunk(
 );
 
 const addTransaction = createAsyncThunk('/transactions', async data => {
-  console.log('addTransaction data: ', data);
   try {
     await postTransaction(data);
-    return await getTransactions();
+    const transactions = await getTransactions();
+    await fetchCurrent();
+    return transactions;
   } catch (error) {
     console.log(error.message);
   }
