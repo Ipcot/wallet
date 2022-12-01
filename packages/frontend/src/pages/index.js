@@ -61,10 +61,10 @@ const routes = [
       },
     ],
   },
-  {
-    element: <Navigate to={'/home'} replace />,
-    path: '*',
-  },
+  // {
+  //   element: <Navigate to={'/home'} />,
+  //   path: '*',
+  // },
 ];
 
 const Router = () => <RouterProvider router={createBrowserRouter(routes)} />;
