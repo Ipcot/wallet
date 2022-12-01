@@ -18,6 +18,7 @@ const fetchTransactions = createAsyncThunk(
 );
 
 const addTransaction = createAsyncThunk('/transactions', async data => {
+  console.log('addTransaction data: ', data);
   try {
     await postTransaction(data);
     return await getTransactions();
