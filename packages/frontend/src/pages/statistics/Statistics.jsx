@@ -41,63 +41,6 @@ const Statistics = () => {
 
   console.log(stats.sorted);
 
-  // console.log(stats);
-  // const { transactions } = useSelector(
-  //   transactionsSelectors.getTransactionsSortedByCategory
-  // );
-  // useEffect(() => {
-  //   const { year, month } = transactionsDate;
-
-  //   dispatch(
-  //     transactionsOperations.fetchTransactionsByCategory({ year, month })
-  //   );
-  // }, [dispatch, transactionsDate]);
-  // console.log(transactions);
-  // const getExpenses = expenses => {
-  //   setExpensesMoney(expenses);
-  // };
-  // const { year, month } = transactionsDate;
-  // const expenseTransactions = transactions.data.filter(
-  //   t => t.isIncome === false
-  // );
-  // const sortByDate = expenseTransactions.filter(
-  //   element => element.year === year && element.month === month
-  // );
-
-  // const sortedExpensesByCategory = operation.map(category => {
-  //   const sumByCategory = expensesArray.reduce((acc, el) => {
-  //     return acc + (el.category === category.name ? el.sum : 0);
-  //   }, 0);
-  //   return {
-  //     name: category.name,
-  //     sum: sumByCategory,
-  //     color: category.color,
-  //   };
-  // });
-  // const incomExpenseSum = transactions.data
-  //   .filter(t => t.isIncome === true)
-  //   .map(t => t.sum)
-  //   .reduce((acc, num) => {
-  //     return acc + num;
-  //   }, 0);
-
-  // const sortedExpensesByCategory = operation.map(category => {
-  //   const sumByCategory = expensesArray.reduce((acc, el) => {
-  //     return acc + (el.category === category.name ? el.sum : 0);
-  //   }, 0);
-  //   return {
-  //     name: category.name,
-  //     sum: sumByCategory,
-  //     color: category.color,
-  //   };
-  // });
-  // const incomExpenseSum = transactions.data
-  //   .filter(t => t.isIncome === true)
-  //   .map(t => t.sum)
-  //   .reduce((acc, num) => {
-  //     return acc + num;
-  //   }, 0);
-  // console.log(transactions.data.length);
   return (
     <StatisticsSection>
       <StatisticsTitle>Statistics</StatisticsTitle>
