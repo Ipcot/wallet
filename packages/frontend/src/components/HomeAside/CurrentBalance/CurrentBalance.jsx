@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import contactsSelectors from 'store/transactions/transactionsSelectors';
-import transactionsOperations from 'store/transactions/transactionsOperations';
+import { authSelectors, authOperations } from 'store/auth';
+
 import {
   BalanceWrapper,
   BalanceTitle,
@@ -9,7 +9,6 @@ import {
 } from './CurrentBalance.styled';
 
 const CurrentBalance = () => {
-  let balance = 0;
   const dispatch = useDispatch();
   const allTransaction = useSelector(contactsSelectors.getAllTransactions);
   useEffect(() => {
@@ -30,7 +29,16 @@ const CurrentBalance = () => {
   return (
     <BalanceWrapper>
       <BalanceTitle>Your balance</BalanceTitle>
-      <BalanceValue>&#x20b4; {balance}</BalanceValue>
+      <BalanceValue>
+        &#x20b4;
+        <span
+          style={{
+            color: balance > 0 ? '#000000' : '#FF6596',
+          }}
+        >
+          {balance}
+        </span>
+      </BalanceValue>
     </BalanceWrapper>
   );
 };

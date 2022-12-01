@@ -4,7 +4,7 @@ const data = require('../../data/categories.json');
 
 const getTransactionsStats = async (req, res) => {
   const { _id: owner } = req.user;
-  const { month, year } = req.params;
+  const { year, month } = req.params;
 
   const transactions = await Transaction.find({ month, year, owner });
 
@@ -17,7 +17,9 @@ const getTransactionsStats = async (req, res) => {
       return acc + (el.category === category.name ? el.sum : 0);
     }, 0);
     return {
-      [category.name]: sumByCategory,
+      name: category.name,
+      sum: sumByCategory,
+      color: category.color,
     };
   });
 

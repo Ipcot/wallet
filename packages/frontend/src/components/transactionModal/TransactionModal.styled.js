@@ -3,7 +3,6 @@ import {
   Box,
   Typography,
   Select,
-  Modal,
   TextField,
   MenuItem,
   IconButton,
@@ -15,23 +14,21 @@ import { ReactComponent as DownArrow } from './img/arrDown.svg';
 import { ReactComponent as CalendarSVG } from './img/calendar.svg';
 import { ReactComponent as CloseSVG } from './img/close.svg';
 
-export const ModalTransaction = styled(Modal)(p => ({}));
-
 export const CloseButton = styled(IconButton)`
-    display: none;
+  display: none;
 
-    @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-    }
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export const CloseIcon = styled(CloseSVG)`
-   stroke: black; 
+  stroke: black;
 `;
 
 export const CustomSwitch = styled(Switch)(({ theme }) => ({
@@ -113,7 +110,7 @@ export const TransactionBox = styled(Box)`
   width: 100%;
 
   padding: 20px;
-  background: #e7eaf2;
+  background-color: #fff;
   box-shadow: 24;
 
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
@@ -144,24 +141,28 @@ export const ExpenseLabel = styled(Typography)(props => ({
 }));
 
 export const SumField = styled(TextField)(props => ({
-    
-    '& .MuiInput-root': {
-        paddingLeft: '20px',
-        fontFamily: 'CirceRegular, sans-serif',
-        fontSize: '18px',
-        lineHeight: '1.5',
-    },
+  '& .MuiInput-root': {
+    paddingLeft: '20px',
+    fontFamily: 'CirceRegular, sans-serif',
+    fontSize: '18px',
+    lineHeight: '1.5',
+  },
 
-    '@media (min-width: 768px)': {
-        width: '181px',
+  '@media (min-width: 768px)': {
+    width: '181px',
+
+    '& .MuiInput-root': {
+      '& .MuiInputBase-input.MuiInput-input': {
+        textAlign: 'center',
+      },
     },
+  },
 }));
 
 export const DateTimePicker = styled(Datetime)`
   width: 100%;
   border: none;
 
-  
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
     display: flex;
     align-items: center;
@@ -177,24 +178,24 @@ export const CategorySelect = styled(Select)(props => ({
   fontFamily: 'CirceRegular, sans-serif',
   fontSize: '18px',
   lineHeight: '1.5',
- 
+
   '& .MuiSelect-select': {
     paddingLeft: '20px',
   },
 }));
 
 export const CategoryPlaceholder = styled.div(props => ({
-    color: '#aaa',
-    fontFamily: 'CirceRegular, sans-serif',
-    fontSize: '18px',
-    lineHeight: '1.5',
+  color: '#aaa',
+  fontFamily: 'CirceRegular, sans-serif',
+  fontSize: '18px',
+  lineHeight: '1.5',
 }));
 
 export const CategoryItem = styled(MenuItem)(props => ({
-    paddingLeft: '20px',
-    fontFamily: 'CirceBold, sans-serif',
-    fontSize: '18px',
-    lineHeight: '1.5',
+  paddingLeft: '20px',
+  fontFamily: 'CirceBold, sans-serif',
+  fontSize: '18px',
+  lineHeight: '1.5',
 }));
 
 export const DownArrowStyled = styled(DownArrow)`
@@ -209,15 +210,15 @@ export const CalendarSVGStyled = styled(CalendarSVG)`
 `;
 
 export const Comment = styled(TextField)(p => ({
-    borderBottom: '1px solid black',
-   
-    '& .MuiInput-root': {
-        paddingLeft: '20px',
-        fontFamily: 'CirceRegular, sans-serif',
-        fontSize: '18px',
-        lineHeight: '1.5',
-    },
-    '& .MuiInput-root:before': {
-        border: 'none',
-    },
+  borderBottom: '1px solid black',
+
+  '& .MuiInput-root': {
+    paddingLeft: '20px',
+    fontFamily: 'CirceRegular, sans-serif',
+    fontSize: '18px',
+    lineHeight: '1.5',
+  },
+  '& .MuiInput-root:before': {
+    border: 'none',
+  },
 }));

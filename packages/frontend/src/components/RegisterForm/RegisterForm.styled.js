@@ -5,22 +5,19 @@ import { ReactComponent as LockPic } from 'assets/icons/lock.svg';
 import { ReactComponent as EnvelopePic } from 'assets/icons/envelope.svg';
 import themeMaterial from '../../theme/themeMaterial';
 
-export const ConfirmButton = {
-  /*   @media (min-width: [themeMaterial.breakpoints.down('sm')]) {
-    width: 280px;
-  } */
-  /* [themeMaterial.breakpoints.down('sm')]: {
+/* export const ConfirmButton = {
+  [themeMaterial.breakpoints.down('sm')]: {
     width: 280,
     marginBottom: '10px',
     marginTop: '10px',
   },
   width: 300,
   marginBottom: '10px',
-  marginTop: '10px', */
-};
+  marginTop: '10px',
+}; */
 
 export const InputContainer = styled.div`
-  height: 72px;
+  height: 69px;
   position: relative;
 `;
 
@@ -32,17 +29,10 @@ export const Input = styled.input`
   margin-right: 22px;
   border-bottom: 1px solid ${props => props.theme.palette.primary.inputBorder};
 
-  font-size: ${p => p.theme.fontSizes.m};
+  font-size: ${p => p.theme.fontSizes.s};
   font-family: ${p => p.theme.fonts.body};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
-  /* font-family: 'Circe', sans-serif; */
-
-  /*  font-family: 'Circe', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5; */
   color: ${p => p.theme.palette.colors.text};
   &::placeholder {
     color: #bdbdbd;
@@ -160,7 +150,6 @@ export const IconEye = styled.div`
   position: absolute;
   top: 10px;
   right: 30px;
-
   color: #bdbdbd;
 `;
 

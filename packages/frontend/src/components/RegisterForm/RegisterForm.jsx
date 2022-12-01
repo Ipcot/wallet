@@ -5,16 +5,16 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { passwordStrength } from 'check-password-strength';
 import { ReactComponent as LogoImg } from 'assets/icons/logo.svg';
-import Icon from 'react-icons-kit';
-import { eyeOff } from 'react-icons-kit/feather/eyeOff';
-import { eye } from 'react-icons-kit/feather/eye';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { BsEyeSlash } from 'react-icons/bs';
+import { BsEye } from 'react-icons/bs';
 
 import {
   IconEye,
   Link,
-  ConfirmButton,
+  /* ConfirmButton, */
   Input,
   Form,
   InputContainer,
@@ -49,15 +49,14 @@ const RegisterForm = () => {
       return;
     }
 
-    /*  if (search.trim() === '') {
-      toast('Введите название!');
-      return;
-    } */
     dispatch(authOperations.register(credentials));
     reset();
   };
 
-  const [passwordStyles, setPasswordStyles] = useState({});
+  const [passwordStyles, setPasswordStyles] = useState({
+    width: '95%',
+    background: ' #d3f9f0',
+  });
 
   const changeColor = value => {
     switch (value) {
@@ -83,14 +82,11 @@ const RegisterForm = () => {
   };
 
   const [type, setType] = useState('password');
-  const [icon, setIcon] = useState(eyeOff);
 
   const handleToggle = () => {
     if (type === 'password') {
-      setIcon(eye);
       setType('text');
     } else {
-      setIcon(eyeOff);
       setType('password');
     }
   };
@@ -105,16 +101,18 @@ const RegisterForm = () => {
       <InputContainer>
         <EnvelopeImage />
         <Input
+          autoComplete="new-password"
           {...register('email', {
             required: 'The field is required!',
             minLength: {
-              value: 10,
-              message: 'Minimum 10 characters!',
+              value: 7,
+              message: 'Minimum 7 characters!',
             },
 
             pattern: {
               value:
-                /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u,
+                /*  /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u, */
+                /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,}[0-9A-Za-z]{1})$/u,
               message: 'Enter a valid email!',
             },
           })}
@@ -128,6 +126,7 @@ const RegisterForm = () => {
       <InputContainer>
         <LockImage />
         <Input
+          autoComplete="new-password"
           type={type}
           {...register('password', {
             onChange: verifyPassword,
@@ -150,14 +149,20 @@ const RegisterForm = () => {
           })}
           placeholder="Password"
         />
+
         <div>
           {errors?.password && (
             <Post>{errors?.password?.message || 'Error!'}</Post>
           )}
         </div>
+
         <IconEye>
           <span onClick={handleToggle}>
-            <Icon icon={icon} size={20} />
+            {type === 'password' ? (
+              <BsEyeSlash size={20} />
+            ) : (
+              <BsEye size={20} />
+            )}
           </span>
         </IconEye>
       </InputContainer>
@@ -169,23 +174,24 @@ const RegisterForm = () => {
       <InputContainer>
         <LockImage />
         <Input
+          type={type}
           {...register('confirmpassword', {
             required: 'The field is required!',
           })}
           placeholder="Confirm password"
         />
-        <div
-          style={{
-            height: 40,
-          }}
-        >
+        <div>
           {errors?.confirmpassword && (
             <Post>{errors?.confirmpassword?.message || 'Error!'}</Post>
           )}
         </div>
         <IconEye>
           <span onClick={handleToggle}>
-            <Icon icon={icon} size={20} />
+            {type === 'password' ? (
+              <BsEyeSlash size={20} />
+            ) : (
+              <BsEye size={20} />
+            )}
           </span>
         </IconEye>
       </InputContainer>
@@ -223,8 +229,9 @@ const RegisterForm = () => {
           marginBottom: 3,
           marginTop: 2,
         }}
+        /*  sx={ConfirmButton} */
         variant="contained"
-        // disabled={isValid}
+        disabled={!isValid}
       >
         Register
       </Button>
@@ -233,7 +240,7 @@ const RegisterForm = () => {
         type="button"
         color="secondary"
         variant="outlined"
-        sx={ConfirmButton}
+        /* sx={ConfirmButton} */
       >
         <Link to="/auth/login">Log in</Link>
       </Button>
