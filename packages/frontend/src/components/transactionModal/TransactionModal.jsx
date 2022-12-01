@@ -40,7 +40,7 @@ const TransactionModal = ({ opened, closeModal }) => {
     defaultValues: {
       isExpense: false,
       category: '',
-      sum: '',
+      sum: 0,
       transactionDate: new Date(),
       comment: '',
     },
@@ -51,14 +51,14 @@ const TransactionModal = ({ opened, closeModal }) => {
 
   const onSubmit = data => {
     const isIncome = !data.isExpense;
-    const { transactionDate: date, category, sum, comment } = data;
+    const { transactionDate: date, sum, comment, category } = data;
     dispatch(
       transactionsOperations.addTransaction({
         isIncome,
         date,
-        category,
-        sum,
+        sum: Number(sum),
         comment,
+        category: isIncome ? 'Main' : category,
       })
     );
     closeModal();
