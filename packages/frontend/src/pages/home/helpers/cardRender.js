@@ -13,7 +13,7 @@ export const СardRender = ({ data }) => {
               Date <Span>{date.slice(0, 10)}</Span>
             </TypographyCard>
             <TypographyCard>
-              Type <Span>{isIncome ? 'Income' : 'Expense'}</Span>
+              Type <Span>{isIncome ? '+' : '-'}</Span>
             </TypographyCard>
             <TypographyCard>
               Category <Span>{category}</Span>

@@ -37,7 +37,7 @@ export const TableRender = ({ data }) => {
               <Cell component="th" scope="row">
                 {date.slice(0, 10)}
               </Cell>
-              <Cell align="right">{isIncome ? 'Income' : 'Expense'}</Cell>
+              <Cell align="right">{isIncome ? '+' : '-'}</Cell>
               <Cell align="right">{category}</Cell>
               <Cell align="right">{comment}</Cell>
               <Cell align="right" typeTr={isIncome}>
