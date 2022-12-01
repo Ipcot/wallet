@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StatisticsMassage = styled.div`
+export const StatisticsMessage = styled.div`
   margin-top: 20px;
   width: 280px;
   height: 280px;
@@ -21,7 +21,7 @@ export const StatisticsMassage = styled.div`
   }
 `;
 
-export const StatisticsMassageTitle = styled.h3`
+export const StatisticsMessageTitle = styled.h3`
   font-family: ${props => props.theme.fonts.h1};
   font-weight: ${props => props.theme.fontWeights.bold};
   font-size: ${props => props.theme.fontSizes.m};

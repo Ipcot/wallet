@@ -15,12 +15,12 @@ import { StatisticsSection } from 'components/statistics/StatisticsSection/Stati
 import {
   transactionsOperations,
   transactionsSelectors,
-  contactsSelectors,
 } from '../../store/transactions';
+
 import {
-  StatisticsMassage,
-  StatisticsMassageTitle,
-} from 'components/statistics/StatisticsMassage/StatisticsMassage.styled';
+  StatisticsMessage,
+  StatisticsMessageTitle,
+} from 'components/statistics/StatisticsMessage/StatisticsMessage.styled';
 
 const Statistics = () => {
   const [expensesMoney, setExpensesMoney] = useState('');
@@ -45,18 +45,15 @@ const Statistics = () => {
     <StatisticsSection>
       <StatisticsTitle>Statistics</StatisticsTitle>
       <StatisticsContainer>
-        {/* {stats.expense === 0 ? (
-          <StatisticsMassage>
-            <StatisticsMassageTitle>
+        {stats.expense === 0 ? (
+          <StatisticsMessage>
+            <StatisticsMessageTitle>
               You have no expenses
-            </StatisticsMassageTitle>
-          </StatisticsMassage>
-        ) : ( */}
-        <StatisticsDoughnut
-          operation={stats.sorted}
-          // getExpenses={getExpenses}
-        />
-        {/* )} */}
+            </StatisticsMessageTitle>
+          </StatisticsMessage>
+        ) : (
+          <StatisticsDoughnut operation={stats.sorted} />
+        )}
 
         <StatisticsRight>
           <StatisticsSelect getDate={getDate} />
