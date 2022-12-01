@@ -50,8 +50,10 @@ export const TypographyCard = styled.p`
 `;
 
 export const Span = styled.span`
+  font-family: ${themeMaterial.fonts.body};
   font-weight: ${p => (p.typeTr ? 700 : 400)};
   font-size: ${themeMaterial.fontSizes.s};
+  font-style: normal;
   color: ${p => {
     switch (p.typeTr) {
       case '-':
@@ -113,7 +115,7 @@ export const Cell = styled.th`
   display: flex;
   justify-content: center;
   width: 100%;
-  font-family: ${themeMaterial.fonts.h2};
+  font-family: ${themeMaterial.fonts.body};
   font-weight: ${p => (p.typeTr ? 700 : 400)};
   padding: 16px 15px;
   font-size: ${themeMaterial.fontSizes.s};
@@ -138,5 +140,17 @@ export const BoxButton = styled.div`
   @media (min-width: 767px) {
     bottom: 40px;
     right: 40px;
+  }
+`;
+
+export const Title = styled.div`
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  font-size: ${themeMaterial.fontSizes.xl};
+  font-family: ${themeMaterial.fonts.h1};
+  font-weight: 700;
+  @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
+    margin-top: 50px;
   }
 `;

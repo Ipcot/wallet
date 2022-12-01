@@ -1,5 +1,6 @@
 import TableBody from '@mui/material/TableBody';
 import TableHead from '@mui/material/TableHead';
+import { format, parseISO } from 'date-fns';
 import { nanoid } from 'nanoid';
 
 import {
@@ -35,12 +36,12 @@ export const TableRender = ({ data }) => {
           {data.map(({ date, isIncome, category, balance, sum, comment }) => (
             <TableRowBody key={nanoid()}>
               <Cell component="th" scope="row">
-                {date.slice(0, 10)}
+                {format(parseISO(date), 'dd.MM.yyyy')}
               </Cell>
               <Cell align="right">{isIncome ? '+' : '-'}</Cell>
               <Cell align="right">{category}</Cell>
               <Cell align="right">{comment}</Cell>
-              <Cell align="right" typeTr={isIncome}>
+              <Cell align="right" typeTr={isIncome ? '+' : '-'}>
                 {sum}
               </Cell>
               <Cell align="right">{balance}</Cell>
