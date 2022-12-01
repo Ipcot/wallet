@@ -17,10 +17,11 @@ import 'react-toastify/dist/ReactToastify.css';
 const register = createAsyncThunk('users/register', async credentials => {
   try {
     const { data } = await fetchRegister(credentials);
+    toast.success(`Welcome, ${data.user.name}`);
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log('error: ', error);
+    toast.error('Invalid credentials');
   }
 });
 
