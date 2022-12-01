@@ -21,32 +21,44 @@ import {
 const Statistics = () => {
   const [expensesMoney, setExpensesMoney] = useState('');
   const [transactionsDate, setTransactionsDate] = useState({});
-  const getDate = ({ year, month }) => {
-    setTransactionsDate({ year, month });
+  const stats = useSelector(
+    transactionsSelectors.getTransactionsSortedByCategory
+  );
+  const dispatch = useDispatch();
+
+  const getDate = (year, month) => {
+    dispatch(
+      transactionsOperations.fetchTransactionsByCategory({
+        year,
+        month,
+      })
+    );
   };
 
-  const dispatch = useDispatch(
-    transactionsOperations.fetchTransactionsByCategory
-  );
-  const { transactions } = useSelector(
-    transactionsSelectors.getAllTransactions
-  );
-  useEffect(() => {
-    // const { year, month } = transactionsDate;
-    dispatch(transactionsOperations.fetchTransactions());
-  }, [dispatch]);
-  const getExpenses = expenses => {
-    setExpensesMoney(expenses);
-  };
-  const { year, month } = transactionsDate;
-  const expenseTransactions = transactions.data.filter(
-    t => t.isIncome === false
-  );
-  const sortByDate = expenseTransactions.filter(
-    element => element.year === year && element.month === month
-  );
+  console.log(stats.sorted);
 
-  const expensesArray = sortByDate;
+  // console.log(stats);
+  // const { transactions } = useSelector(
+  //   transactionsSelectors.getTransactionsSortedByCategory
+  // );
+  // useEffect(() => {
+  //   const { year, month } = transactionsDate;
+
+  //   dispatch(
+  //     transactionsOperations.fetchTransactionsByCategory({ year, month })
+  //   );
+  // }, [dispatch, transactionsDate]);
+  // console.log(transactions);
+  // const getExpenses = expenses => {
+  //   setExpensesMoney(expenses);
+  // };
+  // const { year, month } = transactionsDate;
+  // const expenseTransactions = transactions.data.filter(
+  //   t => t.isIncome === false
+  // );
+  // const sortByDate = expenseTransactions.filter(
+  //   element => element.year === year && element.month === month
+  // );
 
   const sortedExpensesByCategory = operation.map(category => {
     const sumByCategory = expensesArray.reduce((acc, el) => {
@@ -69,16 +81,25 @@ const Statistics = () => {
     <StatisticsSection>
       <StatisticsTitle>Statistics</StatisticsTitle>
       <StatisticsContainer>
-        <StatisticsDoughnut
-          operation={sortedExpensesByCategory}
-          getExpenses={getExpenses}
-        />
+        {stats.expense === 0 ? (
+          <StatisticsMassage>
+            <StatisticsMassageTitle>
+              You have no expenses
+            </StatisticsMassageTitle>
+          </StatisticsMassage>
+        ) : (
+          <StatisticsDoughnut
+            operation={stats.sorted}
+            // getExpenses={getExpenses}
+          />
+        )}
+
         <StatisticsRight>
           <StatisticsSelect getDate={getDate} />
-          <StatisticsTable operation={sortedExpensesByCategory} />
+          <StatisticsTable stats={stats.sorted} />
           <StatisticaTableFooter
-            expensesMoney={expensesMoney}
-            isIncome={incomExpenseSum}
+            expensesMoney={stats.expense}
+            isIncome={stats.income}
           />
         </StatisticsRight>
       </StatisticsContainer>
