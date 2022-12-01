@@ -40,7 +40,7 @@ const TransactionModal = ({ opened, closeModal }) => {
     defaultValues: {
       isExpense: false,
       category: '',
-      sum: 0,
+      sum: '',
       transactionDate: new Date(),
       comment: '',
     },
