@@ -4,6 +4,7 @@ import {
   postTransaction,
   getTransactionsByCategory,
 } from 'api/fetchTransaction';
+import { fetchCurrent } from 'api/fetchUser';
 
 const fetchTransactions = createAsyncThunk(
   '/transactions',
@@ -20,7 +21,9 @@ const fetchTransactions = createAsyncThunk(
 const addTransaction = createAsyncThunk('/transactions', async data => {
   try {
     await postTransaction(data);
-    return await getTransactions();
+    const transactions = await getTransactions();
+    await fetchCurrent();
+    return transactions;
   } catch (error) {
     console.log(error.message);
   }
@@ -30,9 +33,7 @@ const fetchTransactionsByCategory = createAsyncThunk(
   '/stats/:year/:month',
   async ({ year, month }) => {
     try {
-      // console.log(year, month);
       const result = await getTransactionsByCategory(year, month);
-      console.log(result);
       return result;
     } catch (error) {
       console.log(error.message);

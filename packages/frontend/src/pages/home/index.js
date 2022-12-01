@@ -1,26 +1,27 @@
 import Media from 'react-media';
-import { cardRender } from './helpers/cardRender';
-import { tableRender } from './helpers/tableRender';
+import { СardRender } from './helpers/cardRender';
+import { TableRender } from './helpers/tableRender';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import { BoxButton } from './index.styled';
+import { BoxButton, Title } from './index.styled';
 import Modal from 'hocs/Modal';
 import TransactionModal from 'components/transactionModal/TransactionModal';
-import { useState } from 'react';
-
-// function createData(date, type, category, comment, sum, balance) {
-//   return { date, type, category, comment, sum, balance };
-// }
-
-const datas = [
-  // createData('01.05.2020', '-', 'Other', 'eat', 300.0, 6900.0),
-  // createData('02.05.2020', '+', 'Other', 'salary', 900.0, 6900.0),
-  // createData('03.05.2020', '-', 'Other', 'food', 1500.0, 6900.0),
-  // createData('04.05.2020', '+', 'Other', 'sport', 250.0, 6900.0),
-  // createData('05.05.2020', '-', 'Other', 'gift', 3000.0, 6900.0),
-];
+import { useEffect, useState } from 'react';
+import { useRedux } from 'hooks';
+import {
+  transactionsOperations,
+  transactionsSelectors,
+} from 'store/transactions';
+import { useDispatch } from 'react-redux';
 
 const Home = () => {
+  const [selector] = useRedux();
+  const transactions = selector(transactionsSelectors.getAllTransactions);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(transactionsOperations.fetchTransactions());
+  }, []);
   const [isOpen, setOpen] = useState(false);
   const handleOpenModal = () => {
     setOpen(true);
@@ -31,9 +32,15 @@ const Home = () => {
 
   return (
     <>
-      {datas.length ? (
+      {transactions?.data ? (
         <Media queries={{ small: '(max-width: 767px)' }}>
-          {matches => (matches.small ? cardRender() : tableRender())}
+          {matches =>
+            matches.small ? (
+              <СardRender data={transactions?.data} />
+            ) : (
+              <TableRender data={transactions?.data} />
+            )
+          }
         </Media>
       ) : null}
       <BoxButton sx={{ '& > :not(style)': { m: 1 } }}>

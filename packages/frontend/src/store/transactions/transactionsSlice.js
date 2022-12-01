@@ -3,27 +3,34 @@ import transactionsOperations from './transactionsOperations';
 
 const initialState = {
   transactions: [],
-  transactionsSortedByCategory: [],
+  transactionsSortedByCategory: {
+    sorted: [],
+    income: 0,
+    expense: 0,
+  },
   loading: false,
   error: null,
 };
 
 const transactionsSlice = createSlice({
-  name: 'transactions',
+  name: 'stats',
   initialState,
   extraReducers: {
     [transactionsOperations.fetchTransactions.fulfilled]: (
       state,
       { payload }
     ) => {
-      state.transactions = payload;
+      state.transactions = payload.data.data;
       state.loading = false;
     },
     [transactionsOperations.fetchTransactionsByCategory.fulfilled]: (
       state,
       { payload }
     ) => {
-      state.transactionsSortedByCategory = payload;
+      state.transactionsSortedByCategory.sorted =
+        payload.data.sortedExpensesByCategory;
+      state.transactionsSortedByCategory.income = payload.data.Income;
+      state.transactionsSortedByCategory.expense = payload.data.Expense;
       state.loading = false;
     },
     [transactionsOperations.addTransaction.fulfilled]: (state, { payload }) => {

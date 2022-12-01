@@ -10,7 +10,7 @@ import {
   StatisticsBodyicon,
 } from './StatisticsTableStyle.styled';
 
-const StatisticsTable = ({ operation }) => {
+const StatisticsTable = ({ stats }) => {
   return (
     <div>
       <StatisticsTableStyle>
@@ -21,7 +21,7 @@ const StatisticsTable = ({ operation }) => {
           </StatisticsHead>
         </thead>
         <tbody>
-          {operation.map(element => (
+          {stats.map(element => (
             <StatisticsBody key={element.id}>
               <StatisticsBodyLeft>
                 <StatisticsBodyicon

@@ -5,7 +5,7 @@ import { DoughnutWrapper } from './DoughnutWrapper.styled';
 
 ChartJS.register(ArcElement, Legend, Tooltip);
 
-const StatisticsDoughnut = ({ operation, getExpenses }) => {
+const StatisticsDoughnut = ({ operation }) => {
   const [userOperation, setUserOperation] = useState([]);
   useEffect(() => {
     setUserOperation(operation);
@@ -18,12 +18,12 @@ const StatisticsDoughnut = ({ operation, getExpenses }) => {
     labels: [...nameOperation],
     datasets: [
       {
-        label: '$',
+        label: '   $',
         data: [...money],
         backgroundColor: [...color],
         hoverOffset: 4,
         borderWidth: 1,
-        cutout: '68%',
+        cutout: '70%',
       },
     ],
   };
@@ -48,7 +48,6 @@ const StatisticsDoughnut = ({ operation, getExpenses }) => {
         initialValue
       );
       const expenses = money.toFixed(2);
-      getExpenses(expenses);
 
       ctx.font = '700 18px Circle';
       ctx.fillStyle = '#000000';
@@ -61,6 +60,7 @@ const StatisticsDoughnut = ({ operation, getExpenses }) => {
     data: data,
     options: {
       maintainAspectRatio: false,
+
       // aspectRatio: 1,
       plugins: {
         legend: {

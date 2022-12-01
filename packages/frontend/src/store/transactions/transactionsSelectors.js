@@ -1,9 +1,9 @@
-const getAllTransactions = state => state.transactions;
+const getAllTransactions = state => state.stats.transactions;
 
-const getLoading = state => state.transactions.loading;
+const getLoading = state => state.stats.loading;
 
 const getTransactionsSortedByCategory = state =>
-  state.transactionsSortedByCategory;
+  state.stats.transactionsSortedByCategory;
 
 const transactionsSelectors = {
   getLoading,

@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import contactsSelectors from 'store/transactions/transactionsSelectors';
-import transactionsOperations from 'store/transactions/transactionsOperations';
+import { authSelectors, authOperations } from 'store/auth';
+import {
+  transactionsSelectors,
+  transactionsOperations,
+} from 'store/transactions';
+
 import {
   BalanceWrapper,
   BalanceTitle,
@@ -9,34 +13,24 @@ import {
 } from './CurrentBalance.styled';
 
 const CurrentBalance = () => {
-  let balance = 0;
+  // const [balance, setBalance] = useState(second)
   const dispatch = useDispatch();
-  const allTransaction = useSelector(contactsSelectors.getAllTransactions);
-  useEffect(() => {
-    dispatch(transactionsOperations.fetchTransactions());
-  }, [dispatch]);
+  const User = useSelector(authSelectors.getUser);
+  // dispatch(authOperations.fetchCurrentUser());
 
-  if (
-    allTransaction &&
-    allTransaction.transactions &&
-    allTransaction.transactions.data &&
-    allTransaction.transactions.data.length > 0
-  ) {
-    const lastTransaction = allTransaction.transactions.data[0];
-    balance = lastTransaction.balance.toFixed(2);
-  }
+  console.log(User);
 
   return (
     <BalanceWrapper>
       <BalanceTitle>Your balance</BalanceTitle>
       <BalanceValue>
-        &#x20b4;{' '}
+        &#x20b4;
         <span
           style={{
-            color: balance > 0 ? '#000000' : '#FF6596',
+            color: User.balance > 0 ? '#000000' : '#FF6596',
           }}
         >
-          {balance}
+          {User.balance}
         </span>
       </BalanceValue>
     </BalanceWrapper>
