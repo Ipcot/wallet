@@ -95,17 +95,19 @@ export const BoxLogo = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  color: #000000;
 `;
 
 export const LogoTitle = styled.div`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 45px;
-  display: flex;
-  align-items: center;
-  color: #000000;
+  font-family: ${p => p.theme.fonts.logo};
+  font-size: 22px;
+  line-height: 0.85;
+  letter-spacing: 1.2px;
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
+    font-weight: ${p => p.theme.fontWeights.bold};
+    line-height: ${p => p.theme.lineHeights.heading};
+    font-size: ${p => p.theme.fontSizes.xl};
+  }
 `;
 export const Post = styled.p`
   color: #bf1650;

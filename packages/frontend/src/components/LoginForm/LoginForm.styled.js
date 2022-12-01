@@ -26,11 +26,6 @@ export const Input = styled.input`
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
 
-  /*  font-family: 'Circe', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5; */
   color: ${p => p.theme.palette.colors.text};
   &::placeholder {
     color: #bdbdbd;
@@ -63,7 +58,6 @@ export const Form = styled.form`
     background-color: ${props => props.theme.palette.primary.contrastText};
     padding: 40px 58.5px 62px 65px;
     border-radius: 20px;
-    /* border-radius: ${p => p.theme.shape.borderRadius}; */
   }
 `;
 
@@ -90,15 +84,15 @@ export const BoxLogo = styled.div`
 `;
 
 export const LogoTitle = styled.div`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 45px;
-  display: flex;
-  align-items: center;
-  color: #000000;
-  margin-right: 20px;
+  font-family: ${p => p.theme.fonts.logo};
+  font-size: 22px;
+  line-height: 0.85;
+  letter-spacing: 1.2px;
+  @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
+    font-weight: ${p => p.theme.fontWeights.bold};
+    line-height: ${p => p.theme.lineHeights.heading};
+    font-size: ${p => p.theme.fontSizes.xl};
+  }
 `;
 export const Post = styled.p`
   color: #bf1650;
