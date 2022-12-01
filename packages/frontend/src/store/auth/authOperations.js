@@ -21,7 +21,7 @@ const register = createAsyncThunk('users/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    toast.error('Invalid credentials');
+    toast.error('Email is already in use');
   }
 });
 
@@ -37,7 +37,7 @@ const logIn = createAsyncThunk('users/login', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    toast.error('Invalid credentials');
+    toast.error('Incorrect password or email');
   }
 });
 
