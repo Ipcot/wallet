@@ -22,14 +22,16 @@ const StatisticsTable = ({ stats }) => {
         </thead>
         <tbody>
           {stats.map(element => (
-            <StatisticsBody key={element.id}>
-              <StatisticsBodyLeft>
+            <StatisticsBody key={element.color}>
+              <StatisticsBodyLeft key={element.name}>
                 <StatisticsBodyicon
                   style={{ backgroundColor: `${element.color}` }}
                 ></StatisticsBodyicon>
                 {element.name}
               </StatisticsBodyLeft>
-              <StatisticsBodyRigth>{element.sum}</StatisticsBodyRigth>
+              <StatisticsBodyRigth key={element.sum}>
+                {element.sum}
+              </StatisticsBodyRigth>
             </StatisticsBody>
           ))}
         </tbody>
