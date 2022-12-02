@@ -11,6 +11,7 @@ const fetchTransactions = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const result = await getTransactions();
+      console.log('result: ', result);
       const user = await fetchCurrent();
       const response = {
         balance: user.data.balance,
@@ -26,13 +27,7 @@ const fetchTransactions = createAsyncThunk(
 const addTransaction = createAsyncThunk('/transactions', async data => {
   try {
     await postTransaction(data);
-    const responseData = await getTransactions();
-    const user = await fetchCurrent();
-    const response = {
-      balance: user.data.balance,
-      data: responseData.data,
-    };
-    return response;
+    return await getTransactions();
   } catch (error) {
     console.log(error.message);
   }
