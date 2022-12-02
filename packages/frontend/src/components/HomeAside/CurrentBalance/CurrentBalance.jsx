@@ -13,12 +13,7 @@ import {
 } from './CurrentBalance.styled';
 
 const CurrentBalance = () => {
-  // const [balance, setBalance] = useState(second)
-  const dispatch = useDispatch();
-  const User = useSelector(authSelectors.getUser);
-  // dispatch(authOperations.fetchCurrentUser());
-
-  console.log(User);
+  const balance = useSelector(transactionsSelectors.getBalance);
 
   return (
     <BalanceWrapper>
@@ -27,10 +22,10 @@ const CurrentBalance = () => {
         &#x20b4;
         <span
           style={{
-            color: User.balance > 0 ? '#000000' : '#FF6596',
+            color: balance > 0 ? '#000000' : '#FF6596',
           }}
         >
-          {User.balance}
+          {balance}
         </span>
       </BalanceValue>
     </BalanceWrapper>

@@ -77,6 +77,7 @@ const fetchCurrentUser = createAsyncThunk(
     token.set(persistedToken);
     try {
       const { data } = await fetchCurrent();
+      console.log('fetchCurrentUser: ', data);
       return data;
     } catch (error) {
       console.log('error: ', error);

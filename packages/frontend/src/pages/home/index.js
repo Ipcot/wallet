@@ -32,17 +32,19 @@ const Home = () => {
 
   return (
     <>
-      {transactions?.data ? (
+      {transactions.length ? (
         <Media queries={{ small: '(max-width: 767px)' }}>
           {matches =>
             matches.small ? (
-              <СardRender data={transactions?.data} />
+              <СardRender data={transactions} />
             ) : (
-              <TableRender data={transactions?.data} />
+              <TableRender data={transactions} />
             )
           }
         </Media>
-      ) : null}
+      ) : (
+        <div>Other</div>
+      )}
       <BoxButton sx={{ '& > :not(style)': { m: 1 } }}>
         <Fab
           color="primary"

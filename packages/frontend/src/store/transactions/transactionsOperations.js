@@ -11,7 +11,12 @@ const fetchTransactions = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const result = await getTransactions();
-      return result;
+      const user = await fetchCurrent();
+      const response = {
+        balance: user.data.balance,
+        data: result.data,
+      };
+      return response;
     } catch (error) {
       console.log(error.message);
     }
@@ -21,9 +26,13 @@ const fetchTransactions = createAsyncThunk(
 const addTransaction = createAsyncThunk('/transactions', async data => {
   try {
     await postTransaction(data);
-    const transactions = await getTransactions();
-    await fetchCurrent();
-    return transactions;
+    const responseData = await getTransactions();
+    const user = await fetchCurrent();
+    const response = {
+      balance: user.data.balance,
+      data: responseData.data,
+    };
+    return response;
   } catch (error) {
     console.log(error.message);
   }

@@ -40,7 +40,7 @@ const TransactionModal = ({ opened, closeModal }) => {
     mode: 'onBlur',
     defaultValues: {
       isExpense: false,
-      category: 'Products',
+      category: 'Main',
       sum: '',
       transactionDate: new Date(),
       comment: '',

@@ -10,6 +10,7 @@ const initialState = {
   },
   loading: false,
   error: null,
+  balance: 0,
 };
 
 const transactionsSlice = createSlice({
@@ -34,7 +35,8 @@ const transactionsSlice = createSlice({
       state.loading = false;
     },
     [transactionsOperations.addTransaction.fulfilled]: (state, { payload }) => {
-      state.transactions = payload;
+      state.transactions = payload.data;
+      state.balance = payload.balance;
       state.loading = false;
     },
   },
