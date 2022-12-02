@@ -6,17 +6,11 @@ export const Container = styled.div`
     margin: 0 auto;
     padding: 60px 117px 196px 118px;
     background-color: ${p => p.theme.palette.primary.bg};
-    background-image: url('../img/blue.png'), url('../img/orange.png');
-    background-repeat: no-repeat;
-    background-position: bottom 450px left -150px, top -110px right -290px;
   }
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     width: 1280px;
     margin: 0 auto;
     padding: 0;
-    background-image: url('../img/blue.png'), url('../img/orange.png');
-    background-repeat: no-repeat;
-    background-position: bottom -165px left -135px, top -150px right -100px;
   }
 `;
 
