@@ -7,9 +7,7 @@ export const StatisticsTitle = styled.h2`
   line-height: 0.6;
   margin-bottom: 20px;
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
-    /* width: 50%; */
     margin-left: 84px;
     margin-top: 32px;
-    /* margin-right: ${p => p.theme.space[5]}px; */
   }
 `;

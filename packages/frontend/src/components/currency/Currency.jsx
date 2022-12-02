@@ -27,7 +27,6 @@ const Currency = () => {
   useEffect(() => {
     const getRates = async () => {
       try {
-        // await getCCurrency()
         const response = await getCCurrency();
         const res = response.filter(
           obj =>

@@ -30,13 +30,8 @@ export const CurrencyErrorMasage = styled.h3`
 `;
 
 export const CurrencyTable = styled.table`
-  /* padding: 0 44px 0 44px; */
-  /* width: 393px;
-  height: 347px; */
-  /* width: 336px; */
   background-color: transparent;
   border-radius: 30px;
-  /* background-color: #4a56e2; */
   border-spacing: 0;
 `;
 
@@ -45,8 +40,6 @@ export const CurrencyHead = styled.thead`
 `;
 
 export const CurrencyTableTr = styled.tr`
-  /* height: 60px; */
-
   color: #ffffff;
 `;
 export const CurrencyTableHeadTr = styled.tr`
@@ -54,7 +47,6 @@ export const CurrencyTableHeadTr = styled.tr`
 `;
 
 export const CurrencyTableHead = styled.th`
-  /* border-top-right-radius: 30px; */
   height: 50px;
   color: #ffffff;
   width: 131px;
@@ -80,7 +72,6 @@ export const CurrencyTableTd = styled.td`
 export const GradientStyle = styled.div`
   width: 393;
   height: 134px;
-  /* border-radius: 50% 20% / 10% 40%; */
   transform: rotate(180deg);
   background: linear-gradient(
     180deg,

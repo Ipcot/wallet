@@ -17,7 +17,6 @@ export const StatisticsTableStyle = styled.table`
 export const StatisticsHead = styled.tr`
   display: flex;
   justify-content: space-between;
-  /* width: 280px; */
   border-radius: 30px;
   background-color: #ffff;
   font-family: ${p => p.theme.fonts.h2};
@@ -28,16 +27,11 @@ export const StatisticsHead = styled.tr`
 `;
 
 export const StatisticsThLeft = styled.th`
-  /* display: flex;
-  justify-content: flex-start; */
-  /* border-radius: 30px; */
   padding-top: 16px;
   padding-bottom: 15px;
   padding-left: 20px;
 `;
 export const StatisticsThRigth = styled.th`
-  /* display: flex;
-  justify-content: flex-end; */
   padding-top: 16px;
   padding-bottom: 15px;
   padding-right: 20px;
