@@ -248,6 +248,7 @@ const TransactionModal = ({ opened, closeModal }) => {
                   multiline={true}
                   placeholder="Comment"
                   variant="standard"
+                  inputProps={{ maxLength: 12 }}
                   type="text"
                   name="comment"
                   onChange={onChange}
