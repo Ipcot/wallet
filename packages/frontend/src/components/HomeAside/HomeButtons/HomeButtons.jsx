@@ -7,6 +7,7 @@ import {
   HomeIcon,
   DiagramIcon,
   DollarIcon,
+  Span,
 } from './HomeButtons.styled';
 
 const HomeButtons = () => {
@@ -43,13 +44,13 @@ const HomeButtons = () => {
             <ButtonsListItem>
               <ButtonItem to={'/home'}>
                 <HomeIcon />
-                Home
+                <Span to={'/home'}>Home</Span>
               </ButtonItem>
             </ButtonsListItem>
             <ButtonsListItem>
               <ButtonItem to={'/statistics'}>
                 <DiagramIcon />
-                Statistics
+                <Span to={'/statistics'}>Statistics</Span>
               </ButtonItem>
             </ButtonsListItem>
           </ButtonsList>

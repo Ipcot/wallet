@@ -44,7 +44,7 @@ export const ButtonItem = styled(NavLink)`
   font-weight: ${p => p.theme.fontWeights.normal};
   &:hover,
   &:focus,
-  &:active {
+  &.active {
     font-weight: ${p => p.theme.fontWeights.bold};
     svg {
       color: ${p => p.theme.palette.colors.secondary};
@@ -74,7 +74,11 @@ export const HomeIcon = styled(HomeActive)`
     margin-right: 25px;
   }
 `;
-
+export const Span = styled(NavLink)`
+  &.active {
+    font-weight: ${p => p.theme.fontWeights.bold};
+  }
+`;
 export const DiagramIcon = styled(DiagramActive)`
   color: ${p => p.theme.palette.colors.notActive};
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
