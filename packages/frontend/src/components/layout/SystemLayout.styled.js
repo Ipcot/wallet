@@ -21,7 +21,7 @@ export const MainContainer = styled(Container)`
   justify-content: center;
   align-items: center;
   @media (min-width: ${p => p.theme.breakpoints.values.md}px) {
-    min-width: 768px;
+    width: 768px;
     width: 100%;
     height: 100vh;
     flex-direction: column;
@@ -29,22 +29,14 @@ export const MainContainer = styled(Container)`
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0 32px 0 32px;
-    background-image: url('../img/blured-blue.png'),
-      url('../img/blured-orange.png');
-    background-repeat: no-repeat;
-    background-position: bottom -150px left -150px, top -230px right -350px;
   }
   @media (min-width: ${p => p.theme.breakpoints.values.lg}px) {
     height: 100vh;
-    min-width: 1280px;
+    width: 1280px;
     justify-content: flex-start;
     flex-direction: row;
     align-items: flex-start;
     padding: 0 16px 50px 16px;
-    background-image: url('../img/blured-blue.png'),
-      url('../img/blured-orange.png');
-    background-repeat: no-repeat;
-    background-position: bottom -250px left -150px, top -200px right -150px;
   }
 `;
 

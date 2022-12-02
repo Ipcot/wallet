@@ -111,8 +111,8 @@ const RegisterForm = () => {
 
             pattern: {
               value:
-                /*  /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,})$/u, */
-                /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{2,}[0-9A-Za-z]{1})$/u,
+                /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))@([-A-Za-z]{1,}.){1,1}[-A-Za-z]{1,}[0-9A-Za-z]{1})$/u,
+
               message: 'Enter a valid email!',
             },
           })}
@@ -122,7 +122,6 @@ const RegisterForm = () => {
           {errors?.email && <Post>{errors?.email?.message || 'Error!'}</Post>}
         </div>
       </InputContainer>
-
       <InputContainer>
         <LockImage />
         <Input
@@ -130,7 +129,6 @@ const RegisterForm = () => {
           type={type}
           {...register('password', {
             onChange: verifyPassword,
-
             required: 'The field is required!',
             minLength: {
               value: 6,
@@ -140,9 +138,9 @@ const RegisterForm = () => {
               value: 16,
               message: 'Max 16 characters!',
             },
-
             pattern: {
-              value: /(([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1}))$/,
+              value:
+                /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,}[0-9A-Za-z]{1})[0-9a-zA-Z$%#^!&?@]{4}))$/,
 
               message: 'Enter a valid password!"',
             },
