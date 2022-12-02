@@ -37,7 +37,20 @@ export const MainContainer = styled(Container)`
     flex-direction: row;
     align-items: flex-start;
     padding: 0 16px 50px 16px;
+    position: relative;
+    &::after {
+      position: absolute;
+      content: '';
+      left: 480px;
+      bottom: 0;
+      height: 100%;
+      border-left: 1px solid #e7e5f2;
+      box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+        1px 0px 0px rgba(255, 255, 255, 0.6);
+    }
   }
 `;
 
-export const Sider = styled.div``;
+export const Sider = styled.div`
+  border-right: 2px solid black;
+`;
